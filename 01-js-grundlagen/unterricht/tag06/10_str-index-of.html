@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String.indexOf()</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>
+          <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf"
+            >String.indexOf()</a
+          >
+        </h1>
+        <p>
+          Die<strong> indexOf()</strong> Methode gibt den Index der Zeichenkette innerhalb des aufrufenden String
+          Objekts des ersten Vorkommnis des angegebenen Wertes beginnend bei fromIndex zurück. Gibt -1 zurück, wenn der
+          Wert nicht gefunden wurde.
+        </p>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const name = 'Ladislaus Jones';
+
+      // String - Eigenschaft
+      console.log(name.length); // => 15
+
+      // String - Methode - str.indexOf()
+      console.log(name.indexOf(' ')); // => 9
+      console.log(name.indexOf('L')); // => 0
+      console.log(name.indexOf('laus')); // => 5
+
+      console.log(name.indexOf('a')); // => 1
+      console.log(name.indexOf('A')); // => -1
+
+      console.log('Ladislaus'.indexOf('Y')); // => -1 <- Zeichenabfolge wurde nicht gefunden
+
+      // String - Methode - str.lastIndexOf()
+
+      console.log(name.lastIndexOf('a')); // => 6
+      console.log(name.indexOf('a')); // => 1
+
+      console.log(name.lastIndexOf('s')); // => 14
+      console.log(name.indexOf('s')); // => 4
+
+      // Optionaler zweiter Parameter (offset | fromIndex), ab welcher Position gesucht werden soll.
+
+      console.log('Ladislaus'.indexOf('a')); // => 1
+      console.log('Ladislaus'.indexOf('a', 2)); // => 6
+    </script>
+  </body>
+</html>

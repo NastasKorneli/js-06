@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array - ar.find()</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Array - ar.find()</h1>
+        <p>
+          <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/find"
+            >ar.find()</a
+          >
+          - Die Methode <strong>find()</strong> gibt den Wert des Elements eines Arrays zurück, welches
+          <strong>als erstes</strong> die Bedingung einer bereitgestellten Testfunktion erfüllt. Andernfalls wird
+          <code>undefined</code> zurückgegeben.
+        </p>
+        <div class="alert alert-secondary output"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const customersOnline = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+
+      const names = [
+        'Christina', //
+        'Tetiana',
+        'Daniel',
+        'Namdar',
+        'Judith',
+        'Julian',
+        'Oana',
+        'Korneli',
+        'Enrico',
+        'Sebastian',
+        'Alexej',
+        'Radostina',
+        'Loriana',
+      ];
+
+      const ageRatings = [6, 6, 6, 0, 12, 16, 0, 18, 6, 0, 6];
+
+      // Array - Methode - ar.find()
+      // Methode ist "side-effect-free" - angesprochenes Array bleibt unverändert
+
+      const nameWithMoreThen10Letters = names.find((name) => {
+        return name.length >= 10;
+      });
+
+      console.log(nameWithMoreThen10Letters); // => undefined
+
+      const oddNumber = [2, 4, 6, 9, 10].find((n) => n % 2 !== 0);
+
+      console.log(oddNumber); // => 9
+
+      // Optionale Parameter von ar.find()
+
+      // ar.find((currentValue, index, array) => {})
+    </script>
+  </body>
+</html>

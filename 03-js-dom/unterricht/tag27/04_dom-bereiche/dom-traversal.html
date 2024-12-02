@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Traversal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1 id="headline">DOM Traversal</h1>
+        <hr />
+        <!-- ul.list>li*4{Listenpunkt 0$} -->
+        <ul class="list">
+          <li>Listenpunkt 01</li>
+          <li>Listenpunkt 02</li>
+          <li>Listenpunkt 03</li>
+          <li>Listenpunkt 04</li>
+        </ul>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const $ = (qs) => document.querySelector(qs);
+      const $$ = (qs) => Array.from(document.querySelectorAll(qs));
+
+      // DOM Selection Befehle
+
+      // Node.parentNode
+      const ulList = $('ul.list li').parentNode;
+
+      console.log(ulList); // Node - Elternelement vom Listenpunkt
+
+      // Node.children
+      console.log(ulList.children); // => HTMLCollection(4) [li, li, li, li]
+
+      console.log(Array.from(ulList.children)); // => [li, li, li, li]
+
+      // Node.firstElementChild - erste Kindelement
+      const listItemFirst = ulList.firstElementChild;
+      console.log(listItemFirst); //=> Node - <li>Listenpunkt 01</li>
+
+      // Node.lastElementChild - letzte Kindelement
+      const listItemLast = ulList.lastElementChild;
+      console.log(listItemLast); //=> Node - <li>Listenpunkt 04</li>
+
+      // Node.nextElementSibling - nächstes Geschwisterelement
+      console.log(listItemFirst.nextElementSibling); //=> Node - <li>Listenpunkt 02</li>
+
+      // Node.previousElementSibling - vorheriges Geschwisterelement
+      console.log(listItemLast.previousElementSibling); //=> Node - <li>Listenpunkt 03</li>
+
+      // ==========
+      // Node.childElementCount - Anzahl der Kinder
+      console.log(ulList.childElementCount); // => 4
+      console.log(ulList.children.length); // => 4
+      console.log(ulList.querySelectorAll('li').length); // => 4
+    </script>
+  </body>
+</html>

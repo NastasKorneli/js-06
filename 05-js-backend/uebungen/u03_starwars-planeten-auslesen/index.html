@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 3: Öffentliche APIs anzapfen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h2>Übung 3: Öffentliche APIs anzapfen</h2>
+          <p>
+            Im Web gibt es zahlreiche öffentlich zugängliche REST-Schnittstellen. Suche doch einfach mal nach »public
+            rest api« oder nach »open data rest api«…
+          </p>
+          <p>
+            In dieser Übung wollen wir eine Star-Wars-API anzapfen. https://swapi.api.webmasters-akademie.dev/ Die Daten
+            stammen aus dem Open-Source-Projekt swapi.co von Paul Hallet. Das Projekt stellt alle erdenklichen Infos aus
+            den Star-Wars-Filmen per REST-API zum Auslesen zur Verfügung.
+          </p>
+          <p>
+            Unter anderem gibt es Infos zu allen Planeten, die in den Filmen vorkommen. Ein Aufruf von
+            https://swapi.api.webmasters-akademie.dev/planets/1/ liefert etwa:
+          </p>
+          <code>
+            <pre>
+            { 
+              "id": 1, "edited":
+              "2014-12-20T20:58:18.411Z", "climate": "arid", "surface_water": "1", "name": "Tatooine", "diameter": "10465",
+              "rotation_period": "23", "created": "2014-12-09T13:50:49.641Z", "terrain": "desert", "gravity": "1 standard",
+              "orbital_period": "304", "population": "200000" 
+            }
+          </pre
+            >
+          </code>
+          <p>Programmiere ein kleines Frontend, das die Namen (Feld name) aller vorhandenen Planeten ausgibt.</p>
+          <p>
+            Du kannst über
+            <a href="https://swapi.api.webmasters-akademie.dev/planets/"
+              >https://swapi.api.webmasters-akademie.dev/planets/</a
+            >
+            alle Planeten in einem Ruck einlesen. Das Endergebnis sollte in etwa wie in Abb. 4 aussehen. Schau dir doch
+            gerne mal die Dokumentation der API an. Swapi Dokumentation
+          </p>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+    </script>
+  </body>
+</html>

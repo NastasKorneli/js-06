@@ -1,0 +1,25 @@
+
+@token = {{login.response.body.token}}
+
+###
+GET http://127.0.0.1:8080/api/posts/all
+
+###
+
+# @name login
+POST http://127.0.0.1:8080/login
+Content-Type: application/json
+  
+{
+  "username": "Megaman"
+}
+
+###
+POST http://127.0.0.1:8080/api/posts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "neuer Beitrag",
+  "article": "neuer Artikel von Jane"
+}

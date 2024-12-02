@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 11: Jetzt hat es sich »ausgebuyt«!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 11: Jetzt hat es sich »ausgebuyt«!</h1>
+        <p>
+          Anwender sind häufig ungeduldig und neigen dazu, mehrmals auf etwas zu klicken, wenn nicht sofort etwas
+          Sichtbares passiert. Damit der Käufer die neue Heimkino-Anlage oder das Segelboot nicht versehentlich mehrfach
+          bestellt, hat es sich bewährt, Buttons zu deaktivieren, nachdem sie geklickt wurden.
+        </p>
+        <hr />
+        <p>
+          Optional: setTimeout nutzen um den Button für 3 Sekunden zu deaktivieren. (Counter kann in den Button gesetzt
+          werden)
+          <br />
+          Optional: Sekunden im Button runterzählen
+        </p>
+
+        <button class="btn btn-primary button-buy">
+          <i class="fa-solid fa-cart-shopping"></i>&nbsp;In den Warenkorb
+        </button>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const $ = (qs) => document.querySelector(qs);
+      const $$ = (qs) => Array.from(document.querySelectorAll(qs));
+
+      const DOM = {};
+      DOM.button = $('.button-buy');
+
+      // 1
+      // const onClickButton = (e) => {
+      //   const button = e.currentTarget;
+      //   button.disabled = true;
+      // };
+
+      // DOM.button.addEventListener('click', onClickButton);
+
+      // =======================
+
+      // 2
+
+      // =======================
+
+      // 3 mit setInterval
+
+      // const onClickButton = (e) => {
+      //   const btn = e.currentTarget;
+      //   btn.disabled = true;
+      //   btn.classList.add('disabled');
+
+      //   const intervalId = setInterval(() => {
+      //     btn.disabled = false;
+      //     btn.classList.remove('disabled');
+      //     clearInterval(intervalId);
+      //   }, 3000);
+      // };
+
+      // DOM.button.addEventListener('click', onClickButton);
+
+      // =======================
+
+      // 3 mit setTimeout
+      // const onClickButton = (e) => {
+      //   const btn = e.currentTarget;
+      //   btn.disabled = true;
+      //   btn.classList.add('disabled');
+
+      //   const reactivateButton = () => {
+      //     btn.disabled = false;
+      //     btn.classList.remove('disabled');
+      //   };
+
+      //   setTimeout(reactivateButton, 3000);
+      // };
+
+      // DOM.button.addEventListener('click', onClickButton);
+
+      // 4 mit setTimeout und Rekursion
+      // const onClickButton = (e) => {
+      //   const btn = e.currentTarget;
+      //   btn.disabled = true;
+      //   let countdown = 3;
+
+      //   const startCountdown = () => {
+      //     if (countdown > 0) {
+      //       btn.innerHTML = `<i class="fa-solid fa-cart-shopping"></i>&nbsp;Warte <strong>${countdown}</strong> Sekunden`;
+      //       countdown--;
+
+      //       setTimeout(startCountdown, 1000);
+      //     } else {
+      //       btn.disabled = false;
+      //       btn.innerHTML = '<i class="fa-solid fa-cart-shopping"></i>&nbsp;In den Warenkorb';
+      //     }
+      //   };
+      //   startCountdown();
+      // };
+
+      // DOM.button.addEventListener('click', onClickButton);
+
+      // 4 mit setTimeout und Rekursion - Alternative
+      DOM.button.addEventListener('click', (e) => {
+        const btnEl = e.currentTarget;
+        btnEl.disabled = true;
+
+        const timer = 3;
+        console.log(btnEl.innerHTML);
+        if (btnEl.disabled) delay(btnEl, timer, btnEl.innerHTML);
+      });
+
+      const delay = (el, counter = 5, content = 'In den Warenkorb') => {
+        if (counter === 0) {
+          el.innerHTML = content;
+          return (el.disabled = false);
+        }
+
+        el.innerHTML = `wieder verfügbar in ${counter} Sekunden`;
+
+        setTimeout(() => delay(el, --counter, content), 1000); // erneuter Aufruf von delay => Rekursion
+      };
+    </script>
+  </body>
+</html>

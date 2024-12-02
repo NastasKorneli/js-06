@@ -1,0 +1,7 @@
+.m-product-manager table tbody td:last-child {
+  width: 130px;
+}
+
+.m-product-manager table tbody button {
+  margin: 3px;
+}

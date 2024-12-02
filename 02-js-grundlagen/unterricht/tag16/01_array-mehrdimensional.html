@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array meehrdimensional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Array meehrdimensional</h1>
+
+        <ul class="list">
+          <li>Eintrag 01</li>
+          <li>Eintrag 02 (Admin)</li>
+          <li>Eintrag 03</li>
+          <li>Eintrag 04</li>
+          <li>Eintrag 05 (Admin)</li>
+        </ul>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const zahl = Number(7);
+      const str = String('test');
+      let schalter = Boolean(false);
+      const fn = Function(() => {});
+
+      // Array
+      const zeros = Array(7).fill(0); //=> [0,0,0,0,0,0,0]
+
+      const lottoNumbers = [];
+      lottoNumbers[0] = 12;
+      lottoNumbers[1] = 5;
+      lottoNumbers[2] = 35;
+      lottoNumbers[3] = 19;
+      lottoNumbers[4] = 8;
+
+      const names = ['Tick', 'Trick', 'Track'];
+
+      // Array Eigenschaft - length
+      console.log(names.length); // => 3
+
+      // Array Methoden (.push(), .unshift() ...)
+      lottoNumbers.push(3);
+
+      // Type
+      console.log(typeof [1, 2, 3]); // => 'object' -> vom Typ Array
+
+      // Referenz
+      const refNames = names;
+
+      console.log(refNames === names); // => true
+
+      refNames.push('Jane');
+
+      console.log(names); // =>  ['Tick', 'Trick', 'Track', 'Jane']
+
+      // Array Kopie
+      const namesCopy = [...names]; // ES6 spread operator - Menge wird in einem neuen Array abgelegt
+      const namesCopy2 = names.slice();
+      const namesCopy3 = names.filter(() => true);
+
+      // Arrayähnliche Objekte sind iterierbar
+      const liEls = document.querySelectorAll('ul li');
+
+      console.log(liEls);
+      console.log(liEls.length); // => 5
+      console.log(liEls[0]); // => <li>Eintrag 01</li>
+
+      console.log(Array.from(liEls).filter((el) => el.textContent.endsWith('(Admin)')));
+
+      // mixed Array
+
+      const mixedArray = [
+        'John',
+        34,
+        ['Gassi gehen', 'Ballern'],
+        () => {
+          console.log('Funktion starten');
+        },
+      ];
+
+      console.log(mixedArray[0]); // => 'John'
+      console.log(mixedArray[2][0]); // => 'Gassi gehen'
+      console.log(mixedArray[3]()); // => 'Funktion starten'
+
+      // Zweidimensionales Array
+
+      const personenAr = [
+        ['Max', 'Mustermann', 33],
+        ['Jane', 'Doe', 32],
+        ['Joe', 'Doe', 21],
+        ['John', 'Wayne', 38],
+      ];
+
+      console.log(personenAr[2][2]); // => 21
+
+      // Mehrdimensionale Arrays
+      const kontaktListe1 = ['Max', 'Moritz', 'Anne'];
+      const kontaktListe2 = ['Darius', 'Berny', 'Boris'];
+      const kontaktListe3 = ['Jane', 'Matze', 'Ladislaus'];
+
+      // Mehrdimensionales Array
+      const kontakteArray = [
+        ['Max', 'Mustermann', ['069 553399', '0171 5522112'], kontaktListe1],
+        ['John', 'Wayne', ['089 6521349', '0152 5552156'], kontaktListe2],
+        ['Anne', 'Doe', ['0651 65020349', '0172 6662156'], kontaktListe3],
+      ];
+
+      console.log(kontakteArray[1][3][1]); //=> 'Berny'
+      console.log(kontakteArray[2][3][2]); //=> 'Ladislaus'
+      console.log(kontakteArray[1][2][1]); //=> '0152 5552156'
+
+      const contacts = [
+        {
+          firstName: 'Max',
+          lastName: 'Mustermann',
+          phone: ['069 553399', '0171 5522112'],
+          contacts: ['Max', 'Moritz', 'Anne'],
+        },
+        {
+          phone: ['089 6521349', '0152 5552156'],
+          firstName: 'John',
+          lastName: 'Wayne',
+          contacts: ['Darius', 'Berny', 'Boris'],
+        },
+      ];
+
+      console.log(contacts[1].contacts[2]); // => 'Boris'
+      console.log(contacts[1]['contacts'][2]); // => 'Boris'
+
+      const boardInStartPosition = [
+        ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+        ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+        ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
+      ];
+
+      console.log(boardInStartPosition[7][6]); // => '♘' <- Pferd rechts unten
+    </script>
+  </body>
+</html>

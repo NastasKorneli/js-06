@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 24: Von guten und bösen Eingaben</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 24: Von guten und bösen Eingaben</h1>
+          <ol class="list">
+            <li>
+              Nehmen Sie Angaben zu Vorname, Nachname, Geschlecht und Alter eines Anwenders entgegen und speichern Sie
+              diese in Variablen.
+            </li>
+            <li>
+              Diese Eingaben sollen Sie nun folgendermaßen validieren:
+              <ul class="list">
+                <li>Vorname und Nachname müssen zwischen 2 und 100 Zeichen lang sein.</li>
+                <li>Die Eingabe für das Geschlecht muss m (male) oder ein f (female) sein.</li>
+                <li>Das Alter muss eine Zahl unter 150 sein.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+        <div class="output alert alert-secondary my-3"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const name = prompt('Pls enter your name!');
+      const firstName = prompt('Pls enter your firstname!');
+      const gender = prompt('Are you (f)emale or (m)ale?');
+      const age = Number(prompt('How old are you?'));
+
+      let errorMessage = '';
+      let isValid = true;
+
+      if (name.length < 2 || name.length > 100) {
+        errorMessage += 'Der Vorname muss zwischen 2 und 100 Zeichen lang sein.\n';
+        isValid = false;
+      }
+      if (firstName.length < 2 || firstName.length > 100) {
+        errorMessage += 'Der Nachname muss zwischen 2 und 100 Zeichen lang sein.\n';
+        isValid = false;
+      }
+
+      if (gender !== 'm' && gender !== 'f') {
+        errorMessage += "Das Geschlecht muss 'm' (männlich) oder 'f' (weiblich) sein.\n";
+        isValid = false;
+      }
+      if (age < 0 || age >= 150) {
+        errorMessage += 'Das Alter muss eine Zahl unter 150 sein.\n';
+        isValid = false;
+      }
+      if (isValid) {
+        outputEl.innerHTML =
+          `Vielen Dank für Ihre Eingaben!\nVorname: ${firstName}\nNachname: ${name}\nGeschlecht: ${gender}\nAlter: ${age}`.replaceAll(
+            '\n',
+            '<br>'
+          );
+      } else {
+        outputEl.innerHTML = errorMessage.replaceAll('\n', '<br>');
+      }
+    </script>
+  </body>
+</html>

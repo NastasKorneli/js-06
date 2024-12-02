@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>02 Example Defer</title>
+    <script src="assets/js/helper.js"></script>
+
+    <script src="assets/js/file01.js" defer></script>
+    <script src="assets/js/file02.js" defer="defer"></script>
+  </head>
+
+  <body>
+    <script src="assets/js/file03.js" defer="defer"></script>
+    <script src="assets/js/file04.js"></script>
+
+    <script>
+      'use strict';
+
+      console.log('File intern');
+      const i = 'i';
+
+      console.log(output());
+    </script>
+  </body>
+</html>

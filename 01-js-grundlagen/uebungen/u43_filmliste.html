@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 43: Unser allerbestes Jahr</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-5">
+          <h1>Übung 43: Unser allerbestes Jahr</h1>
+          <p>
+            Das Buch Unser allerbestes Jahr (Originaltitel: The Film Club) von David Gilmour handelt von einem Vater,
+            der seinem Sohn das Leben anhand von Filmen erklärt. Filme aller Art und Genres spielen eine Rolle und
+            ergeben eine bunte, aber faszinierende Liste. Ein Filmfan — in diesem Fall Christin — hat angefangen, die
+            Filme in chronologischer Reihenfolge zu notieren, und möchte die bisher vorliegende Liste nun alphabetisch
+            sortieren.
+          </p>
+          <p>
+            Die vollständige Liste finden Sie mehrfach im Internet, zum Beispiel unter
+            <a href="http://cyberangel-creativity.blogspot.com/2010/07/unser-allerbestes-jahr-filmeliste.html"
+              >Cyberangel's Blog.</a
+            >
+          </p>
+          <ol class="list">
+            <li>Speichern Sie die Filme in ein Array und geben Sie es alphabetisch sortiert über die Konsole aus.</li>
+            <li>
+              Fügen Sie die einzelnen Elemente des Arrays in einem String zusammen und geben Sie diese zeilenweise in
+              der Konsole aus.
+            </li>
+          </ol>
+        </div>
+        <div class="output alert alert-secondary my-3"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const movies = [
+        'Les Quatre Cents Coup',
+        'Basic Instinct',
+        'North by Northwest',
+        'Crimes and Misdemeanors',
+        'Volcano',
+        'Citizen Kane',
+        'Night of the Iguana',
+        'On the Waterfront',
+        "Who's Afraid of Virginia Woolf?",
+        'Plenty',
+        'The Third Man',
+        "A Hard Day's night",
+        'Sexy Beast',
+        'Giants',
+        'Otto e mezzo',
+        'Notorious',
+        'The Shining',
+        'Annie Hall',
+        'Around the World in Eighty Days',
+        'Mean Streets',
+        'The French Connection',
+        'Ishtar',
+        'Last Tango in Paris',
+        "Breakfast at Tiffany's",
+        'Jungle Fever',
+        'Beetlejuice',
+        'Fast Times at Ridgemont High',
+      ];
+
+      // ar.toSorted() - neu seit 2023 - side-effect-free
+      outputEl.innerHTML = `<ul><li>${movies.toSorted().join('</li><li>')}</li></ul>`;
+
+      // ar.sort() - in-place-mutation, daher Kopie mit [...] spread-operator
+      outputEl.innerHTML = `<ul><li>${[...movies].sort().join('</li><li>')}</li></ul>`;
+
+      console.log(movies);
+    </script>
+  </body>
+</html>

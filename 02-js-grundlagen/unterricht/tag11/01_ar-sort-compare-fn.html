@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array - ar.sort(compareFn)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Array - ar.sort(compareFn)</h1>
+        <p>
+          <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"
+            >ar.sort(compareFn)</a
+          >
+          - Die <strong>sort()</strong> Methode sortiert die Elemente eines Arrays <code>in-place</code> und gibt das
+          Array zurück. Standardmäßig werden alle Elemente in Strings umgewandelt und dann anhand ihrer UTF-16
+          Codepoints miteinander verglichen.
+        </p>
+        <div class="alert alert-warning">
+          Das angesprochene Array wird durch <code>in-place-mutation</code> ebenfalls sortiert.
+        </div>
+
+        <hr />
+        <h3>Rückgabewerte der Vergleichfunktion:</h3>
+        <ul class="list">
+          <li>Rückgabewert 0: Positionen bleiben stehen</li>
+          <li>Rückgabewert &lt; 0: Positionen bleiben stehen</li>
+          <li>Rückgabewert &gt; 0: Positionen vertauscht</li>
+        </ul>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      // Es wird lexikografisch sortiert
+      console.log([1, 20, 35, 5, 3, 31].sort()); // =>  [1, 20, 3, 31, 35, 5]
+
+      // const sortedNumbers = [1, 20, 35, 5, 3, 31].sort((a, b) => { return a -  b });
+
+      // https://de.wikipedia.org/wiki/Bubblesort
+      const sortedNumbers = [1, 20, 35, 5, 3, 31].sort((a, b) => a - b);
+
+      console.log(sortedNumbers); // =>  [1, 3, 5, 20, 31, 35]
+    </script>
+  </body>
+</html>

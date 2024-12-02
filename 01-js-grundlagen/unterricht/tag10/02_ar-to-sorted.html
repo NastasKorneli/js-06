@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array - ar.toSorted()</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Array - ar.toSorted() (neu seit juni 2023)</h1>
+        <p>
+          <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted"
+            >ar.toSorted()</a
+          >
+          - Die <strong>sort()</strong> Methode sortiert die Elemente eines Arrays <code>side-effect-free</code> und
+          gibt das Array zurück. Standardmäßig werden alle Elemente in Strings umgewandelt und dann anhand ihrer UTF-16
+          Codepoints miteinander verglichen.
+        </p>
+        <div class="alert alert-warning">Das angesprochene Array bleibt unverändert.</div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const customersOnline = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+
+      const names = [
+        'Christina', //
+        'Tetiana',
+        'Daniel',
+        'Namdar',
+        'Judith',
+        'Julian',
+        'Oana',
+        'Korneli',
+        'Enrico',
+        'Sebastian',
+        'Alexej',
+        'Radostina',
+        'Loriana',
+      ];
+
+      // Array - Methode - ar.toSorted()
+      // Die Methode ist side-effect-free. Das angesproche Array bleibt unverändert.
+
+      const sortedNames = names.toSorted();
+
+      console.log(sortedNames); // =>  ['Alexej', 'Christina', 'Daniel', 'Enrico', 'Judith', 'Julian', 'Korneli', 'Loriana', 'Namdar', 'Oana', 'Radostina', 'Sebastian', 'Tetiana']
+      console.log(names); // => ['Christina', 'Tetiana', 'Daniel', 'Namdar', 'Judith', 'Julian', 'Oana', 'Korneli', 'Enrico', 'Sebastian', 'Alexej', 'Radostina', 'Loriana']
+
+      // Es wird lexikografisch sortiert
+      console.log([1, 20, 25, 3, 5, 31].toSorted()); // =>  [1, 20, 25, 3, 31, 5]
+    </script>
+  </body>
+</html>

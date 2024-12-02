@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funktionsreferenz Beispiel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Funktionsreferenz Beispiel</h1>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const timer = () => {
+        console.log('Hello');
+      };
+
+      timer();
+
+      setInterval(timer, 1000); // timer als Funktionsreferenz
+
+      setInterval(() => {
+        timer(); // timer als Funktionsaufruf
+      }, 1000);
+
+      const add = (n1, n2) => {
+        return n1 + n2;
+      };
+
+      // let zufallszahl;
+      // if (true) {
+      //   zufallszahl = Math.random();
+      // } else {
+      //   zufallszahl = 0;
+      // }
+
+      // prettier-ignore
+      const zufallszahl = (true) ? Math.random() : 0;
+
+      if (/*BEDINGUNG*/ true) {
+        // ANWEISUNGEN
+      } else {
+        //ANWEISUNGEN
+      }
+
+      console.log(add(3, 5)); // => 8
+      console.log(add(1, 2)); // => 3
+    </script>
+  </body>
+</html>

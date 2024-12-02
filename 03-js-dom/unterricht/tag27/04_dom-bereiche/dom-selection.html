@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Selection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1 id="headline">DOM Selection</h1>
+        <hr />
+        <!-- ul.list>li*4{Listenpunkt 0$} -->
+        <ul class="list">
+          <li>Listenpunkt 01</li>
+          <li>Listenpunkt 02</li>
+          <li>Listenpunkt 03</li>
+          <li>Listenpunkt 04</li>
+        </ul>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const $ = (qs) => document.querySelector(qs);
+      const $$ = (qs) => Array.from(document.querySelectorAll(qs));
+
+      // DOM Selection Befehle
+
+      // document.querySelector('CSS SELECTOR')
+      console.log(document.querySelector('ul.list')); // => Node <ul class="list"> </ul>
+
+      // document.querySelectorAll('CSS SELECTOR')
+      console.log(document.querySelectorAll('ul.list li')); // => NodeList(4) [li, li, li, li]
+
+      // element.querySelector('CSS_SELECTOR')
+      console.log($('ul.list').querySelector('li')); // => Node <li>Listenpunkt 01</li>
+
+      // element.querySelectorAll('CSS_SELECTOR')
+      console.log($('ul.list').querySelectorAll('li')); // => NodeList(4) [li, li, li, li]
+
+      // =======================================
+
+      console.log(document.getElementById('headline')); // => Node <h1>DOM Selection</h1>
+
+      // ========================================
+      // ÄLTERE METHODEN (BITTE VERMEIDEN)
+
+      // document.getElementsByClassName('CLASS_NAME')
+      console.log(document.getElementsByClassName('container')); // => HTMLCollection [div.container.py-5]
+
+      // document.getElementsByTagName('TAG_NAME')
+      console.log(document.getElementsByTagName('h1')); // => HTMLCollection [h1#headline]
+    </script>
+  </body>
+</html>

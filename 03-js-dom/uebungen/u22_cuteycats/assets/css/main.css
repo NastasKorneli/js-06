@@ -1,0 +1,76 @@
+@charset "UTF-8";
+/* Color Theme Swatches in Hex */
+/* Color Theme Swatches in RGBA */
+*,
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #f7eedf;
+}
+
+.m-cutey-cat h2 {
+  color: #7aa67a;
+}
+.m-cutey-cat .box-cat-selection {
+  position: fixed;
+}
+.m-cutey-cat ul.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 2rem;
+}
+.m-cutey-cat ul.list li {
+  min-width: 400px;
+  background-color: #feaea5;
+  margin: 0 0 10px;
+  user-select: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.52, 0.02, 0.43, 1.39);
+}
+.m-cutey-cat ul.list li:not(.selected):hover {
+  background-color: #fd8173;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+.m-cutey-cat ul.list li:not(.selected):hover img {
+  border-width: 0;
+}
+.m-cutey-cat ul.list li img {
+  width: 120px;
+  border: 10px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.4s;
+}
+.m-cutey-cat ul.list li span {
+  color: white;
+  padding: 0 1rem;
+  letter-spacing: 2px;
+}
+.m-cutey-cat ul.list.list-cat-vote li.selected {
+  background-color: #ffdbd7;
+  opacity: 0.5;
+}
+.m-cutey-cat ul.list.list-cat-selection li {
+  background-color: #b7cfb7;
+}
+.m-cutey-cat ul.list.list-cat-selection li:hover {
+  background-color: #98bb98;
+}
+.m-cutey-cat ul.list.list-cat-selection li:hover::after {
+  position: absolute;
+  top: 30px;
+  right: 1.5rem;
+  content: "";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: white;
+}
+
+/*# sourceMappingURL=main.css.map */

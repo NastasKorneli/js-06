@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"  ?>
+<persons>
+  <person>
+    <firstName>Max</firstName>
+    <lastName>Mustermann</lastName>
+    <age>35</age>
+    <hobbies>
+      <hobby>Tennis</hobby>
+      <hobby>Fussball</hobby>
+    </hobbies>
+  </person>
+  <person>
+    <firstName>Jane</firstName>
+    <lastName>Doe</lastName>
+    <age>21</age>
+    <hobbies>
+      <hobby>Netflix schauen</hobby>
+      <hobby>Zocken</hobby>
+    </hobbies>
+  </person>
+  <person>
+    <firstName>John</firstName>
+    <lastName>Wick</lastName>
+    <age>42</age>
+    <hobbies>
+      <hobby>Ballern</hobby>
+      <hobby>Gassi gehen</hobby>
+    </hobbies>
+  </person>
+</persons>

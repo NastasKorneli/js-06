@@ -1,0 +1,22 @@
+GET http://127.0.0.1:8080/api/posts/all
+
+###
+# @name login
+
+POST http://127.0.0.1:8080/login
+Content-Type: application/json
+
+{
+  "username": "Megaman"
+}
+
+###
+POST http://127.0.0.1:8080/api/posts
+Content-Type: application/json
+Authorization
+Bearer {{login.response.body.token}}
+
+{
+  "title": "Mein erster Blogbeitrag",
+  "article": "Mein erster Blogbeitrag von Megaman"
+}

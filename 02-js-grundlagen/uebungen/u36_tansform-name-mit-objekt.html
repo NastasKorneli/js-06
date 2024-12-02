@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 36: Vorname vor Nachname oder Nachname vor Vorname?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-5">
+          <h1>Übung 36: Vorname vor Nachname oder Nachname vor Vorname?</h1>
+          <p>
+            Wenn Sie der Name der Übung beim Lesen genauso verwirrt wie uns beim Schreiben, dann liegt das daran, dass
+            die Reihenfolge von Vor- und Nachnamen nicht immer eindeutig ist. Machmal heißt es Max Mustermann und
+            manchmal auch Mustermann, Max.<br />Damit Benutzer der Funktion <code>transformName</code> (aus Übung 36)
+            nicht auch so verwirrt sind, stellen Sie sie besser auf named parameters um.
+          </p>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const transformName = ({ firstName = '', lastName = '' } = { firstName: 'Jane', lastName: 'Doe' }) => {
+        const ucFirstLastName = lastName[0].toUpperCase() + lastName.substring(1).toLowerCase();
+
+        return `${ucFirstLastName}, ${firstName.charAt(0).toUpperCase()}.`;
+      };
+      // vorher
+      // console.log(transformName('Max', 'Mustermann'));
+
+      console.log(transformName({ firstName: 'Max', lastName: 'Mustermann' }));
+      // => 'Mustermann, M.'
+
+      console.log(transformName({ firstName: 'JoHn', lastName: 'WiCK' }));
+      // => 'Wick, J.'
+
+      console.log(transformName());
+    </script>
+  </body>
+</html>

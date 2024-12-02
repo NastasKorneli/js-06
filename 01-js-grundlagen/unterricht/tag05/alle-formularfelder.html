@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alle Formularfelder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      .mb-3 {
+        margin-bottom: 10px;
+      }
+      .form-range {
+        display: inline-block;
+        width: 90%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1>Alle Formularfelder</h1>
+        <p>
+          Link zu allen "Input"-Feldern:
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
+            >https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input</a
+          >
+        </p>
+
+        <form action="" method="POST">
+          <!-- Input-Feld Type: text -->
+          <div class="mb-3">
+            <label for="input-text">Type: text</label>
+            <input type="text" class="form-control" name="text" id="input-text" placeholder="Text eingeben..." />
+          </div>
+
+          <!-- Input-Feld Type: text Attribute: disabled  -->
+          <div class="mb-3">
+            <label for="input-text-disabled">Type: text (nur lesbar)</label>
+            <input
+              type="text"
+              class="form-control"
+              name="text-disabled"
+              id="input-text-disabled"
+              placeholder="Text eingeben..."
+              disabled
+              readonly />
+          </div>
+
+          <!-- Input-Feld Type: email  -->
+          <div class="mb-3">
+            <label for="input-email">Type: email</label>
+            <input
+              type="email"
+              required
+              class="form-control"
+              name="email"
+              id="input-email"
+              placeholder="E-Mail Adresse eingeben..." />
+          </div>
+
+          <!-- Input-Feld Type: number Attributes: min | max | step  -->
+          <div class="mb-3">
+            <label for="input-number">Type: number</label>
+            <input
+              type="number"
+              class="form-control"
+              name="number"
+              id="input-number"
+              placeholder="Zahl eingeben"
+              step="10"
+              min="0"
+              max="100" />
+          </div>
+
+          <!-- Input-Feld Type: range Attributes: min | max | step  -->
+          <div class="mb-3">
+            <label for="input-range">Type: range</label>
+            <div>
+              <span>0</span>
+              <input
+                type="range"
+                name="range"
+                id="input-range"
+                step="1"
+                min="0"
+                max="100"
+                value="50"
+                class="form-range" />
+              <span>100</span>
+            </div>
+            <span class="range-value"></span>
+          </div>
+
+          <!-- Input-Feld Type: date Attributes: min | max | step   -->
+
+          <!-- Datum wird nach ISO: 8601 definiert: YYYY-MM-DD -->
+          <div class="mb-3">
+            <label for="input-date">Type: date</label>
+            <input
+              type="date"
+              class="form-control"
+              name="date"
+              id="input-date"
+              value="2023-08-11"
+              min="2020-12-14"
+              max="2023-08-17"
+              step="1" />
+          </div>
+
+          <!-- Input-Feld Type: month Attributes: min | max | step   -->
+          <!-- Month: wird selten verwendet (Unterschiedliches Verhalten in den Browsern) -->
+          <div class="mb-3">
+            <label for="input-month">Type: month</label>
+            <input
+              type="month"
+              class="form-control"
+              name="month"
+              id="input-month"
+              value="2020-12"
+              min="2020-10"
+              max="2021-01"
+              step="1" />
+          </div>
+
+          <!-- Input-Feld Type: time Attributes: min | max | step   -->
+          <!-- time: wird selten verwendet (Unterschiedliches Verhalten in den Browsern) -->
+          <div class="mb-3">
+            <label for="input-time">Type: time</label>
+            <input type="time" class="form-control" name="time" id="input-time" min="08:30" max="16:30" />
+          </div>
+
+          <!-- Input-Feld Type: color  -->
+          <div class="mb-3">
+            <label for="input-color">Type: color</label>
+            <input type="color" class="form-control" name="color" id="input-color" value="#ff0000" />
+          </div>
+
+          <!-- Input-Feld Type: url  -->
+          <div class="mb-3">
+            <label for="input-url">Type: url</label>
+            <input type="url" class="form-control" name="url" id="input-url" placeholder="https://" />
+          </div>
+
+          <!-- Input-Feld Type: tel  -->
+          <div class="mb-3">
+            <label for="input-tel">Type: tel</label>
+            <input type="tel" class="form-control" name="tel" id="input-tel" minlength="6" maxlength="12" />
+            <a href="tel:004915112715548">+49 (0)151 12 71 55 48</a>
+          </div>
+
+          <!-- Input-Feld Type: password | minlength | maxlength  -->
+          <div class="mb-3">
+            <label for="input-password">Type: password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="input-password"
+              minlength="6"
+              maxlength="12" />
+          </div>
+
+          <!-- Input-Feld Type: hidden -->
+          <div class="mb-3">
+            <label for="input-hidden">Type: hidden</label>
+            <input type="hidden" value="[PRODUKT-ARTIKELNUMMER]" name="hidden" id="input-hidden" />
+          </div>
+
+          <hr />
+
+          <!-- Input-Feld Type: checkbox Attributes: checked | required -->
+          <div class="mb-3 form-check">
+            <input type="checkbox" checked class="form-check-input" name="checkbox" id="input-checkbox" required />
+            <label for="input-checkbox" class="form-check-label">Type: checkbox</label>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="agb" id="input-cb-agb" required />
+            <label for="input-cb-agb" class="form-check-label">AGB akzeptieren</label>
+          </div>
+
+          <hr />
+
+          <!-- Input-Feld Type: radio Attributes: checked | required -->
+          <div class="mb-3 form-check">
+            <input type="radio" class="form-check-input" name="radio" id="input-radio" required />
+            <label for="input-radio" class="form-check-label">Type: radio</label>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-check form-check-inline">
+              <label for="input-radio-f" class="form-check-label">Frau</label>
+              <input type="radio" class="form-check-input" name="gender" id="input-radio-f" value="f" required />
+            </div>
+            <div class="form-check form-check-inline">
+              <label for="input-radio-m" class="form-check-label">Mann</label>
+              <input type="radio" class="form-check-input" name="gender" id="input-radio-m" value="m" required />
+            </div>
+            <div class="form-check form-check-inline">
+              <label for="input-radio-d" class="form-check-label">Divers</label>
+              <input type="radio" class="form-check-input" name="gender" id="input-radio-d" value="d" required />
+            </div>
+          </div>
+
+          <hr />
+
+          <!-- Input-Feld Type: search Attributes: list -->
+          <div class="mb-3">
+            <label for="input-search">Type: search</label>
+            <input type="search" class="form-control" name="search" id="input-search" list="fruit-list" />
+            <datalist id="fruit-list">
+              <option>Banane</option>
+              <option>Erdbeere</option>
+              <option>Himbeere</option>
+            </datalist>
+          </div>
+
+          <!-- Select-Feld -->
+          <div class="mb-3">
+            <label for="select-country">Land auswählen</label>
+            <select name="country" class="form-select" id="select-country">
+              <option value="" selected>Bitte Land auswählen</option>
+              <optgroup label="Südamerika">
+                <option value="ag">Argentinien</option>
+                <option value="br">Brasilien</option>
+                <option value="uy">Uruguay</option>
+                <option value="cl">Chile</option>
+              </optgroup>
+              <optgroup label="Europa">
+                <option value="de">Deutschland</option>
+                <option value="fr">Frankreich</option>
+                <option value="es">Spanien</option>
+                <option value="it">Italien</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Input-Feld Type: file Attributes: multiple | accept -->
+          <div class="mb-3">
+            <label for="input-file">Type: file</label>
+            <input
+              type="file"
+              class="form-control"
+              name="file"
+              id="input-file"
+              accept="image/png, image/gif, image/jpeg"
+              multiple />
+            <small
+              ><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types"
+                >MIME/Types</a
+              ></small
+            >
+          </div>
+
+          <div class="mb-3">
+            <label for="textarea-message">Textarea</label>
+            <textarea name="message" id="textarea-message" cols="30" rows="5" class="form-control"></textarea>
+          </div>
+
+          <!-- Input:button Input:reset werden selten verwendet. -->
+          <div class="mb-3">
+            <label for="input-reset">Type: reset</label>
+            <input type="reset" class="btn btn-danger" name="reset" id="input-reset" />
+          </div>
+
+          <div class="mb-3">
+            <!-- <input type="submit" value="Formular abschicken" class="btn btn-dark" /> -->
+            <button type="submit" class="btn btn-dark">Formular abschicken</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

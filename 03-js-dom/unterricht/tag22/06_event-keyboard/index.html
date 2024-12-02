@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events - KeyboardEvent | InputEvent</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Events - KeyboardEvent | InputEvent</h1>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/Events">Standard Events</a></p>
+        <p><a href="https://www.w3schools.com/jsref/dom_obj_event.asp">JS Events in W3Schools</a></p>
+
+        <div class="mb-3">
+          <img src="https://dummyimage.com/600x300/f90/fff.jpg" class="img-thumbnail" alt="" />
+        </div>
+
+        <button class="btn btn-dark button-click mb-3"><span>Klick mich</span></button>
+
+        <div class="member-search mb-3">
+          <input type="text" name="search" class="form-control input-search" placeholder="...Find member" />
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const $ = (qs) => document.querySelector(qs);
+      const $$ = (qs) => Array.from(document.querySelectorAll(qs));
+
+      // KeyboardEvents =================
+
+      // KeyboardEvent - keyup - Wenn der Benutzer die Taste auf dem Element loslässt
+      $('.input-search').addEventListener('keyup', (e) => {
+        console.log('KeyboardEvent e:', e);
+
+        // console.log('e.ctrlKey:', e.ctrlKey); //=> true | false
+        // console.log('e.altKey:', e.altKey); //=> true | false
+        // console.log('e.shiftKey:', e.shiftKey); //=> true | false
+
+        console.log('e.code:', e.code);
+        console.log('e.key:', e.key);
+        console.log('e.keyCode:', e.keyCode); // Deprecated
+      });
+
+      // KeyboardEvent - keydown - Wenn der Benutzer die Taste auf dem Element drückt (mehrfach)
+      $('.input-search').addEventListener('keydown', (e) => {
+        console.log('KeyboardEvent e:', e);
+        console.log('e.type', e.type);
+        console.log('e.code:', e.code);
+        console.log('e.key:', e.key);
+        console.log('e.keyCode:', e.keyCode); // Deprecated
+      });
+
+      // KeyboardEvent - keypress - Wenn der Benutzer die Taste auf dem Element drückt (einmalig und nach keydown)
+      $('.input-search').addEventListener('keypress', (e) => {
+        console.log('KeyboardEvent e:', e);
+        console.log('e.type', e.type);
+
+        console.log('e.code:', e.code);
+        console.log('e.key:', e.key);
+        console.log('e.keyCode:', e.keyCode); // Deprecated
+      });
+
+      // InputEvent - input - wird bei jeglicher Veränderung des Eingabefeldes ausgelöst
+      $('.input-search').addEventListener('input', (e) => {
+        console.log('InputEvent e:', e);
+        console.log('e.type', e.type);
+
+        console.log('e.data: ', e.data);
+        console.log('e.target.value: ', e.target.value);
+      });
+
+      // FocusEvents =======================
+
+      // FocusEvent - blur - wird ausgeführt, wenn das Element den Fokus verliert (nicht mehr angewählt ist)
+      $('.input-search').addEventListener('blur', (e) => {
+        console.log('InputEvent e:', e);
+        console.log('e.type', e.type);
+
+        console.log('e.target.value: ', e.target.value);
+      });
+
+      // FocusEvent - focus - wird ausgeführt, wenn das Element den Fokus erhält (angewählt wird)
+      $('.input-search').addEventListener('focus', (e) => {
+        console.log('InputEvent e:', e);
+        console.log('e.type', e.type);
+
+        console.log('e.target.value: ', e.target.value);
+      });
+    </script>
+  </body>
+</html>

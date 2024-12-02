@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 9: Please Click Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 9: Please Click Me</h1>
+        <button class="btn btn-dark button-click my-5"><i class="fa-solid fa-arrow-pointer"></i> Click Me</button>
+        <!-- <input type="button" class="btn btn-dark input-click my-5" value="Input Click Me" /> -->
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const $ = (qs) => document.querySelector(qs);
+      const $$ = (qs) => Array.from(document.querySelectorAll(qs));
+
+      // // 1 Der folgende Button soll beim Betätigen eine Alert-Box öffnen mit dem Text »Hey I like it when you click me!«.
+
+      // 2 Entfernen Sie die Alert-Box. Beim Bestätigen des Buttons soll sich stattdessen der Button-Text ändern.
+
+      // 3 Ändern Sie den Text in »Cool, you found an easteregg«, für den Fall, dass der Anwender beim Klicken die Taste alt gedrückt hält.
+      const onClick = (e) => {
+        const btn = e.currentTarget;
+        const message = e.altKey ? 'Cool, you found an easteregg!' : 'Hey I like it when you click me!';
+
+        btn.textContent = message;
+      };
+
+      $('.button-click').addEventListener('click', onClick);
+
+      // const buttonEl = $('.button-click');
+
+      // buttonEl.addEventListener('click', (e) => {
+      //   // if (e.altKey) {
+      //   //   buttonEl.textContent = 'Cool, you found an easteregg';
+      //   // } else {
+      //   //   buttonEl.textContent = 'Hey I like it when you click me!';
+      //   // }
+      //   const btn = e.currentTarget;
+      //   btn.textContent = e.altKey ? 'Cool, you found an easteregg' : 'Hey I like it when you click me!';
+      // });
+    </script>
+  </body>
+</html>

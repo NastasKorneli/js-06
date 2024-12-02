@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objekte - JS Beispiele</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Objekte - JS Beispiele</h1>
+        <div class="output alert alert-secondary my-3"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const weatherObj = {
+        coord: {
+          lon: -122.08,
+          lat: 37.39,
+        },
+        weather: [
+          {
+            id: 800,
+            main: 'Clear',
+            description: 'clear sky',
+            icon: '01d',
+          },
+          {
+            id: 700,
+            main: 'Cloudy',
+            description: 'not clear at all',
+            icon: '02d',
+          },
+        ],
+        base: 'stations',
+        main: {
+          temp: 282.55,
+          feels_like: 281.86,
+          temp_min: 280.37,
+          temp_max: 284.26,
+          pressure: 1023,
+          humidity: 100,
+        },
+        visibility: 10000,
+        wind: {
+          speed: 1.5,
+          deg: 350,
+        },
+        clouds: {
+          all: 1,
+        },
+        dt: 1560350645,
+        sys: {
+          type: 1,
+          id: 5122,
+          message: 0.0139,
+          country: 'US',
+          sunrise: 1560343627,
+          sunset: 1560396563,
+        },
+        timezone: -25200,
+        id: 420006353,
+        name: 'Mountain View',
+        cod: 200,
+      };
+
+      console.log(weatherObj.weather[1].main); // => 'Cloudy'
+      console.log(weatherObj['weather'][1]['main']); // => 'Cloudy'
+
+      const personObj = {
+        results: [
+          {
+            gender: 'female',
+            name: {
+              title: 'Miss',
+              first: 'Jennie',
+              last: 'Nichols',
+            },
+            location: {
+              street: {
+                number: 8929,
+                name: 'Valwood Pkwy',
+              },
+              city: 'Billings',
+              state: 'Michigan',
+              country: 'United States',
+              postcode: '63104',
+              coordinates: {
+                latitude: '-69.8246',
+                longitude: '134.8719',
+              },
+              timezone: {
+                offset: '+9:30',
+                description: 'Adelaide, Darwin',
+              },
+            },
+            email: 'jennie.nichols@example.com',
+            login: {
+              uuid: '7a0eed16-9430-4d68-901f-c0d4c1c3bf00',
+              username: 'yellowpeacock117',
+              password: 'addison',
+              salt: 'sld1yGtd',
+              md5: 'ab54ac4c0be9480ae8fa5e9e2a5196a3',
+              sha1: 'edcf2ce613cbdea349133c52dc2f3b83168dc51b',
+              sha256: '48df5229235ada28389b91e60a935e4f9b73eb4bdb855ef9258a1751f10bdc5d',
+            },
+            dob: {
+              date: '1992-03-08T15:13:16.688Z',
+              age: 30,
+            },
+            registered: {
+              date: '2007-07-09T05:51:59.390Z',
+              age: 14,
+            },
+            phone: '(272) 790-0888',
+            cell: '(489) 330-2385',
+            id: {
+              name: 'SSN',
+              value: '405-88-3636',
+            },
+            picture: {
+              large: 'https://randomuser.me/api/portraits/men/75.jpg',
+              medium: 'https://randomuser.me/api/portraits/med/men/75.jpg',
+              thumbnail: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+            },
+            nat: 'US',
+          },
+        ],
+        info: {
+          seed: '56d27f4a53bd5441',
+          results: 1,
+          page: 1,
+          version: '1.4',
+        },
+      };
+
+      console.log(personObj.results[0].picture.medium); // => 'https://randomuser.me/api/portraits/med/men/75.jpg'
+
+      const img = document.createElement('img'); // new Image()
+      img.src = personObj.results[0].picture.large;
+
+      document.querySelector('.output').append(img);
+    </script>
+  </body>
+</html>

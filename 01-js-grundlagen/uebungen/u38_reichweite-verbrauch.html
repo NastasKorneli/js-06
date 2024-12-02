@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 38: Reichweite & Verbrauch, Teil 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 38: Reichweite & Verbrauch, Teil 3</h1>
+          <p>
+            Überarbeiten Sie Reichweite & Verbrauch, Teil 2 (Übung 18). Erstellen Sie passende Funktionen, die die
+            Benutzereingaben zurückgeben.
+          </p>
+        </div>
+      </div>
+
+      <section class="section-calculator">
+        <div class="container">
+          <form class="form-calculator" method="get">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="mb-3">
+                  <label for="input-strecke" class="form-label">Strecke</label>
+                  <input type="number" class="form-control" name="strecke" id="input-strecke" />
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="mb-3">
+                  <label for="input-benzinmenge" class="form-label">verbrauchte Benzinmenge</label>
+                  <input type="number" class="form-control" name="benzinmenge" id="input-benzinmenge" />
+                </div>
+              </div>
+            </div>
+            <!-- ▲ /.row ▲ -->
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="input-tankgroesse" class="form-label">Tankgröße</label>
+                  <input type="number" class="form-control" name="tankgroesse" id="input-tankgroesse" />
+                </div>
+              </div>
+            </div>
+            <!-- ▲ /.row ▲ -->
+            <div class="row">
+              <div class="col">
+                <!-- <input type="submit" value="Rechnen" class="btn btn-dark button-calculate" /> -->
+
+                <button type="submit" class="btn btn-dark button-calculate">Rechnen</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="alert alert-secondary my-3" id="output"></div>
+          <div class="alert alert-secondary my-3" id="output2"></div>
+        </div>
+      </section>
+    </main>
+    <script>
+      'use strict';
+
+      // DOM & Variabendeklaration ==
+      const formCalculatorEl = document.querySelector('.form-calculator');
+      const outputAEl = document.querySelector('#output');
+      const outputBEl = document.querySelector('#output2');
+
+      const streckeEl = document.querySelector('input[name="strecke"]');
+      const benzinMengeEl = document.querySelector('input[name="benzinmenge"]');
+      const tankGroesseEl = document.querySelector('input[name="tankgroesse"]');
+
+      // 1. Schreiben Sie ein Programm zur Kraftstoffverbrauchsberechnung für Pkws.
+      //const benzinMenge = prompt('Geben Sie die verbrauchte Benzinmenge an!');
+      //const strecke = prompt('Geben Sie die Strecke an!');
+
+      // Funktionen =========
+      const calcConsumption = (benzinMenge, strecke) => (benzinMenge / strecke) * 100;
+      const calcMaxDistance = (tankGroesse, strecke, benzinMenge) => {
+        const distance = (tankGroesse * strecke) / benzinMenge;
+        return distance;
+      };
+
+      // EventHandler =======
+      const onSubmit = (e) => {
+        e.preventDefault();
+
+        const strecke = Number(streckeEl.value);
+        const benzinMenge = Number(benzinMengeEl.value);
+        const tankGroesse = Number(tankGroesseEl.value);
+
+        const consumption = calcConsumption(benzinMenge, strecke);
+        const maxDistance = calcMaxDistance(tankGroesse, strecke, benzinMenge);
+
+        outputAEl.textContent = `Ihr Auto hat einen Verbrauch von ${consumption.toFixed(2)} Litern pro 100 Kilometer.`;
+        outputBEl.textContent = `Ihr Auto kann maximal ${maxDistance.toFixed(2)} Kilometer fahren.`;
+      };
+
+      formCalculatorEl.addEventListener('submit', onSubmit); // onSumbit = funktionsreferenz
+    </script>
+  </body>
+</html>

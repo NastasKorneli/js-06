@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 26: ISBNx — das Geheimnis der Prüfsumme [»Kopfnuss«]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 26: ISBNx — das Geheimnis der Prüfsumme <strong>[»Kopfnuss«]</strong></h1>
+
+        <p>
+          Wissen Sie, wie Bücher weltweit identifiziert werden? Dazu gibt es die ISBN, die International Standard Book
+          Number.
+        </p>
+        <p>
+          Nehmen Sie einfach mal ein Buch aus Ihrem Bücherregal und drehen Sie es um. Auf der Rückseite — da steht sie,
+          die ISBN.
+        </p>
+        <p>
+          Seit 2007 wird nur noch die ISBN-13 verwendet, d.h. eine ISBN, die aus 13 Ziffern besteht. Interessant ist
+          dabei vor allem, dass die letzte Ziffer eine sogenannte Prüfziffer ist. Sie lässt sich aus den anderen 12
+          Ziffern berechnen. Dadurch können Sie recht einfach feststellen, ob es sich bei einer 13-stelligen Zahl
+          tatsächlich um eine gültige ISBN handelt oder nicht.
+        </p>
+        <ol class="list">
+          <li>
+            <p>
+              Schreiben Sie eine Funktion, die zu einer 12-stelligen Zahl wie beispielsweise
+              <code>978151705411</code> die ISBN-Prüfziffer (hier: 3) berechnet.
+            </p>
+            <p>Wie genau funktioniert die Berechnung der Prüfziffer? Hier der Algorithmus:</p>
+            <ul class="list">
+              <li>
+                Bilden Sie die Summe der einzelnen Ziffern, wobei Sie jede zweite Ziffer mit 3 multiplizieren. Beispiel
+                anhand der 4-stelligen Zahl 4567:<br />
+                <code>4567 => 4 + 5 * 3 + 6 + 7 * 3 => 46</code>
+              </li>
+              <li>
+                Vom Ergebnis dieser Berechnung verwenden Sie nur die letzte Ziffer und subtrahieren sie von 10.
+                Beispiel:<br />
+                <code>4567 => 46 => 6 => 10 - 6 => 4</code>
+              </li>
+              <li>Falls das Ergebnis 10 ist, ersetzen Sie es durch 0.</li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              Achten Sie darauf, dass Ihr Programm mit einer beliebigen Anzahl von Stellen (nicht nur genau 12) umgehen
+              kann.
+            </p>
+          </li>
+          <li>
+            <p>Erlauben Sie auch die Angabe einer ISBN mit Bindestrichen, wie z.B. in <code>978-3-86680-192-9</code></p>
+          </li>
+          <li>
+            <p>
+              Kramen Sie ein paar Bücher aus Ihrem Regal, blasen Sie den Staub weg und drehen Sie sie auf die Rückseite.
+              Testen Sie nun Ihr Programm mit den ISBNs der Bücher.
+            </p>
+          </li>
+
+          <li>
+            OPTIONAL: Berechnung bei einer 10 stelligen ISBN:
+            <img
+              src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d26f3565c29f48292f653bcc0d6fb729528d18c1"
+              alt="" />
+            <br />
+            <a href="https://en.wikipedia.org/wiki/ISBN">https://en.wikipedia.org/wiki/ISBN</a>
+          </li>
+        </ol>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      //
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartonvolumen (cube) & Zylinder-Volumen (tube) berechnen mit Guards (Wächter)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Kartonvolumen (cube) & Zylinder-Volumen (tube) berechnen mit Guards (Wächter)</h1>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const BASE_COST_PER_UNIT = 0.7;
+      const COST_PER_CC = 0.001;
+
+      /**
+       * Funktion zum Berechnen vom Zylinder-Volumen
+       */
+      const calcTubeVolume = (height, diameter) => {
+        // Guard
+        if (isNaN(height) || isNaN(diameter) || diameter < 0 || height < 0) return NaN;
+
+        const radius = diameter / 2;
+        const volume = Math.PI * Math.pow(radius, 2) * height;
+        return volume;
+      };
+
+      /**
+       * Funktion zum Berechnen vom Karton-Volumen
+       */
+      const calcCartonVolume = (l, w, h) => {
+        // Guard
+        if (isNaN(l) || isNaN(w) || isNaN(h)) return NaN;
+        // cubeVolume = length × width × height
+        const volume = l * w * h;
+        return volume;
+      };
+
+      /**
+       * Funktion zum Berechnen vom Karton-Volumen (Kurzschreibweise)
+       */
+      const calcCartonVolumeShort = (l, w, h) => (!(isNaN(l) || isNaN(w) || isNaN(h)) ? l * w * h : NaN);
+
+      /**
+       * Funktion zum Berechnen der Versandkosten
+       */
+      const calcShippingCost = (volume) => {
+        const cost = volume * COST_PER_CC + BASE_COST_PER_UNIT;
+        return cost;
+      };
+
+      /**
+       * Funktion zum Berechnen der Versandkosten (Kurschreibweise)
+       */
+      const calcShippingCostShort = (volume) => volume * COST_PER_CC + BASE_COST_PER_UNIT;
+
+      const cartonVolume = calcCartonVolume(25, 30, 12);
+      const shippingCost = calcShippingCost(cartonVolume);
+
+      console.log(calcShippingCost(calcCartonVolume(10, 20, 15))); // => 3.7
+
+      console.log(shippingCost); // => 9.7
+    </script>
+  </body>
+</html>

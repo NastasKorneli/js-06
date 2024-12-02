@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Login</title>
+    <style>
+      iframe {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe src="https://lernplattform.gfn.de/login/index.php" frameborder="0"></iframe>
+    <script>
+      'use strict';
+
+      // Warte, bis das DOM vollständig geladen ist
+      document.addEventListener('DOMContentLoaded', function () {
+        // Navigiere zur Login-Seite
+        // window.location.href = 'https://lernplattform.gfn.de/login/index.php';
+      });
+
+      // Führe das Skript aus, sobald die Login-Seite geladen ist
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          // Eingabefelder
+          document.getElementById('username').value = 'uuu@gmx.de';
+          document.getElementById('password').value = 'PWPWPWPW';
+
+          //set('Content-Type', 'text/html; charset=utf-8');
+
+          document.getElementById('loginbtn').click();
+        }, 1000); // 1 sekunde warten bis skript starten
+      });
+    </script>
+  </body>
+</html>

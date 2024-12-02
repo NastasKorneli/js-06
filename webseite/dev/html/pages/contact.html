@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+  @@include('head.html')
+  <body>
+    <header class="header-main">
+      <div class="content-box">@@include('logo-main.html')</div>
+    </header>
+    <!-- nav.menu-main>ul.list>li*5>a[href="#"]{Link 0$} -->
+    @@include('menu-main.html')
+
+    <main>
+      <div class="container py-5">
+        <h1>Contact</h1>
+
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nemo quia sunt cum laudantium possimus
+          dolore, aut perferendis aspernatur veniam consequatur distinctio nostrum ipsa impedit eaque! Provident est
+          accusantium maxime.
+        </p>
+
+        <form action="">
+          <div class="row">
+            <div class="col">
+              <label for="input-first-name">Firstname</label>
+              <input type="text" class="form-control input-first-name" name="firstname" id="input-first-name" />
+            </div>
+            <div class="col">
+              <label for="input-last-name">Lastname</label>
+              <input type="text" class="form-control input-last-name" name="lastname" id="input-last-name" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <!-- footer.footer-main>.container>.col*3>h2+p{lorem10} -->
+    @@include('footer-main.html')
+  </body>
+</html>

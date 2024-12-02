@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eigene Attribute mit data-[ATTRIBUT-NAME] anlegen - DOMStringMap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Eigene Attribute mit data-[ATTRIBUT_NAME] - DOMStringMap</h1>
+        <p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMStringMap">DOMStringMap</a> - The DOMStringMap
+          interface is used for the HTMLOrForeignElement.dataset attribute, to represent data for custom attributes
+          added to elements.
+        </p>
+
+        <button
+          class="btn btn-dark button"
+          data-content="Text für headline"
+          data-ref="h1"
+          data-content-id="0"
+          data-my-attribut-with-many-words="yes">
+          Button mit eigenen Attributen
+        </button>
+
+        <p class="my-5">
+          Lorem ipsum dolor sit
+          <strong
+            class="keyword"
+            data-tooltip="The brain's outer layer of neural tissue in humans and other mammals [wikipedia]."
+            >cerebral cortex</strong
+          >
+          amet consectetur adipisicing elit. Harum voluptatem iure earum suscipit nihil! Recusandae pariatur corporis
+          odit optio excepturi labore dolore non, expedita temporibus adipisci vero, modi magnam veritatis?
+        </p>
+
+        <hr />
+
+        <button class="btn btn-dark button-redirect">
+          Weiterleitung in <span class="timer" data-timer="5">...</span>
+        </button>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      (() => {
+        // === DOM & VARS =======
+        const DOM = {};
+        DOM.button = document.querySelector('.button');
+        DOM.keyword = document.querySelector('.keyword');
+        DOM.buttonRedirect = document.querySelector('.button-redirect');
+        DOM.timer = DOM.buttonRedirect.querySelector('.timer');
+
+        // === INIT =============
+        const init = () => {
+          DOM.button.dataset.new = 'neues Data Attribut'; // <button ... data-new="neues Data Attribut"></button>
+
+          // IDL Attribute
+          console.log(DOM.button.classList); // => DOMTokenList(3) ['btn', 'btn-dark', 'button', value: 'btn btn-dark button']
+          console.log(DOM.button.dataset); // => DOMStringMap Object {content: 'Text für headline', ref: 'h1', contentId: '0', myAttributWithManyWords: 'yes'}
+          console.log(DOM.button.dataset.content); // => 'Text für Headline'
+
+          DOM.button.addEventListener('click', onClickButton);
+          DOM.keyword.addEventListener('mouseenter', onMouseEnterKeyword);
+
+          DOM.buttonRedirect.addEventListener('click', onClickRedirect);
+        };
+
+        // === EVENTHANDLER =====
+        const onClickRedirect = (e) => {
+          const btnEl = e.currentTarget;
+          btnEl.disabled = true;
+          // const timerEl = btnEl.querySelector('.timer');
+
+          const timer = Number(DOM.timer.dataset.timer) || 3;
+
+          console.log(btnEl.innerHTML);
+          if (btnEl.disabled) redirectTo('https://www.gfn.de', btnEl, timer, btnEl.innerHTML);
+        };
+
+        const onMouseEnterKeyword = (e) => {
+          const keywordEl = e.currentTarget;
+          console.log(keywordEl.dataset.tooltip); // => The brain's outer layer of neural tissue in humans and other mammals [wikipedia].
+        };
+
+        const onClickButton = (e) => {
+          const btn = e.currentTarget;
+          const targetEl = btn.dataset.ref;
+          const text = btn.dataset.content;
+
+          document.querySelector(targetEl).textContent = text;
+        };
+        // === XHR/FETCH ========
+
+        // === FUNCTIONS ========
+        const redirectTo = (url = '', el, counter = 5, content = '') => {
+          if (counter === 0) {
+            window.location.href = url;
+            if (el) el.innerHTML = content;
+            return el ? (el.disabled = false) : '';
+          }
+
+          el.innerHTML = `Weiterleitung in ${counter} Sekunden`;
+
+          setTimeout(() => redirectTo(url, el, --counter, content), 1000); // erneuter Aufruf von delay => Rekursion
+        };
+
+        init();
+      })();
+    </script>
+  </body>
+</html>

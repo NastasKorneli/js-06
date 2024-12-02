@@ -1,0 +1,32 @@
+.menu-main {
+  background-color: $color-2;
+  display: flex;
+  justify-content: center;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
+    li {
+      a {
+        color: white;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          background-color: $color-3;
+          color: #333;
+        }
+        &.current {
+          background-color: $color-3;
+          color: #333;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 14: Ich weiß eine Zahl, die du nicht weißt, Teil 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-3">
+          <h1>Übung 14: Ich weiß eine Zahl, die du nicht weißt, Teil 2</h1>
+          <p>
+            Erweitern Sie das Ratespiel aus Übung 56. Zeigen Sie jetzt bei jeder Schätzungsanfrage die aktuelle
+            Rundenzahl — d. h. die Anzahl der bisherigen Schätzungen — an.
+          </p>
+          <h1>Übung 56: Ich weiß eine Zahl, die du nicht weißt</h1>
+          <p>
+            Programmieren Sie ein Ratespiel mit folgenden Regeln: JS »denkt« sich eine Zahl zwischen 1 und 10 aus, die
+            der Benutzer erraten muss. Der Benutzer gibt seine Vermutung in einer Prompt-Box ein, und eine Alert-Box
+            teilt ihm mit, ob er
+          </p>
+          <ul>
+            <li>zu hoch geraten hat,</li>
+            <li>zu niedrig geraten hat,</li>
+            <li>oder ob die Zahl richtig ist.</li>
+          </ul>
+          <p>
+            Errät der Benutzer die Zahl, so hat er gewonnen und das Spiel endet. Im anderen Fall fordert das Programm
+            eine neue Schätzung an.
+          </p>
+        </div>
+        <button type="submit" class="btn btn-dark my-5">Neue Zahl generieren</button>
+        <div class="output alert alert-secondary"></div>
+        <div class="output2 alert alert-secondary"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+      const outputEl2 = document.querySelector('.output2');
+      const btnEl = document.querySelector('.btn');
+
+      btnEl.addEventListener('click', (e) => {
+        e.preventDefault(); // Nur bei einem Formular benötigt
+        startGuess(); // Bei klick aktiviert es die Funktion const startGuess dadrunter ...() - benötigt für den Funktionsaufruf
+      });
+
+      const startGuess = (zahl, runde) => {
+        let zufallszahl;
+        let rundenzahl;
+
+        if (isNaN(zahl)) {
+          rundenzahl = 1;
+          zufallszahl = Math.floor(Math.random() * 10) + 1;
+        } else {
+          zufallszahl = zahl;
+          rundenzahl = Number(runde + 1);
+        }
+
+        console.log(zufallszahl, rundenzahl);
+        const guess = Number(prompt('Hier Nummer raten!'));
+        if (guess > zufallszahl) {
+          // !== hier wird geprüft ob auf beiden Seiten Number ist
+          alert('zu hoch geraten');
+          return startGuess(zufallszahl, rundenzahl);
+        }
+        if (guess < zufallszahl) {
+          alert('zu niedrig geraten');
+          return startGuess(zufallszahl, rundenzahl);
+        }
+        if (guess === zufallszahl) {
+          alert(`Dit haste jut jemacht!!! \n \nDie Zufallszahl ist ${zufallszahl}`);
+          outputEl.innerHTML = `Du hast richtig geraten in <strong>Runde ${rundenzahl}</strong>`;
+          outputEl2.innerHTML = `Die Zufallszahl lautet <strong>${zufallszahl}</strong> `;
+        }
+      };
+    </script>
+  </body>
+</html>

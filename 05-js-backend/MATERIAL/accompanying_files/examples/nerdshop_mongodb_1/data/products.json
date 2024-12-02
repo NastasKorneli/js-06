@@ -1,0 +1,74 @@
+[
+  {
+    "id": "a3415e3668ca5922d6079468722e050c",
+    "code": "MUG0007",
+    "shortDescription": "coffee mug with LCD level indicator",
+    "tagline": "never again reach for the empty mug",
+    "quantity": 20,
+    "price": 49.9,
+    "stockwarn": false
+  },
+  {
+    "id": "e08328e9113588987950b18756d73c12",
+    "code": "MUG0013",
+    "shortDescription": "coffee mug with bluetooth-connected coffee grounds scanner for automatized fortune telling",
+    "tagline": "put the smart into coffee reading",
+    "quantity": 20,
+    "price": 99.9,
+    "stockwarn": false
+  },
+  {
+    "id": "f2345b2cc2c2cb00f4b2d1911c1ff70e",
+    "code": "OFF3145",
+    "shortDescription": "pen with pre-warmed ink (tested on the South Pole)",
+    "tagline": "the pen is mightier than the cold",
+    "quantity": 50,
+    "price": 29.9,
+    "stockwarn": false
+  },
+  {
+    "id": "d0ce5a61d0c63c4fe066bbb050eb7a76",
+    "code": "COM1001",
+    "shortDescription": "ambidextrous computer mouse",
+    "tagline": "end the dictate of left and right",
+    "quantity": 10,
+    "price": 19.9,
+    "stockwarn": false
+  },
+  {
+    "id": "4e9e079fb3fb512e8fb90ca01b0b77ba",
+    "code": "COM0404",
+    "shortDescription": "Easter egg themed webcam for your monitor",
+    "tagline": "put an Easter egg on hardware too",
+    "quantity": 20,
+    "price": 149.9,
+    "stockwarn": false
+  },
+  {
+    "id": "c1a9dbe9aae6e6d5cf13a41f34f6ff97",
+    "code": "COM0001",
+    "shortDescription": "Vulcan language vi cheatsheet",
+    "tagline": "learn vi and Vulcan at the same time",
+    "quantity": 3,
+    "price": 9.9,
+    "stockwarn": true
+  },
+  {
+    "id": "d8332bb9791b78376e0c9d643c53c30e",
+    "code": "COM1536",
+    "shortDescription": "Klingon language emacs cheatsheet",
+    "tagline": "learn emacs and Klingon at the same time",
+    "quantity": 50,
+    "price": 9.9,
+    "stockwarn": false
+  },
+  {
+    "id": "20cb0edbe2e06cbc004f1fe03c2d6c6c",
+    "code": "MOB0555",
+    "shortDescription": "smartphone case with built-in screen",
+    "tagline": "never miss a message",
+    "quantity": 20,
+    "price": 39.9,
+    "stockwarn": false
+  }
+]

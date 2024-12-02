@@ -1,0 +1,5 @@
+[
+  { "firstName": "Max", "lastName": "Mustermann", "age": 35, "hobbies": ["Tennis", "Fussball"] },
+  { "firstName": "Jane", "lastName": "Doe", "age": 21, "hobbies": ["Netflix schauen", "Zocken"] },
+  { "firstName": "John", "lastName": "Wick", "age": 42, "hobbies": ["Ballern", "Gassi gehen"] }
+]

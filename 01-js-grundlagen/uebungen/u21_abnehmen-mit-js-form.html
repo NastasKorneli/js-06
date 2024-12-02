@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 21: Abnehmen mit JS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 21: Abnehmen mit JS</h1>
+
+          <p>Heute schreiben Sie ein kleines Motivations-Tool für Menschen, die ein bisschen abnehmen möchten.</p>
+          <ol>
+            <li>
+              Fragen Sie den Anwender zuerst nach seinem gestrigen und dann nach seinem heutigen Gewicht und speichern
+              Sie die Antworten jeweils in einer Variable.
+            </li>
+            <li>
+              Für den Fall, dass das heutige Gewicht geringer ist als das gestrige, berechnen Sie die Verringerung in
+              Prozent und geben eine begeisterte Gratulation unter Angabe der Gewichtsreduktion in ganzen Prozent aus.
+              Vielleicht fällt Ihnen ja auch eine kleine Belohnung für den Anwender ein…
+            </li>
+            <li>
+              Für den Fall, dass das heutige Gewicht höher ist als das gestrige, rechnen Sie auch diese Veränderung in
+              Prozent um und geben unter Angabe der Gewichtszulage in Prozent eine mahnende Nachricht aus. Vielleicht
+              mit der Aufforderung zu einer Aktivität?
+            </li>
+            <li>
+              Für den Fall, dass das Gewicht identisch ist, feuern Sie den Anwender an, sich ein bisschen mehr zu
+              bemühen und dranzubleiben.
+            </li>
+          </ol>
+        </div>
+
+        <form class="form-weight-calculator" method="get">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="mb-3">
+                <label for="input-weight-before" class="form-label">Gewicht von Gestern?</label>
+                <input type="number" class="form-control" id="input-weight-before" name="weightBefore" />
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-md-6">
+              <div class="mb-3">
+                <label for="input-weight-today" class="form-label">Gewicht von Heute?</label>
+                <input type="number" class="form-control" id="input-weight-today" name="weightToday" />
+              </div>
+            </div>
+            <!-- ▲ /.col ▲ -->
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <button type="submit" class="btn btn-dark button-calculate">Rechnen</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="alert alert-secondary output-weightchange"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const formEl = document.querySelector('.form-weight-calculator');
+      const inputWeightBeforeEl = document.querySelector('input[name="weightBefore"]');
+      const inputWeightAfterEl = document.querySelector('input[name="weightToday"]');
+      const outputWightEl = document.querySelector('.output-weightchange');
+
+      formEl.addEventListener('submit', function (e) {
+        e.preventDefault(); //Standardverhalten unterbindet ( Das Versendet vom Formular)
+
+        const weightBefore = parseFloat(inputWeightBeforeEl.value);
+        const weightAfter = parseFloat(inputWeightAfterEl.value);
+
+        const percentageChange = Math.abs((weightBefore - weightAfter) / weightBefore) * 100;
+
+        if (weightAfter < weightBefore) {
+          outputWightEl.textContent = `Herzlichen Glückwunsch, Ihr Gewicht ist um ${percentageChange.toFixed(
+            2
+          )}% gesunken! So weiter! Sie können ein Stück Kuchen essen!`;
+        }
+
+        if (weightAfter > weightBefore) {
+          outputWightEl.textContent = `Ihr Gewicht ist um ${percentageChange.toFixed(
+            2
+          )}% gestiegen. Es ist Zeit, eine Diät zu machen!`;
+        }
+
+        if (weightAfter === weightBefore) {
+          outputWightEl.textContent = `Ihr Gewicht hat sich nicht verändert, vielleicht sollten Sie etwas ändern.`;
+        }
+      });
+
+      // parseInt('3 px') // => 3
+      // parseFloat('3.12 %') // => 3.12
+      // parseFloat('Wert:  3.12 %') // => NaN
+    </script>
+  </body>
+</html>

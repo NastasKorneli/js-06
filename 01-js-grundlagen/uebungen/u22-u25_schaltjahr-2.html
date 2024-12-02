@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 25: Die Sache mit dem Schaltjahr — Teil 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h2>Übung 25: Die Sache mit dem Schaltjahr — Teil 2</h2>
+          <p>
+            Verschaffen Sie Ihrem Schaltjahr-Tool aus Lektion 10 ein Facelifting. Mithilfe der logischen Operatoren
+            können Sie einige else einsparen und den Code einfacher, kürzer und übersichtlicher gestalten.
+          </p>
+        </div>
+        <div class="alert alert-primary">
+          <h2>Übung 22: Die Sache mit dem Schaltjahr</h2>
+          <p>
+            Vielleicht gehören Sie zu den Menschen, die »die Sache mit dem Schaltjahr« spannend finden. Und falls Sie es
+            nicht spannend finden, schreiben Sie einfach trotzdem ein Programm, das berechnet, ob es sich bei einem Jahr
+            um ein Schaltjahr handelt.
+          </p>
+          <p>Fragen Sie den Anwender nach dem gewünschten Jahr und speichern Sie die Eingabe in einer Variable.</p>
+          <p>
+            Falls das betreffende Jahr ein Schaltjahr ist, soll die Konsole z.B. den Satz »0000 ist ein Schaltjahr!«
+            ausgeben; ansonsten »0000 ist KEIN Schaltjahr« — mit dem eingegeben Jahr statt 0000.
+          </p>
+          <h4>Ein Jahr ist ein Schaltjahr, wenn das betreffende Jahr</h4>
+          <ul>
+            <li>ganzzahlig durch 400 teilbar ist.</li>
+            <li>nicht ganzzahlig durch 100, aber ganzzahlig durch 4 teilbar ist.</li>
+          </ul>
+
+          <div class="alert alert-warning">
+            <p>
+              Die Berechnung ist übrigens nicht zu 100 Prozent genau, aber für die nächsten 2000 Jahre passt es noch.
+            </p>
+
+            <input type="number" name="input-year" class="form-control form-input-year" id="input-year" />
+          </div>
+          <div class="output alert alert-warning my-3">
+            <p class="outputMessage"></p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const inputYearEl = document.querySelector('input[name="input-year"]');
+      const outputMessagEl = document.querySelector('.outputMessage');
+
+      inputYearEl.addEventListener('input', (e) => {
+        const year = Number(inputYearEl.value);
+
+        if ((!isNaN(year) && year % 400 === 0) || (year % 100 !== 0 && year % 4 === 0)) {
+          outputMessagEl.textContent = `${year} ist ein Schaltjahr!`;
+        } else {
+          outputMessagEl.textContent = `${year} ist KEIN Schaltjahr`;
+        }
+      });
+    </script>
+  </body>
+</html>

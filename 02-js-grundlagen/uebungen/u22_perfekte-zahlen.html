@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 22: Die perfekte Zahl</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/helpers.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 22: Die perfekte Zahl</h1>
+        <p>
+          Eine natürliche Zahl wird »vollkommene Zahl« (auch »perfekte« oder »ideale Zahl«) genannt, wenn sie genauso
+          groß ist wie die Summe ihrer positiven echten Teiler (d.h. aller Teiler außer sich selbst).
+        </p>
+        <p>
+          Die kleinsten bekannten Beispiele für vollkommene Zahlen sind 6 und 28: Die echten Teiler von 6 sind 1, 2 und
+          3. Ihre Summe ist 1 + 2 + 3 = 6:
+        </p>
+        <p>Für 28 sind die echten Teiler 1, 2, 4, 7 und 14, sodass 1 + 2 + 4 + 7 + 14 = 28 ist:</p>
+        <pre> 
+<code>    
+1 * 28 = 28
+2 * 14 = 28
+4 * 7 = 28
+
+1 + 2 + 4 + 7 + 14 = 28
+</code>
+</pre>
+        <p>Schreiben Sie ein Programm, das alle vollkommenen Zahlen bis 1.000 in der Konsole ausgibt.</p>
+        <h5>Die perfekten Zahlen:</h5>
+        <p>
+          6<br />
+          28<br />
+          496<br />
+          8.128<br />
+          33.550.336<br />
+          8.589.869.056<br />
+          137.438.691.328<br />
+          2.305.843.008.139.952.128<br />
+          2.658.455.991.569.831.744.654.692.615.953.842.176<br />
+          191.561.942.608.236.107.294.793.378.084.303.638.130.997.321.548.169.216<br />
+          13.164.036.458.569.648.337.239.753.460.458.722.910.223.472.318.386.943.117.783.728.128<br />
+          14.474.011.154.664.524.427.946.373.126.085.988.481.573.677.491.474.835.889.066.354.349.131.199.152.128
+        </p>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      // deklarativ
+      const isPerfectNumber = (n) => {
+        const dividers = _.range(n).filter((cv) => {
+          return n % cv === 0;
+        }); //=> [1,2,3]
+
+        const sum = dividers.reduce((a, b) => a + b, 0);
+
+        return sum === n;
+      };
+
+      //  isPerfectNumber(6);
+      const getPerfectNumbersUpTo = (toNumber) => {
+        const numbers = _.range(1, toNumber + 1);
+
+        const results = numbers.filter((n) => {
+          return isPerfectNumber(n);
+        });
+        return results;
+      };
+
+      // imperativ
+      const isPerfectNumberWithFor = (n) => {
+        let sum = 0;
+        for (let i = 1; i < n; i++) {
+          // Wenn echter Teiler (divider)
+          if (n % i === 0) {
+            sum += i; // 0  + 1  + 2 + 3
+          }
+        }
+        return sum === n;
+      };
+
+      const getPerfectNumbersUpToWithFor = (nrUpTo) => {
+        let perfectNumbers = [];
+        for (let i = 1; i < nrUpTo; i++) {
+          if (isPerfectNumberWithFor(i)) {
+            perfectNumbers.push(i);
+          }
+        }
+        return perfectNumbers;
+      };
+
+      console.log('Die Zauberzahlen bis 1000: ', getPerfectNumbersUpToWithFor(1000)); // [6, 28, 496]
+      // console.log('Die Zauberzahlen bis 10000: ', getPerfectNumbersUpToWithFor(100000)); // [6, 28, 496, 8128]
+
+      console.log(isPerfectNumberWithFor(6)); // true
+      console.log(isPerfectNumberWithFor(9)); // false
+
+      // ============================================
+    </script>
+  </body>
+</html>

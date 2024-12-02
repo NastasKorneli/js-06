@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unärer Operator - not (!)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Unärer Operator - not (!)</h1>
+        <p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT"
+            >The logical NOT</a
+          >
+          (!) (logical complement, negation) operator takes truth to falsity and vice versa. It is typically used with
+          boolean (logical) values. When used with non-Boolean values, it returns false if its single operand can be
+          converted to true; otherwise, returns true.
+        </p>
+
+        <!-- button.btn.btn-dark.button-click{Schalter} -->
+        <button class="btn btn-dark button-click">Schalter</button>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const input = prompt('Please enter a number');
+
+      if (!isNaN(input)) {
+        console.log(`Correct - ${input} is a number`);
+      } else {
+        console.log(`${input} is Not a Number.`);
+      }
+
+      // ===== Beispiel Schalter =========
+      let schalter = false;
+
+      const btnClickEl = document.querySelector('.button-click');
+
+      btnClickEl.addEventListener('click', (e) => {
+        schalter = !schalter;
+        if (schalter) {
+          console.log('Schalter an');
+        } else {
+          console.log('Schalter aus');
+        }
+      });
+
+      // ======
+
+      console.log(!false); // => true
+      console.log(!true); // => false
+      console.log(!(3 < 5)); // => false
+    </script>
+  </body>
+</html>

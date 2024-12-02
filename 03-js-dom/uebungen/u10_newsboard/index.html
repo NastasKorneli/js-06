@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Newsboard</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/newsboard.css" />
+
+    <script src="assets/js/messages.js"></script>
+    <script src="assets/js/newsboard.js" defer></script>
+  </head>
+
+  <body>
+    <div class="m-newsboard newsboard_wrapper">
+      <div class="newsboard">
+        <span class="message_number">X</span>
+
+        <a href="#" class="close_button" title="Delete message">&times;</a>
+
+        <div class="newsboard_content"></div>
+
+        <div class="paging_bar">
+          <span class="float_left">
+            <button title="first" class="btn btn-default button-first"><i class="fa-solid fa-angles-left"></i></button>
+            <button title="prev" class="btn btn-default button-prev"><i class="fa-solid fa-chevron-left"></i></button>
+          </span>
+
+          <span class="float_right">
+            <button title="next" class="btn btn-default button-next"><i class="fa-solid fa-chevron-right"></i></button>
+            <button title="last" class="btn btn-default button-last"><i class="fa-solid fa-angles-right"></i></button>
+          </span>
+
+          <span class="progressbar">
+            <progress max="3" value="1" id="messages_progress"></progress>
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

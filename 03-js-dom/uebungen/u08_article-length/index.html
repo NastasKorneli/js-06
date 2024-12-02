@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Article Detail Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1>Content auswerten</h1>
+
+      <section id="content">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore<span style="display: none">weiterer Content</span>
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        </p>
+      </section>
+    </div>
+    <script>
+      'use strict';
+      const $ = (qs) => document.querySelector(qs);
+      const $$ = (qs) => Array.from(document.querySelectorAll(qs));
+
+      const changeHeadline = () => {
+        // Länge des sichtbaren Inhalts im Abschnitt mit der ID 'content' zählen
+        const content = $('#content').innerText; // Sichtbaren Textinhalt abrufen
+        const contentLength = content.length; // Länge zählen
+
+        // Überschrift-Element abrufen
+        const titleEl = $('h1');
+
+        // CSS-Klasse basierend auf der Länge des Inhalts zuweisen
+        if (contentLength <= 3000) {
+          titleEl.classList.add('coffee_break_article'); // Für Artikel bis 3000 Zeichen
+        } else if (contentLength <= 9000) {
+          titleEl.classList.add('normal_length_article'); // Für Artikel bis 9000 Zeichen
+        } else {
+          titleEl.classList.add('lone_weekend_article'); // Für Artikel ab 9000 Zeichen
+        }
+      };
+
+      changeHeadline();
+
+      /*
+Übung 8: Auf die Länge kommt es an???
+Einer Ihrer Kunden wendet sich mit folgendem Wunsch an Sie:
+Leider sind viele unserer Besucher eher kurz angebunden. Im Forum haben sich nun einige gewünscht, dass die Länge des Artikels schon aus der Überschrift ( h1 ) klar hervorgeht. Unser Designer hat sich deswegen drei Stile für Überschriften überlegt und diese auch als entsprechende CSS-Klassen hinterlegt.
+
+Messen Sie die Länge eines Artikels in Zeichen und geben Sie den Überschriften automa- tisch die richtige Klasse.
+
+➤ coffee_break_article bis 3000 Zeichen
+➤ normal_length_article bis 9000 Zeichen
+➤ lone_weekend_article ab 9000 Zeichen
+
+Es geht um die Detailseiten der Artikel. Gehen Sie davon aus, dass jede dieser Seiten nur genau eine h1 -Überschrift hat und der komplette Artikel (inklusive Bildern und HTML- Struktur) sich in einem Element mit der id content befindet.
+Für das Zählen der Zeichen dürfen Sie den kompletten HTML-Code von content auswerten. Es geht nur darum, eine grobe Abschätzung zu bekommen.
+Hier ist eine HTML-Beispieldatei, die Sie zum Ausprobieren verwenden können.
+Durch Duplizieren oder Löschen von Lorem-ipsum-Absätzen können Sie unterschiedliche Textlängen einfach testen.
+
+
+ */
+    </script>
+  </body>
+</html>

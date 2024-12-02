@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 42: Die Kurzstreckenfahrt, oder: Wenn das nötige Kleingeld fehlt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-3">
+          <h1>Übung 42: Die Kurzstreckenfahrt, oder: Wenn das nötige Kleingeld fehlt</h1>
+          <p>
+            Nach dem Backen wollen Sie ein bisschen Bus fahren. Sie selbst befinden sich in Nürnberg in der Nähe der
+            Haltestelle Nordostbahnhof. Ihre Freunde, die Sie und Ihre Kekse schon freudig erwarten, wohnen bei der
+            Haltestelle Martha-Maria-Krkhs. Da Sie aber nur ein Kurzstrecken-Ticket lösen wollen, müssen Sie den Rest
+            der Strecke laufen. Deswegen benötigen Sie die Haltestellen-Liste (Abb. 37) nur bis zur letzten Haltestelle
+            mit weißem Punkt (Hubertusstr.).
+          </p>
+          <p><strong>Hinweis: </strong>Für diese Übung bietet es sich an, mit slice und indexOf zu arbeiten.</p>
+          <img
+            src="https://de.webmasters-europe.org/system/course_management/file/images/files/000/014/038/422-537/cc8c459b5e870429279c64c8c804a4b1.png?1617534595"
+            alt=""
+            class="img-thumbnail my-3"
+            width="320" />
+          <ol class="list">
+            <li>
+              <p>Finden Sie die Position der gewünschten Zielhaltestelle Hubertusstr. heraus.</p>
+            </li>
+            <li>
+              <p>Entfernen Sie alle Haltestellen nach Hubertusstr. aus dem Array.</p>
+            </li>
+            <li>
+              <p>
+                Schreiben Sie eine Funktion, die Ihnen nach Übergabe einer beliebigen Zielhaltestelle ein Array mit
+                allen Haltestellen ab Nordostbahnhof bis zur Zielhaltestelle zurückgibt.
+              </p>
+            </li>
+            <li>
+              <p>Erweitern Sie die Funktion, sodass Sie auch die Starthaltestelle übergeben können.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="output1 alert alert-secondary"></div>
+        <div class="output2 alert alert-secondary"></div>
+        <div class="output3 alert alert-secondary"></div>
+        <div class="output4 alert alert-secondary"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const output1 = document.querySelector('.output1');
+      const output2 = document.querySelector('.output2');
+      const output3 = document.querySelector('.output3');
+      const output4 = document.querySelector('.output4');
+
+      const LINE_46 = [
+        'Nordostbahnhof',
+        'Theresienkrankenhaus',
+        'Teutoburger Str.',
+        'Leipziger Str.',
+        'Dresdener Str.',
+        'Spitalhof',
+        'Hubertusstr.',
+        'Tattersall',
+        'Martha-Maria-Krkhs.',
+      ];
+
+      // 1. Finde die Position von Hubertusstr.
+      const targetStop = 'Hubertusstr.';
+      const targetIndex = LINE_46.indexOf(targetStop);
+
+      console.log(`Index von ${targetStop}: ${targetIndex}`);
+
+      // 2. Entferne alle Haltestellen nach Hubertusstr.
+      const stopsToEnd = LINE_46.slice(targetIndex + 1);
+
+      console.log('Haltestellen nach Hubertusstr.:', stopsToEnd);
+
+      // 3. Funktion, die Haltestellen bis zur Zielhaltestelle zurückgibt
+      const getStopsUntil = (target) => {
+        const index = LINE_46.indexOf(target);
+        if (index === -1) {
+          return `Die Haltestelle ${target} wurde nicht gefunden.`;
+        }
+        return LINE_46.slice(0, index + 1);
+      };
+
+      // Beispielaufruf der Funktion
+      console.log('Haltestellen bis Martha-Maria-Krkhs.:', getStopsUntil('Martha-Maria-Krkhs.'));
+
+      // 4. Erweiterte Funktion mit Start-Haltestelle
+      const getStopsBetween = (start, target) => {
+        const startIndex = LINE_46.indexOf(start);
+        const targetIndex = LINE_46.indexOf(target);
+
+        // Guard
+        if (startIndex === -1 || targetIndex === -1) {
+          return `Eine der Haltestellen (${start} oder ${target}) wurde nicht gefunden.`;
+        }
+
+        if (startIndex > targetIndex) {
+          return `Die Start-Haltestelle (${start}) muss vor der Zielhaltestelle (${target}) liegen.`;
+        }
+
+        return LINE_46.slice(startIndex, targetIndex + 1);
+      };
+
+      // Beispielaufruf der erweiterten Funktion
+      console.log(
+        'Haltestellen von Nordostbahnhof bis Hubertusstr.:',
+        getStopsBetween('Nordostbahnhof', 'Hubertusstr.')
+      );
+
+      output1.textContent = `Index von ${targetStop}: ${targetIndex}`;
+      output2.textContent = `Haltestellen bis Hubertusstr.:, ${stopsToEnd}`;
+      output3.textContent = `Haltestellen bis Martha-Maria-Krkhs.: ${getStopsUntil('Martha-Maria-Krkhs.')}`;
+      output4.textContent = `Haltestellen: ${getStopsBetween('Nordostbahnhof', 'Hubertusstr.')}`;
+    </script>
+  </body>
+</html>

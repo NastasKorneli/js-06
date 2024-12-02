@@ -1,0 +1,21 @@
+h1 {
+  padding: 0.5em;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  color: #444;
+  font-weight: normal;
+}
+
+h2,
+h3 {
+  padding: 0.5rem;
+}
+.coffee_break_article {
+  /* https://www.w3schools.com/cssref/css_colors.asp */
+  background-color: BurlyWood;
+}
+.normal_length_article {
+  background-color: #cafe69;
+}
+.lone_weekend_article {
+  background-color: DarkTurquoise;
+}

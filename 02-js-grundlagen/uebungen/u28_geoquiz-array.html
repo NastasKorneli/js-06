@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 28: Geoquiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 28: Geoquiz</h1>
+          <p>
+            Eine Schule gibt die Entwicklung eines Geoquiz in Auftrag, bei dem Schüler die Hauptstädte verschiedener
+            Staaten nennen müssen. Ihre Aufgabe besteht in der Entwicklung der Lösungsfunktion
+            <code>getCapitalOf</code>, die eine Hauptstadt zum übergebenen Staat (<code>country</code>) zurückliefert.
+          </p>
+          <p>Im folgenden Code sehen Sie die gewünschte Struktur der Daten:</p>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+      const countriesWithCapital = [
+        ['UK', 'London'],
+        ['France', 'Paris'],
+        ['Germany', 'Berlin'],
+        ['Switzerland', 'Bern'],
+        ['Austria', 'Vienna'],
+        ['Russia', 'Moscow'],
+      ];
+
+      const capitalOf = (country) => {
+        const countryName = countriesWithCapital.find((pair) => pair[0] === country);
+        // if (countryName) {
+        //   return countryName[1];
+        // } else {
+        //   return 'Hauptstadt nicht gefunden';
+        // }
+        return countryName ? countryName[1] : 'Hauptstadt nicht gefunden';
+      };
+
+      // mit for-Schleife
+      const capitalOfWithFor = (str) => {
+        for (let i = 0; i < countriesWithCapital.length; i++) {
+          if (countriesWithCapital[i][0] === str) {
+            return countriesWithCapital[i][1];
+          }
+        }
+      };
+
+      console.log('capitalOf: ', capitalOf('UK'));
+
+      console.log('capitalOf: ', capitalOf('Russia'));
+
+      console.log('capitalOfWithFor: ', capitalOfWithFor('France'));
+    </script>
+  </body>
+</html>

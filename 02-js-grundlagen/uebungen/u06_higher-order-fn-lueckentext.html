@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 06: Lückentext zu Higher-Order-Funktionen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 06: Lückentext zu Higher-Order-Funktionen</h1>
+        <p>
+          Das ist garantiert der letzte Lückentext für diese Lektion. Ersetzen Sie wieder die Kommentare
+          <code>/* ??? */</code> durch den richtigen Code, um das angegebene Ergebnis zu erzielen.
+        </p>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      let result;
+      let results;
+      let inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      let text = 'Hi this is a short text';
+      let names = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+
+      //odd numbers
+      results = inputs.filter((n) => n % 2);
+      console.log(results); // => [ 1, 3, 5, 7, 9 ]
+
+      //sum
+      result = inputs.reduce((a, b) => Number(a) + Number(b), 0);
+      console.log(result); // => 55
+
+      //product // Multiplizieren
+      result = inputs.reduce((a, b) => Number(a) * Number(b), 1);
+      console.log(result); // => 3628800
+
+      //longest word length
+      result = text.split(' ').reduce((longest, currentWord) => {
+        return currentWord.length > longest.length ? currentWord : longest;
+      }, '');
+
+      console.log(result.length); // => 5
+
+      //longest word length
+      let words = text.split(' '); //=> ['Hi', 'this', 'is', 'a', 'short', 'text'];
+      result = words.reduce((longestLength, currentWord) => {
+        return Math.max(longestLength, currentWord.length);
+      }, 0);
+      console.log(result); // => 5
+
+      //longest word length
+
+      // ['Hi', 'this', 'is', 'a' ,'short', 'text']
+      result = text.split(' ').sort((a, b) => b.length - a.length)[0].length; //=> ['short', 'this', 'text', 'Hi', 'is', 'a'] -> [0] -> 'short'.length -> 5
+
+      result = text
+        .split(' ')
+        .sort((a, b) => a.length - b.length)
+        .pop().length; //=> ['a', 'Hi', 'is', 'this', 'text', 'short'] -> pop() -> 'short'.length -> 5
+
+      console.log(result); // => 5
+
+      result = Math.max(...text.split(' ').map((word) => word.length));
+
+      // const numbers = [1, 20, 2, 3]
+      // console.log(Math.max(...numbers)); // => 20
+
+      console.log(result); // => 5
+
+      //longest word
+
+      // ['Hi', 'this', 'is', 'a' ,'short', 'text']
+      result = text.split(' ').reduce((longest, currentWord) => {
+        return currentWord.length > longest.length ? currentWord : longest;
+      }, '');
+
+      console.log(result); // =>'short'
+
+      //avg word length =========================
+
+      result =
+        text
+          .split(' ') //=> ['Hi', 'this', 'is', 'a', 'short', 'text'];
+          .reduce((sum, str) => sum + str.length, 0) / text.split(' ').length;
+
+      console.log(result); // => 3
+
+      result =
+        text
+          .split(' ') //=> ['Hi', 'this', 'is', 'a', 'short', 'text'];
+          .map((n) => n.length) // => Array(6) [ 2, 4, 2, 1, 5, 4 ]
+          .reduce((a, b) => a + b, 0) / text.split(' ').length;
+
+      console.log(result); // => 3
+
+      result = text.replaceAll(' ', '').length / text.split(' ').length;
+
+      console.log(result); // => 3
+
+      // sort by 3rd letter
+      // ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+      names = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+
+      result = [...names].sort((a, b) => (a.charAt(2) > b.charAt(2) ? 1 : -1));
+      console.log(result); // => [ 'Ladislaus', 'Friedlinde', 'Heribert', 'Tusnelda', 'Oswine' ]
+
+      result = [...names].sort((a, b) => a.charAt(2).localeCompare(b.charAt(2)));
+      console.log(result);
+
+      // Are there names with more than 8 letters?
+      // ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+      result = names.some((name) => name.length > 8);
+      console.log(result); // => true
+
+      // Has every name at least 8 letters?
+      result = names.every((name) => name.length >= 8);
+      console.log(result); // => false
+
+      // What is the lowest value from the inputs?
+      // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      result = Math.min(...inputs); /*.*/
+
+      result = inputs.sort((a, b) => a - b)[0];
+      console.log(result);
+    </script>
+  </body>
+</html>

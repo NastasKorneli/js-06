@@ -1,0 +1,223 @@
+/* Color Theme Swatches in Hex */
+$color-1: #86a69d;
+$color-2: #f2b263;
+$color-3: #f2e8df;
+$color-4: #f2c6c2;
+$color-5: #f28585;
+
+$color-dark: #4a4a4a;
+$color-green: $color-1;
+$color-yellow: $color-2;
+$color-red: $color-5;
+
+h1 {
+  color: rgb(204, 101, 83);
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #777;
+}
+
+body {
+  background-color: $color-3;
+}
+
+ul li a {
+  color: #333;
+}
+
+.menu-main {
+  a {
+    display: inline-block;
+    padding: 1rem;
+    color: #333;
+  }
+  .button-login {
+    margin-left: 0.5rem;
+  }
+}
+
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
+button {
+  border: 6px solid darken(rgba($color-dark, 0.3), 10%);
+  font-size: 0.85rem;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+
+  background-color: $color-dark;
+  &:hover,
+  &:focus {
+    background-color: darken($color-dark, 10%);
+  }
+}
+
+.button-green {
+  border: 6px solid darken(rgba($color-1, 0.3), 10%);
+  background-color: $color-1;
+  &:hover,
+  &:focus {
+    background-color: darken($color-1, 10%);
+  }
+}
+.button-yellow {
+  border: 6px solid darken(rgba($color-2, 0.3), 10%);
+  background-color: $color-2;
+  &:hover,
+  &:focus {
+    background-color: darken($color-2, 10%);
+  }
+}
+
+.button-red {
+  border: 6px solid darken(rgba($color-5, 0.3), 10%);
+  background-color: $color-5;
+  &:hover,
+  &:focus {
+    background-color: darken($color-5, 10%);
+  }
+}
+
+.button-card-close {
+  color: $color-dark;
+  font-size: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border: 6px solid darken(rgba($color-2, 0.3), 10%);
+  background-color: $color-2;
+  &:hover,
+  &:focus {
+    background-color: darken($color-2, 10%);
+  }
+}
+
+.menu-products {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.m-product-manager {
+  .products {
+    margin: 0 0 2rem;
+  }
+  .product {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    > div {
+      background-color: #efefef;
+      padding: 1rem;
+      flex-grow: 1;
+    }
+    .product-code {
+      flex-shrink: 0;
+      flex-grow: 0;
+      min-width: 180px;
+    }
+    .product-tagline {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+    .product-description {
+      flex-grow: 2;
+    }
+    .product-actions {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    .product-admin-actions {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.card-product {
+  overflow: hidden;
+
+  margin: 1rem 0;
+  .card-product-code {
+    height: 100px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $color-dark;
+    background-color: $color-2;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: darken($color-3, 5);
+  }
+}
+
+.toast {
+  .toast-icon {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 16px;
+    margin: 0 0.5rem 0 0;
+  }
+  &[data-type='success'] {
+    .toast-icon {
+      &::after {
+        content: '\f00c';
+        color: $color-green;
+      }
+    }
+  }
+  &[data-type='warning'] {
+    .toast-icon {
+      &::after {
+        content: '\f071';
+        color: $color-yellow;
+      }
+    }
+  }
+  &[data-type='error'] {
+    .toast-icon {
+      &::after {
+        content: '\f057';
+        color: $color-red;
+      }
+    }
+  }
+}
+
+.menu-main {
+  .navbar-brand {
+    width: inherit;
+  }
+
+  .dropdown-menu {
+    margin: 1rem 0 0 0;
+    &[data-bs-popper] {
+      left: inherit;
+      right: 0;
+    }
+  }
+}
+.dropdown-menu-login {
+  min-width: 320px;
+}
+
+.form-login {
+  padding: 1rem 1.5rem;
+}

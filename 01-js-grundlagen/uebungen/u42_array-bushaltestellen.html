@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 42: Die Kurzstreckenfahrt, oder: Wenn das nötige Kleingeld fehlt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-3">
+          <h1>Übung 42: Die Kurzstreckenfahrt, oder: Wenn das nötige Kleingeld fehlt</h1>
+          <p>
+            Nach dem Backen wollen Sie ein bisschen Bus fahren. Sie selbst befinden sich in Nürnberg in der Nähe der
+            Haltestelle Nordostbahnhof. Ihre Freunde, die Sie und Ihre Kekse schon freudig erwarten, wohnen bei der
+            Haltestelle Martha-Maria-Krkhs. Da Sie aber nur ein Kurzstrecken-Ticket lösen wollen, müssen Sie den Rest
+            der Strecke laufen. Deswegen benötigen Sie die Haltestellen-Liste (Abb. 37) nur bis zur letzten Haltestelle
+            mit weißem Punkt (Hubertusstr.).
+          </p>
+          <p><strong>Hinweis: </strong>Für diese Übung bietet es sich an, mit slice und indexOf zu arbeiten.</p>
+          <img
+            src="https://de.webmasters-europe.org/system/course_management/file/images/files/000/014/038/422-537/cc8c459b5e870429279c64c8c804a4b1.png?1617534595"
+            alt="Bus route"
+            class="img-thumbnail my-3"
+            width="320" />
+          <ol class="list">
+            <li>
+              <p>Finden Sie die Position der gewünschten Zielhaltestelle Hubertusstr. heraus.</p>
+            </li>
+            <li>
+              <p>Entfernen Sie alle Haltestellen nach Hubertusstr. aus dem Array.</p>
+            </li>
+            <li>
+              <p>
+                Schreiben Sie eine Funktion, die Ihnen nach Übergabe einer beliebigen Zielhaltestelle ein Array mit
+                allen Haltestellen ab Nordostbahnhof bis zur Zielhaltestelle zurückgibt.
+              </p>
+            </li>
+            <li>
+              <p>Erweitern Sie die Funktion, sodass Sie auch die Starthaltestelle übergeben können.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="output alert alert-secondary"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      // Array of bus stops on Line 46
+      const LINE_46 = [
+        'Nordostbahnhof',
+        'Theresienkrankenhaus',
+        'Teutoburger Str.',
+        'Leipziger Str.',
+        'Dresdener Str.',
+        'Spitalhof',
+        'Hubertusstr.',
+        'Tattersall',
+        'Martha-Maria-Krkhs.',
+      ];
+
+      // 1.
+      const indexOfHubertus = LINE_46.indexOf('Hubertusstr.'); // => 6
+
+      // 2.
+      const deleteAfterHubertus = LINE_46.slice(indexOfHubertus + 1); // remove all stops after "Hubertusstr."
+
+      // 3.
+      const getStopsUntil = (targetStop) => {
+        const targetIndex = LINE_46.indexOf(targetStop);
+        // Guard
+        if (targetIndex === -1) return [];
+
+        return LINE_46.slice(0, targetIndex + 1);
+      };
+
+      // 4.
+      const getStopsBetween = (startStop, targetStop) => {
+        const startIndex = LINE_46.indexOf(startStop);
+        const targetIndex = LINE_46.indexOf(targetStop);
+        if (startIndex === -1 || targetIndex === -1) {
+          return 'Eine oder beide Haltestellen nicht gefunden!';
+        }
+        if (startIndex > targetIndex) {
+          return 'Die Zielhaltestelle muss nach der Starthaltestelle liegen!';
+        }
+        return LINE_46.slice(startIndex, targetIndex + 1);
+      };
+
+      console.log(getStopsUntil('Hubertusstr.')); // Output: Array of stops until "Hubertusstr."
+
+      const stations = getStopsUntil('keineStr.');
+      if (stations.length === 0) {
+        console.error(new Error('Zielstation existiert nicht'));
+      } else {
+        console.log(stations);
+      }
+
+      console.log(getStopsBetween('Teutoburger Str.', 'Hubertusstr.')); // Output: Array of stops between two points
+
+      outputEl.innerHTML = getStopsBetween('Teutoburger Str.', 'Hubertusstr.').join('<br>');
+    </script>
+  </body>
+</html>

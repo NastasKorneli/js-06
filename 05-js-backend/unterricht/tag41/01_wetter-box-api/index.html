@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wetter-Box</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Wetter-Box</h1>
+      </div>
+
+      <section class="section-weather">
+        <div class="container">
+          <div class="m-weather-box drop-shadow-curved">
+            <h5 class="location">{location}</h5>
+            <div class="weather-data">
+              <div class="weather-pic">
+                <figure>
+                  <img src="assets/img/weather-box/no-data.png" alt="" />
+                  <figcaption>{Clear}</figcaption>
+                  <p class="description">{description}</p>
+                </figure>
+              </div>
+              <div class="weather-information">
+                <p class="text-temp">
+                  <span class="temp">{00}</span>
+                  <span class="temp-unit">°C</span>
+                </p>
+                <p class="text-temp-min-max">
+                  <span class="temp-min">{00}</span> -
+                  <span class="temp-max">{00}</span>
+                </p>
+                <div class="wind-direction">
+                  <i class="fa-sharp fa-solid fa-compass"></i>
+                  <p class="text-wind-info">
+                    <span class="speed">{00} km/h</span>
+                    <span class="deg">{00} °</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ▲ /weather-box ▲ -->
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

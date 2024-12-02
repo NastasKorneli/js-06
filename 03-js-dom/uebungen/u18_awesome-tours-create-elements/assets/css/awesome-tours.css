@@ -1,0 +1,97 @@
+.main-wrapper {
+  margin: 5rem auto;
+  width: 650px;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.tours-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px 0.5fr;
+  gap: 1rem;
+  grid-template-areas:
+    'item1 item2'
+    'item1 item3'
+    'item4 item4';
+}
+
+#fr {
+  grid-area: item1;
+}
+
+#uk {
+  grid-area: item2;
+}
+
+#it {
+  grid-area: item3;
+}
+
+#info {
+  grid-area: item4;
+
+  border: 2px solid #000077;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.tours {
+  position: relative;
+}
+
+.m-tours #info h3 {
+  display: flex;
+  align-items: center;
+}
+
+.m-tours > div > img {
+  cursor: help;
+}
+
+.m-tours #info img {
+  width: 30px;
+  border-radius: 0;
+  margin: 0 10px 0 0;
+}
+
+.flag {
+  font-size: 1.5rem;
+}
+
+.french-flag::before {
+  content: '';
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  background: red url('../img/fr.png') no-repeat;
+  background-size: cover;
+  margin-right: 0.5rem;
+}
+
+.union-jack::before {
+  content: '';
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background: red url('../img/uk.png') no-repeat;
+  background-size: cover;
+  margin-right: 0.5rem;
+}
+
+.italian-flag::before {
+  content: '';
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background: red url('../img/it.png') no-repeat;
+  background-size: cover;
+  margin-right: 0.5rem;
+}

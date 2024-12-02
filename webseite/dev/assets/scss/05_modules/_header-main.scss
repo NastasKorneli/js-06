@@ -1,0 +1,28 @@
+.header-main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 350px;
+
+  background: #333 url('../img/header-coding.jpg') center no-repeat fixed;
+  background-size: cover;
+
+  .content-box {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(black, 0.5);
+  }
+}

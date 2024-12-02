@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 1: Almost Famous Quotes 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header></header>
+
+    <main>
+      <h1>Famous Quotes</h1>
+
+      <blockquote></blockquote>
+    </main>
+    <script>
+      'use strict';
+
+      // 1
+      // Ändern Sie mit Hilfe von JS die Überschrift (h1) der HTML-Seite aus Codebeispiel 8 in Almost Famous Quotes.
+
+      // 2
+      // Die Seite (Codebeispiel 8) enthält ein leeres blockquote-Element. Öffnen Sie die HTML-Seite in Chrome. Geben Sie in der Konsole eine Zeile JS-Code ein, die das Element mit folgendem Inhalt befüllt:
+
+      // <p>
+      //     I have always wished for my computer to be as easy to use as my telephone;
+      //     my wish has come true because I can no longer figure out how to use my
+      //     telephone.
+      // </p>
+      // <footer>— <cite>Bjarne Stroustrup</cite></footer>
+
+      document.querySelector('blockquote').innerHTML =
+        '<p>I have always wished for my computer to be as easy to use as my telephone;<br>my wish has come true because I can no longer figure out how to use my telephone.</p><footer>— <cite>Bjarne Stroustrup</cite></footer>';
+    </script>
+  </body>
+</html>

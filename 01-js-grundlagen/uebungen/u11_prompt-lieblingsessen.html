@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 11: Mit prompt das Lieblingsessen erfragen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-3">
+          <h1>Übung 11: Mit prompt das Lieblingsessen erfragen</h1>
+
+          <ol>
+            <li>
+              Fragen Sie den Benutzer nach seinem Lieblingsessen und seinem Lieblingsgetränk und speichern Sie beides in
+              passend benannte Variablen.
+            </li>
+            <li>
+              Verwenden Sie beide Variablen in einem Satz, den Sie über die Konsole ausgeben. Verketten Sie dabei die
+              Variablen mithilfe des Verkettungsoperators mit den restlichen Satzteilen .
+            </li>
+            <li>
+              Führen Sie die letzte Übung noch einmal durch, aber verwenden Sie dieses Mal Template String
+              Substitutions.
+            </li>
+            <li>
+              Wenn Sie ganz fleißig sind, können Sie als dritte Variante noch austesten, wie sich beide Varianten in der
+              gleichen Ausgabe verwenden lassen.
+            </li>
+          </ol>
+        </div>
+        <div class="alert alert-success my-3 output-a"></div>
+        <div class="alert alert-danger my-3 output-b"></div>
+        <div class="alert alert-warning my-3 output-c"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputAEl = document.querySelector('.output-a');
+      const outputBEl = document.querySelector('.output-b');
+      const outputCEl = document.querySelector('.output-c');
+
+      const favFood = prompt('Was ist dein Lieblingsessen?');
+      const favDrink = prompt('Was ist dein Lieblingsgetränk?');
+
+      console.log('Mein Lieblingsessen ist ' + favFood + ' und mein Lieblingsgetränk ist' + favDrink + '.');
+      console.log(`Mein Lieblingsessen ist ${favFood} und mein Lieblingsgetränk ist ${favDrink}.`);
+      console.log('Mein Lieblingsessen ist ' + favFood + ` und mein Lieblingsgetränk ist ${favDrink}`);
+
+      outputAEl.textContent = 'Mein Lieblingsessen ist ' + favFood + ' und mein Lieblingsgetränk ist ' + favDrink + '.';
+
+      outputBEl.textContent = `Mein Lieblingsessen ist ${favFood} und dein Lieblingsgetränk ist ${favDrink}.`;
+
+      outputCEl.textContent = 'Mein Lieblingsessen ist ' + favFood + ` und mein Lieblingsgetränk ist ${favDrink}`;
+    </script>
+  </body>
+</html>
+hat Kontextmenü

@@ -1,0 +1,137 @@
+@use 'sass:color';
+
+.drop-shadow-curved {
+  position: relative;
+  float: left;
+  width: 40%;
+  padding: 1em;
+  margin: 2em 10px 4em;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 3px;
+    position: absolute;
+    z-index: -1;
+
+    top: 10px;
+    bottom: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    border-radius: 10px / 100px;
+  }
+  &:before {
+    left: -3px;
+  }
+  &:after {
+    right: -3px;
+  }
+}
+
+.m-weather-box {
+  &.loaded {
+    // opacity: 1;
+    animation-name: fadeInWeatherBox;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  opacity: 0;
+
+  padding: 1rem;
+
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 380px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #fff;
+
+  .location {
+    text-align: center;
+    color: #ccc;
+    line-height: 1.5rem;
+  }
+  .weather-data {
+    display: flex;
+
+    .weather-pic {
+      width: 45%;
+      figure {
+        overflow: hidden;
+        img {
+          border-radius: 1rem;
+        }
+        img,
+        svg {
+          width: 100%;
+        }
+
+        figcaption {
+          text-align: center;
+        }
+
+        .description,
+        .location {
+          text-align: center;
+          color: #ccc;
+          line-height: 1rem;
+        }
+      }
+    }
+
+    .weather-information {
+      padding: 2rem 0 0;
+      width: 55%;
+      height: 100%;
+      .text-temp {
+        text-align: center;
+        font-size: 3.25rem;
+        line-height: 1.25rem;
+        color: #555;
+        margin: 0 0 2rem;
+      }
+      .text-unit {
+        font-size: 2.5rem;
+        color: color.adjust(#555, $lightness: 20%);
+        // color: lighten(#555, 20%);
+      }
+      .text-temp-min-max {
+        color: #ccc;
+        text-align: center;
+        line-height: 1;
+        margin: 0 0 2rem; // top | left right | bottom
+      }
+
+      .wind-direction {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #555;
+        .fa-compass {
+          transition: all 0.4s ease-out;
+          font-size: 48px;
+          height: 48px;
+          width: 48px;
+          margin-right: 1rem;
+        }
+        .text-wind-info {
+          margin: 0;
+        }
+        .speed {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeInWeatherBox {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

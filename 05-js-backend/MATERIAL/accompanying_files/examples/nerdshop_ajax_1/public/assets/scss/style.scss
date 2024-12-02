@@ -1,0 +1,99 @@
+// Color Theme Swatches in Hex
+$color-1: #86a69d;
+$color-2: #f2b263;
+$color-3: #f2e8df;
+$color-4: #f2c6c2;
+$color-5: #f28585;
+$color-dark: #2a2a2a;
+
+h1 {
+  color: rgb(204, 101, 83);
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #777;
+}
+
+body {
+  background-color: $color-3;
+}
+
+ul li a {
+  color: #333;
+}
+
+.menu-main a {
+  display: inline-block;
+  padding: 1rem;
+  color: #333;
+}
+
+button {
+  border: 6px solid darken(rgba($color-dark, 0.3), 10%);
+  font-size: 0.85rem;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+
+  background-color: $color-dark;
+  &:hover,
+  &:focus {
+    background-color: darken($color-dark, 10%);
+  }
+}
+
+.button-green {
+  border: 6px solid darken(rgba($color-1, 0.3), 10%);
+  background-color: $color-1;
+  &:hover,
+  &:focus {
+    background-color: darken($color-1, 10%);
+  }
+}
+.button-yellow {
+  border: 6px solid darken(rgba($color-2, 0.3), 10%);
+  background-color: $color-2;
+  &:hover,
+  &:focus {
+    background-color: darken($color-2, 10%);
+  }
+}
+
+.button-red {
+  border: 6px solid darken(rgba($color-5, 0.3), 10%);
+  background-color: $color-5;
+  &:hover,
+  &:focus {
+    background-color: darken($color-5, 10%);
+  }
+}
+.product {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  > div {
+    background-color: #efefef;
+    padding: 1rem;
+    flex-grow: 1;
+  }
+  .product-code {
+    flex-shrink: 0;
+    flex-grow: 0;
+    min-width: 180px;
+  }
+  .product-tagline {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  .product-description {
+    flex-grow: 2;
+  }
+  .product-actions {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}

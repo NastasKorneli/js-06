@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 27: Schach: verschiedene Stellungen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      .chess-board .chess-row .field {
+        display: inline-block;
+        padding: 0.5rem;
+        border: 1px solid #efefef;
+        width: 50px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-5">
+          <h1>Übung 27: Schach: verschiedene Stellungen</h1>
+          <p>
+            Erweitern Sie das Schachprogramm um eine zusätzliche Funktion: <code>execMoves</code>(moves). Diese Funktion
+            soll mehrere Züge als Array übergeben bekommen und diese dann nacheinander ausführen, z.B.
+          </p>
+
+          <code>
+            <pre>
+  
+  execMoves(['e2e4', 'e7e5', 'f2f4'])
+            </pre>
+          </code>
+
+          <p>Es genügt dabei, wenn Sie lediglich die Stellung am Ende (nach allen Zügen) ausgeben.</p>
+        </div>
+        <div class="output alert alert-secondary my-3"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const boardInStartPosition = () => [
+        ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+        ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+        ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
+      ];
+
+      const emptyBoard = () => [
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+      ];
+
+      const originField = (move) => move.substring(0, 2); //=> 'e2e4' -> 'e2'
+      const targetField = (move) => move.substring(2); //=> 'e2e4' -> 'e4'
+
+      console.log(originField('e2e4')); //=> 'e2'
+      console.log(targetField('e2e4')); //=> 'e4'
+
+      const fieldToXPosition = (field) => letterToChessIndex(field.charAt(0)); //=> 'e2' -> 'e'
+      const fieldToYPosition = (field) => numberToChessIndex(field.charAt(1)); //=> 'e2' -> '2'
+
+      //=> 'e' -> 4 <- Array Spalte (x)
+      const letterToChessIndex = (letter) => 'abcdefgh'.indexOf(letter);
+      //=> 8 - '2' -> 6 <- Array Zeile (y)
+      const numberToChessIndex = (num) => 8 - num;
+
+      console.log(fieldToXPosition('e2')); //=> 'e2' -> 'e' -> 4 <- Array Spalte (x)
+      console.log(fieldToYPosition('e2')); //=> 'e2' -> '2' -> 6 <- Array Spalte (y)
+
+      const execMove = (board, move) => {
+        // originField('e2e4') => 'e2' -> fieldToXPosition('e2') -> 4 <- Arrayindex in Spalte(x)
+        const originX = fieldToXPosition(originField(move));
+        // originField('e2e4') => 'e2' -> fieldToYPosition('e2') -> 6 <- Arrayindex in Spalte(y)
+        const originY = fieldToYPosition(originField(move));
+
+        // targetField('e2e4') => 'e4' -> fieldToXPosition('e4') -> 4 <- Arrayindex in Spalte(x)
+        const targetX = fieldToXPosition(targetField(move));
+        // targetField('e2e4') => 'e4' -> fieldToYPosition('e4') -> 4 <- Arrayindex in Spalte(y)
+        const targetY = fieldToYPosition(targetField(move));
+
+        // board[4][4] =  board[6][4]
+        board[targetY][targetX] = board[originY][originX];
+
+        // board[6][4] = emptyBoard[6,4]
+        board[originY][originX] = emptyBoard()[originY][originX];
+        return board;
+      };
+
+      const execMoves = (moves = []) => {
+        // Reduce Durchläufe
+
+        //   [[
+        //   ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+        //   ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+        //   ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        //   ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        //   ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        //   ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        //   ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+        //   ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
+        // ], 'e2e4', 'e7e5', 'f2f4']
+
+        // 1 Durchlauf
+        //   [[
+        //   ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+        //   ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+        //   ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        //   ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        //   ['◻', '▦', '◻', '▦', '♙', '▦', '◻', '▦'],
+        //   ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        //   ['♙', '♙', '♙', '♙', '◻','♙', '♙', '♙', '♙'],
+        //   ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
+        // ],  'e7e5', 'f2f4']
+
+        // 2 Durchlauf
+        //   [[
+        //   ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+        //   ['♟', '♟', '♟', '♟', '▦', '♟', '♟', '♟'],
+        //   ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        //   ['▦', '◻', '▦', '◻', '♟', '◻', '▦', '◻'],
+        //   ['◻', '▦', '◻', '▦', '♙', '▦', '◻', '▦'],
+        //   ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        //   ['♙', '♙', '♙', '♙', '◻','♙', '♙', '♙', '♙'],
+        //   ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
+        // ],  'f2f4']
+
+        // 3 Durchlauf
+        //   [[
+        //   ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+        //   ['♟', '♟', '♟', '♟', '▦', '♟', '♟', '♟'],
+        //   ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        //   ['▦', '◻', '▦', '◻', '♟', '◻', '▦', '◻'],
+        //   ['◻', '▦', '◻', '▦', '♙', '♙', '◻', '▦'],
+        //   ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        //   ['♙', '♙', '♙', '♙', '◻','▦', '♙', '♙', '♙'],
+        //   ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
+        // ]]
+
+        // [[], 1,2,3].reduce(ar, n => ar.push(n));  // => [1,2,3]
+
+        return moves.reduce((board, move) => {
+          const resultAr = execMove(board, move);
+          return resultAr;
+        }, boardInStartPosition());
+      };
+      execMoves(['e2e4', 'e7e5', 'f2f4']);
+
+      const board2string = (board) => board.map((row) => row.join(' ')).join('\n');
+      const board2Html = (board) => {
+        return `<div class="chess-board">
+          ${board
+            .map(
+              (row) =>
+                `<div class="chess-row">
+                <span class="field">${row.join('</span><span class="field">')}</span>
+              </div>`
+            )
+            .join('')}
+        </div>`;
+      };
+
+      console.log(board2string(boardInStartPosition()));
+
+      outputEl.innerHTML = board2Html(execMoves(['e2e4', 'e7e5', 'f2f4']));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 44: Alte Listen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-5">
+          <h1>Übung 44: Alte Listen</h1>
+          <p>
+            NerdWorld stellt Ihnen eine neue Aufgabe: Die Mitarbeiter haben Produkte früher in Excel-Listen verwaltet.
+            Zu Migrationszwecken haben die Mitarbeiter sie nun als CSV-Dateien (comma separated values) exportiert.
+            Damit sind dann alle Elemente in einer Liste durch Kommas getrennt.
+          </p>
+          <p>
+            Schreiben Sie eine Funktion <code>handleCsv</code>, die einen übergebenen CSV-String in ein Array splittet
+            und alphabetisch sortiert. Loggen Sie das fertig verarbeitete Array als Liste (pro Produkt eine Zeile) in
+            die Konsole.
+          </p>
+        </div>
+        <div class="output alert alert-secondary my-3"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const productList =
+        '3Doodler 3D Printing Pen, Game of Thrones Wax Seal Coasters, 10th Doctor Sonic Screwdriver Exclusive Programmable TV, Electronic Butterfly in a Jar, Aquafarm: Aquaponics Fish Garden, Cassette Adapter Bluetooth, Marvel Comics Lightweight Infinity Scarf, Ollie - The App Controlled Robot, Sound Splash Bluetooth Waterproof Shower Speaker, PowerCube, Backpack of Holding,  Retro Duo Portable NES/SNES Game System, Universal Gadget Wrist Charger, USB Squirming Tentacle, USB Fishquarium, Space Bar Keyboard Organizer & USB Hub Pop, USB Pet Rock  , Powerstation 5- E. Maximus Chargus, Dual Heated Travel Mug, Crosley Collegiate Portable USB Turntable, Meh Hoodie, Magnetic Accelerator Cannon, 8-Bit Heat-Change Mug';
+
+      // Funktions handleCsv erstellen
+      const handleCsv = (csvString) => {
+        // 1. CSV-String in ein Array umwandeln
+        const productArray = csvString
+          .split(',') // => ["3Doodler 3D Printing Pen", " Game of Thrones Wax Seal Coasters" , ...]
+          .map((item) => item.trim()); // => ["3Doodler 3D Printing Pen", "Game of Thrones Wax Seal Coasters", ...]
+
+        // 2. Array alphabetisch sortieren
+        return productArray.sort();
+      };
+
+      // Funktion aufrufen
+
+      // 3. Fertig verarbeiteten Array als Liste im HTML ausgeben
+      // outputEl.innerHTML = productArray.map((product) => `<div>${product}</div>`).join('');
+
+      const productArray = handleCsv(productList);
+
+      outputEl.innerHTML = `<ul><li>${productArray.join('</li><li>')}</li>`;
+      console.log(productArray.join('\n'));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selektoren</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      /* universal Selektor (*) */
+
+      *,
+      html {
+        box-sizing: border-box;
+      }
+
+      /* type selector (element) */
+      h1 {
+        color: tomato;
+      }
+
+      /* id selector (#) */
+      #image-main {
+        border: 10px solid #efefef;
+        border-radius: 1rem;
+        margin: 1rem 0;
+      }
+
+      /* class selector (.) */
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #222;
+        border: 5px solid salmon;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>CSS Selektoren</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam asperiores ratione officia amet ipsum
+          perferendis impedit vel tenetur eaque obcaecati placeat, dolores est optio ea eveniet? Asperiores quo
+          inventore nemo repellat atque doloribus ab at recusandae magni consectetur? Aut, explicabo. Maxime et harum
+          beatae animi ratione non voluptas, doloribus aspernatur!
+        </p>
+        <div class="box">Box</div>
+        <img src="https://picsum.photos/seed/picsum/900/400" alt="image" id="image-main" />
+        <img src="https://dummyimage.com/900x400/000/f90.jpg" alt="image" />
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      // document.querySelector(/* CSS SELEKTOR AUSSER PSEUDOELEMENTE*/);
+      console.log(document.querySelector(h1));
+    </script>
+  </body>
+</html>

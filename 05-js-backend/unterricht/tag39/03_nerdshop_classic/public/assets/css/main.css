@@ -1,0 +1,55 @@
+*,
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #ddd;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: tomato;
+}
+
+a {
+  color: #333;
+}
+
+.menu-main {
+  padding: 0;
+  margin: 0;
+}
+
+.menu-main ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.menu-main ul li a {
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: #222;
+  transition: all 0.4s ease-out;
+}
+
+.menu-main ul li a:hover,
+.menu-main ul li a:focus {
+  color: #222;
+  background-color: white;
+}

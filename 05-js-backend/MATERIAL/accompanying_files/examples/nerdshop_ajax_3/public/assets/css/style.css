@@ -1,0 +1,152 @@
+h1 {
+  color: rgb(204, 101, 83);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #777;
+}
+
+body {
+  background-color: #f2e8df;
+}
+
+ul li a {
+  color: #333;
+}
+
+.menu-main a {
+  display: inline-block;
+  padding: 1rem;
+  color: #333;
+}
+.menu-main .button-login {
+  margin-left: 0.5rem;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+button {
+  border: 6px solid rgba(49, 49, 49, 0.3);
+  font-size: 0.85rem;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #4a4a4a;
+}
+button:hover, button:focus {
+  background-color: #313131;
+}
+
+.button-green {
+  border: 6px solid rgba(106, 143, 133, 0.3);
+  background-color: #86a69d;
+}
+.button-green:hover, .button-green:focus {
+  background-color: #6a8f85;
+}
+
+.button-yellow {
+  border: 6px solid rgba(238, 155, 52, 0.3);
+  background-color: #f2b263;
+}
+.button-yellow:hover, .button-yellow:focus {
+  background-color: #ee9b34;
+}
+
+.button-red {
+  border: 6px solid rgba(237, 87, 87, 0.3);
+  background-color: #f28585;
+}
+.button-red:hover, .button-red:focus {
+  background-color: #ed5757;
+}
+
+.button-card-close {
+  color: #4a4a4a;
+  font-size: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border: 6px solid rgba(238, 155, 52, 0.3);
+  background-color: #f2b263;
+}
+.button-card-close:hover, .button-card-close:focus {
+  background-color: #ee9b34;
+}
+
+.menu-products {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.m-product-manager .products {
+  margin: 0 0 2rem;
+}
+.m-product-manager .product {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.m-product-manager .product > div {
+  background-color: #efefef;
+  padding: 1rem;
+  flex-grow: 1;
+}
+.m-product-manager .product .product-code {
+  flex-shrink: 0;
+  flex-grow: 0;
+  min-width: 180px;
+}
+.m-product-manager .product .product-tagline {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+.m-product-manager .product .product-description {
+  flex-grow: 2;
+}
+.m-product-manager .product .product-actions {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.m-product-manager .product .product-admin-actions {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.card-product {
+  overflow: hidden;
+  margin: 1rem 0;
+}
+.card-product .card-product-code {
+  height: 100px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4a4a4a;
+  background-color: #f2b263;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+.card-product .card-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #ebdbcd;
+}
+
+/*# sourceMappingURL=style.css.map */

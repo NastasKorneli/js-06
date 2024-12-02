@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array - ar.splice()</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Array - ar.splice()</h1>
+        <p>
+          <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/splice"
+            >ar.splice()</a
+          >
+          - Die <strong>splice()</strong> Methode ändert den Inhalt eines Arrays durch das Entfernen vorhandener
+          Elemente und/oder Hinzufügen neuer Elemente.
+        </p>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const customersOnline = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+
+      const names = [
+        'Christina', //
+        'Tetiana',
+        'Daniel',
+        'Namdar',
+        'Judith',
+        'Julian',
+        'Oana',
+        'Korneli',
+        'Enrico',
+        'Sebastian',
+        'Alexej',
+        'Radostina',
+        'Loriana',
+      ];
+
+      // Array - Methode - ar.splice(startIndex [,deleteCount [, toAddValue , toAddValueN] )
+
+      let cuttedNames;
+      let namesCopy;
+
+      // Mehrere Werte gezielt löschen =================
+      console.log('======== Mehrere Werte gezielt löschen ========');
+
+      // Kopie eines Arrays über den spread - Operator
+      namesCopy = [...names]; // alternativ - names.slice()
+
+      cuttedNames = namesCopy.splice(2, 2);
+
+      console.log(cuttedNames); // => ['Daniel', 'Namdar']
+
+      console.log(namesCopy); // => ['Christina', 'Tetiana', 'Judith', 'Julian', 'Oana', 'Korneli', 'Enrico', 'Sebastian', 'Alexej', 'Radostina', 'Loriana']
+
+      // Mehrere Werte gezielt ersetzen =================
+      console.log('======== Mehrere Werte gezielt ersetzen ========');
+
+      // Kopie eines Arrays über den spread - Operator
+      namesCopy = [...names]; // alternativ - names.slice()
+
+      cuttedNames = namesCopy.splice(4, 3, 'Tick', 'Trick', 'Track');
+
+      console.log(cuttedNames); // => ['Judith','Julian','Oana']
+
+      console.log(namesCopy); // => ['Christina', 'Tetiana', 'Tick', 'Trick', 'Track', 'Korneli', 'Enrico', 'Sebastian', 'Alexej', 'Radostina', 'Loriana']
+
+      // Mehrere Werte gezielt hinzufügen =================
+      console.log('======== Mehrere Werte gezielt hinzufügen ========');
+
+      // Kopie eines Arrays über den spread - Operator
+      namesCopy = [...names]; // alternativ - names.slice()
+
+      cuttedNames = namesCopy.splice(namesCopy.length, 0, 'Tick', 'Trick', 'Track');
+
+      console.log(cuttedNames); // => []
+
+      console.log(namesCopy); // => ['Christina', 'Tetiana', 'Daniel', 'Namdar', 'Judith', 'Julian', 'Oana', 'Korneli', 'Enrico', 'Sebastian', 'Alexej', 'Radostina', 'Loriana', 'Tick', 'Trick', 'Track']
+    </script>
+  </body>
+</html>

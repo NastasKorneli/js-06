@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 30: Pokémon — Evolution</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 30: Pokémon — Evolution</h1>
+          <p>
+            Kennen Sie Pokémon? Allen Pokémon-Spielen ist gemein, dass es Pokémon (Phantasiewesen) gibt, die über
+            verschiedene Evolutionsstufen verfügen. Ein Pokémon kann sich bis zu zweimal weiterentwickeln. D.h. es gibt
+            maximal drei Stufen: seine Anfangsstufe und bis zu zwei Folgestufen. Jede dieser Stufen trägt einen neuen
+            Pokémon-Namen — keiner dieser Namen kann doppelt vorkommen. Einen guten Überblick über die Stufen bei
+            Pokémon GO finden Sie auf <a hre="http://www.pokemongoevolution.com">http://www.pokemongoevolution.com</a>.
+          </p>
+          <ol class="list">
+            <li>
+              <p>
+                Schreiben Sie eine Funktion <code>stagesFor</code>, der Sie eine Pokémon-Evolutionsstufe übergeben und
+                die Ihnen alle dazugehörigen Evolutionsstufen als Array zurückliefert. Als Daten verwenden Sie
+                exemplarisch die Evolutionsstufen von Pidgey, Vulpix und Dratini.
+              </p>
+            </li>
+            <li>
+              <p>
+                Entwickeln Sie die Funktionen <code>stagesAfter</code> und <code>stagesBefore</code>, die Ihnen nur die
+                Stufen vor bzw. nach der angefragten Stufe zurückliefern.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const evolutionStages = [
+        ['Pidgey', 'Pidgeotto', 'Pidgeot'],
+        ['Vulpix', 'Ninetales'],
+        ['Dratini', 'Dragonair', 'Dragonite'],
+      ];
+
+      // deklarativer Stil
+      const getStages = (pokemon = '') => {
+        return evolutionStages.find((stages) => {
+          return stages.includes(pokemon);
+        });
+      };
+
+      // imperativer Stil mit for statement
+      const getStagesFor = (pokemon = '') => {
+        const stages = [];
+        for (const ar of evolutionStages) {
+          if (ar.includes(pokemon)) {
+            // stages.push(...ar);
+            return ar;
+          }
+        }
+        return [];
+      };
+
+      const getStagesAfter = (pokemon = '') => {
+        const stages = getStages(pokemon);
+        const index = stages.findIndex((str) => pokemon === str);
+        console.log(index);
+        return stages.slice(index + 1);
+      };
+
+      const getStagesBefore = (pokemon = '') => {
+        const stages = getStages(pokemon);
+        const index = stages.findIndex((str) => pokemon === str);
+        console.log(index);
+        return stages.slice(0, index);
+      };
+
+      console.log('stages:', getStages('Ninetales')); // =>  ['Vulpix', 'Ninetales'],
+      console.log('stages for:', getStagesFor('Ninetales')); // =>  ['Vulpix', 'Ninetales'],
+      console.log(getStagesAfter('Dratini')); // => [ 'Dragonair', 'Dragonite' ]
+      console.log(getStagesAfter('Pidgeotto')); // => [ 'Pidgeot']
+      console.log(getStagesAfter('Ninetales')); // => [ ]
+
+      console.log(getStagesBefore('Pidgeot')); // => [ 'Pidgey', 'Pidgeotto' ]
+      console.log(getStagesBefore('Dragonair')); // => [ 'Dratini' ]
+      console.log(getStagesBefore('Ninetales')); // => [ 'Vulpix' ]
+    </script>
+  </body>
+</html>

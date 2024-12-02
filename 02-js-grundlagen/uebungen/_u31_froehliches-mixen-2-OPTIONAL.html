@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 31: Fröhliches Mixen mit Arrays & Teil 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 31: Fröhliches Mixen mit Arrays & Teil 2</h1>
+
+        <img
+          src="https://de.webmasters-europe.org/system/course_management/file/images/files/000/020/558/800-533/241aa384e6005cdebbd01c4ba4e4fa69.jpg?1644493807"
+          class="img-thumbnail my-3"
+          width="400"
+          alt="Cocktail Party"
+        />
+
+        <p>
+          Du möchtest mal wieder Cocktails mixen. Aber heute konntest du dich nicht so recht für einen bestimmten
+          Cocktail entscheiden. Am besten wäre es, wenn du aus mehreren Rezepten herausfinden könntest, für welches du
+          die passenden Zutaten vorrätig hast. Nun wird es etwas kniffliger, denn du benötigst ein Array, das die
+          Rezepte wiederum in Form von Arrays aus Zutaten enthält.
+        </p>
+        <p>Die Konsole soll die Zutaten des ersten gefundenen Cocktails loggen.</p>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const isMixableWithMyIngredients = (cocktailRecipe) => {
+        /* ??? */
+      };
+
+      const isMixableWith = (cocktailRecipe, availableIngredients) => {
+        return cocktailRecipe.every((ingredientFromRecipe) =>
+          hasIngredient(availableIngredients, ingredientFromRecipe)
+        );
+      };
+      const hasIngredient = (listOfIngredients, searchedIngredient) => listOfIngredients.includes(searchedIngredient);
+
+      const honoluluFlip = [
+        'Maracuja Juice', //
+        'Pineapple Juice',
+        'Lemon Juice',
+        'Grapefruit Juice',
+        'Crushed Ice',
+      ];
+      const casualFriday = [
+        'Vodka', //
+        'Lime Juice',
+        'Apple Juice',
+        'Cucumber',
+      ];
+      const pinkDolly = [
+        'Vodka', //
+        'Orange Juice',
+        'Pineapple Juice',
+        'Grenadine',
+        'Cream',
+        'Coco Syrup',
+      ];
+      const cocktailRecipes = [honoluluFlip, casualFriday, pinkDolly];
+
+      const ingredientsFromMyBar = [
+        'Pineapple',
+        'Maracuja Juice',
+        'Cream',
+        'Grapefruit Juice',
+        'Crushed Ice',
+        'Milk',
+        'Vodka',
+        'Apple Juice',
+        'Aperol',
+        'Pineapple Juice',
+        'Lime Juice',
+        'Lemons',
+        'Cucumber',
+      ];
+
+      // console.log(cocktailRecipes./* ??? */(isMixableWithMyIngredients))
+      // => [ 'Vodka', 'Lime Juice', 'Apple Juice', 'Cucumber' ]
+    </script>
+  </body>
+</html>

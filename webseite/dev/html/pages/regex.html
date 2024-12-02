@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+  @@include('head.html')
+  <body>
+    @@include('menu-main.html')
+
+    <main>
+      <div class="container py-5">
+        <h1>Reguläre Ausdrücke</h1>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <table class="table table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th>Zeichen</th>
+                  <th>Basiszeichen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>\w</code></td>
+                  <td>Buchstabe, Ziffer oder Unterstrich</td>
+                </tr>
+                <tr>
+                  <td><code>\W</code></td>
+                  <td>Ein Sonderzeichen</td>
+                </tr>
+                <tr>
+                  <td><code>\d</code></td>
+                  <td>Eine Ziffer zwischen 0 bis 9</td>
+                </tr>
+                <tr>
+                  <td><code>\D</code></td>
+                  <td>Ein Zeichen, das keine Ziffer ist</td>
+                </tr>
+                <tr>
+                  <td><code>\s</code></td>
+                  <td>Ein Weißraum (Leerzeichen, Zeilenumbruch usw.)</td>
+                </tr>
+                <tr>
+                  <td><code>\S</code></td>
+                  <td>Jedes Zeichen außer Weißraum</td>
+                </tr>
+                <tr>
+                  <td><code>\b</code></td>
+                  <td>Wortgrenze</td>
+                </tr>
+                <tr>
+                  <td><code>\B</code></td>
+                  <td>keine Wortgrenze</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-12 col-md-6">
+            <table class="table table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th>Zeichen</th>
+                  <th>Metazeichen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>.</code></td>
+                  <td>findet alle Zeichen außer Zeilenende</td>
+                </tr>
+                <tr>
+                  <td><code>^</code></td>
+                  <td>Anfang eines Strings</td>
+                </tr>
+                <tr>
+                  <td><code>$</code></td>
+                  <td>Ende eines Strings</td>
+                </tr>
+                <tr>
+                  <td><code>|</code></td>
+                  <td>Alternativen (or)</td>
+                </tr>
+                <tr>
+                  <td><code>()</code></td>
+                  <td>Teile des Suchmusters abgrenzen</td>
+                </tr>
+                <tr>
+                  <td><code>[]</code></td>
+                  <td>Zeichenklassen</td>
+                </tr>
+                <tr>
+                  <td><code>{}</code></td>
+                  <td>Replikatoren</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <table class="table table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th>Zeichen</th>
+                  <th>Zeichenklassen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>[xyz]</code></td>
+                  <td>beliebiger Buchstabe x, y oder z</td>
+                </tr>
+                <tr>
+                  <td><code>[^xyz]</code></td>
+                  <td>jeder Buchstabe außer x, y oder z</td>
+                </tr>
+                <tr>
+                  <td><code>[0-9]</code></td>
+                  <td>jede Ziffer zwischen 0 bis 9</td>
+                </tr>
+                <tr>
+                  <td><code>[a-z]</code></td>
+                  <td>jeder kleine Buchstabe von a bis z</td>
+                </tr>
+                <tr>
+                  <td><code>[A-Za-z0-9]</code></td>
+                  <td>alle Buchstaben und Ziffern</td>
+                </tr>
+                <tr>
+                  <td><code>[a-zß-ü]</code></td>
+                  <td>alle Kleinbuchstaben und Umlaute</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-12 col-md-6">
+            <table class="table table-striped">
+              <thead class="table-dark">
+                <tr>
+                  <th>Zeichen</th>
+                  <th>Zeichenklassen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>{n,m}</code></td>
+                  <td>mindestens n mal, höchstens m mal</td>
+                </tr>
+                <tr>
+                  <td><code>{n,}</code></td>
+                  <td>mindestens n mal</td>
+                </tr>
+                <tr>
+                  <td><code>{n}</code></td>
+                  <td>genau n mal</td>
+                </tr>
+                <tr>
+                  <td><code>*</code></td>
+                  <td>0 mal oder öfter, äquivalent zu {0,}</td>
+                </tr>
+                <tr>
+                  <td><code>+</code></td>
+                  <td>1 mal oder öfter, äquivalent zu {1,}</td>
+                </tr>
+                <tr>
+                  <td><code>?</code></td>
+                  <td>0 oder 1 mal, äquivalent zu {0,1}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <h2>Weiterführende Links</h2>
+        <ul class="list list-group">
+          <li class="list-group-item"><a href="https://emailregex.com/">https://emailregex.com/</a></li>
+          <li class="list-group-item">
+            <a href="https://ihateregex.io/playground/">https://ihateregex.io/playground/</a>
+          </li>
+          <li class="list-group-item"><a href="https://regexr.com/">https://regexr.com/</a></li>
+          <li class="list-group-item"><a href="https://regex101.com/">https://regex101.com/</a></li>
+          <li class="list-group-item">
+            <a href="https://www.mediaevent.de/javascript/Javascript-Regulaere-Ausdruecke-1.html"
+              >https://www.mediaevent.de/javascript/Javascript-Regulaere-Ausdruecke-1.html</a
+            >
+          </li>
+          <li class="list-group-item">
+            <a href="https://www.mediaevent.de/javascript/Javascript-Regulaere-Ausdruecke-2.html"
+              >https://www.mediaevent.de/javascript/Javascript-Regulaere-Ausdruecke-2.html</a
+            >
+          </li>
+        </ul>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      // Lookahead (?=) - Muster voranstehend ======================
+      console.log(
+        'Die Programmiersprache Javascript ist eine tolle Programmiersprache.'.replace(
+          /Programmiersprache(?=\.)/,
+          '[GETROFFEN]'
+        )
+      ); // => Programmiersprache (hinten)
+
+      console.log(
+        'Die Programmiersprache Javascript ist eine tolle Programmiersprache.'.replace(
+          /Programmiersprache(?!\.)/,
+          '[GETROFFEN]'
+        )
+      ); // => Programmiersprache (vorne)
+
+      // Lookbehind (?<=) - Muster folgend ======================
+
+      console.log(
+        'Die Programmiersprache Javascript ist eine tolle Programmiersprache.'.replace(
+          /(?<=Die\s)Programmiersprache/,
+          '[GETROFFEN]'
+        )
+      ); // => Programmiersprache (vorne)
+      console.log(
+        'Die Programmiersprache Javascript ist eine tolle Programmiersprache.'.replace(
+          /(?<!Die\s)Programmiersprache/,
+          '[GETROFFEN]'
+        )
+      ); // => Programmiersprache (hinten)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 25: Der Buchstabendieb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/lodash.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 25: Der Buchstabendie</h1>
+          <p>
+            Bei dem deutschen Kinderlied
+            <a href="https://de.wikipedia.org/wiki/Auf_der_Mauer,_auf_der_Lauer"> Auf der Mauer, auf der Lauer</a>
+            singen Sie in jeder neuen Strophe bei den Wörtern Wanze und tanzen immer einen Buchstaben weniger, bis
+            nichts mehr vom jeweiligen Wort übrig ist.
+          </p>
+
+          <p>
+            Schreiben Sie eine Funktion, der Sie ein beliebiges Wort übergeben können. Sie soll ein Array zurückliefern,
+            bei dem jedes Element ein Teil des Wortes ist, sodass von Element zu Element immer ein Buchstabe verloren
+            geht. Das letzte Element im Array muss immer ein leerer String sein.
+          </p>
+
+          <p>Beispiel Javascript:</p>
+
+          <code>letterThief('dance') // => ['danc', 'dan', 'da', 'd', '']</code>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      /*
+       * letterThiefWithFor mit for-Schleife (imperativ)
+       * Funktion, die ein Wort nimmt und ein Array mit abnehmenden Buchstaben zurückgibt
+       */
+      const letterThiefWithFor = (str = '') => {
+        const results = []; // - Array zur Speicherung der Ergebnisse
+
+        // Solange die Länge des Wortes größer als 0 ist
+        for (let i = str.length; i > 0; i--) {
+          results.push(str.slice(0, i - 1)); // Füge das Wort ohne den letzten Buchstaben hinzu
+        }
+        return results; // Rückgabe des Ergebnisses
+      };
+
+      console.log(letterThiefWithFor('dance')); // => ['danc', 'dan', 'da', 'd', '']
+
+      // ==============================
+
+      // letterThief  mit map (deklarativ)
+      const letterThief = (str) => {
+        // return Array(str.length).fill('');  // => ['', '', '', '', '']
+        return str
+          .split('') // => ['h', 'a', 'l', 'l', 'o']
+          .map((_, idx) => str.slice(0, -(idx + 1)));
+      };
+
+      console.log(letterThief('hallo')); //=> ['hall', 'hal', 'ha', 'h', '']
+
+      // ==============================
+
+      // letterThief  mit Rekursion
+      const letterThiefRekursion = (str = 'string', result = []) => {
+        if (str.length === 0) return result;
+        const slicedStr = str.slice(0, -1);
+        result.push(slicedStr);
+        return letterThiefRekursion(slicedStr, result); // Rekursion
+      };
+
+      console.log(letterThiefRekursion('dance')); // =>  ['danc', 'dan', 'da', 'd', '']
+      console.log(letterThiefRekursion()); // =>  ['strin', 'stri', 'str', 'st', 's', '']
+    </script>
+  </body>
+</html>

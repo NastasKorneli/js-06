@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 29: Die dunkle Seite von JavaScript — der Kampf geht weiter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 29: Die dunkle Seite von JavaScript — der Kampf geht weiter</h1>
+
+          <p>
+            Es wird Zeit, das Spiel weiter zu optimieren. Nimm dir eine der Fragen vor, die schon implementiert ist:
+          </p>
+          <p>»Was heißt if auf Deutsch?« (Mehrere Lösungsmöglichkeiten: wenn, falls).</p>
+          <p>
+            Der Code deckt schon drei verschiedene Lösungsmöglichkeiten ab. Aber was ist, wenn jemand statt
+            <code>wenn</code> <code>Wenn</code> oder <code>WENN</code> schreibt?
+          </p>
+          <p>
+            Das Thema Groß- und Kleinschreibung wird dir bei Benutzereingaben öfter begegnen. Für das Spiel würde es zum
+            Beispiel helfen, wenn der Spieler die Eingabe immer komplett kleinschreibt. Sicher ist der Spieler verwirrt,
+            wenn das Spiel seine Antwort Wenn als falsch quittiert.
+          </p>
+          <p>
+            Optimiere die betreffende Stelle im Spiel, indem du die Benutzereingabe in Kleinbuchstaben umwandelst — vor
+            Prüfung der if-Bedingung.
+          </p>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      // const QUESTION_1 = 'es geht los! Sag mir mal, welcher Operator die höhere Priorität hat: * oder + ?';
+      // const SOLUTION_1 = '*';
+
+      // const QUESTION_2 = 'Was ist das deutsche Wort für if?';
+      // const SOLUTION_2A = 'falls';
+      // const SOLUTION_2B = 'wenn';
+
+      // const QUESTION_3 = 'Jetzt gib Bitte einen String mit einer Länge von 8 bis 15 Zeichen ein';
+
+      const QUESTION_1 = 'Welcher Operator hat die höhere Priorität: * oder + ?';
+      const SOLUTION_1 = '*';
+
+      const username = prompt('Wie ist dein Name!').trim();
+      alert(`Hallo ${username}!`);
+
+      const playerfitness = prompt('Wie fit fühlst du dich von einer Skala von 1 bis 10?');
+
+      if (playerfitness > 5) {
+        alert('Du fühlst dich also fit!');
+      } else {
+        alert('Du fühlst dich also nicht fit. Dann mach mehr Sport du fauler Sack');
+      }
+
+      const playergame = prompt(`Wollen wir ein Spiel spielen (J/N)`).trim();
+      if (playergame.toUpperCase() === 'J' || playergame.toUpperCase() === 'JA') {
+        alert('Los geht es');
+
+        const fightOne = prompt(QUESTION_1);
+        if (fightOne === SOLUTION_1) {
+          alert('Das ist richtig !!');
+        } else {
+          alert('Das ist falsch !!');
+        }
+        const fighttwo = prompt('Welcher Operator hat die höhere Priorität: () oder - ?').trim();
+        if (fighttwo === '()') {
+          alert('Das ist richtig !!');
+        } else {
+          alert('Das ist falsch !!');
+        }
+
+        const fightthree = prompt('Was ist das englische Wort für Wenn ?').trim();
+
+        if (fightthree.toLowerCase() === 'if' || fightthree.toLowerCase() === 'when') {
+          alert('Das ist richtig !!');
+        } else {
+          alert('Das ist falsch !!');
+        }
+
+        const fightfour = prompt('Gebe bitte eine Zeichenkette mit 8 bis 15 Buchstaben ein?');
+        if (fightfour.length >= 8 && fightfour.length <= 15) {
+          alert('Die Anzahl der Buchstaben passt !!');
+        } else {
+          alert('Die Anzahl der Buchstaben passt nicht !!');
+        }
+      } else {
+        alert('Dann eben nicht !!');
+      }
+    </script>
+  </body>
+</html>

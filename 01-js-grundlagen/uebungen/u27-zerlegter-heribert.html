@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 27: Der zerlegte Heribert</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-3">
+          <h1>Übung 27: Der zerlegte Heribert</h1>
+          <ol>
+            <li>Entfernen Sie die überflüssigen Leerzeichen.</li>
+            <li>Zerlegen Sie den Namen in Vor- und Nachnamen.</li>
+          </ol>
+          <div class="alert alert-secondary my-3 output"></div>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputElement = document.querySelector('.output');
+
+      const name = 'Heribert  Gold '.trim();
+
+      const spacePosition = name.indexOf(' ');
+
+      const firstName = name.substring(0, name.indexOf(' '));
+      const lastName = name.substr(spacePosition + 1).trim();
+
+      console.log(firstName);
+      console.log(lastName);
+    </script>
+  </body>
+</html>

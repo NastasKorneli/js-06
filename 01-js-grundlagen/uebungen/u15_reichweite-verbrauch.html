@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 15: Reichweite & Verbrauch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 15: Reichweite & Verbrauch</h1>
+          <ol>
+            <li>
+              Schreiben Sie ein Programm zur Kraftstoffverbrauchsberechnung für Pkws. Der Benutzer soll die gefahrenen
+              Kilometer (Strecke) und die verbrauchte Benzinmenge angeben. Das Programm ermittelt daraufhin den
+              Kraftstoffverbrauch auf 100 km und gibt ihn aus.
+              <blockquote>
+                <strong>Hinweis:</strong> Verwenden Sie folgende Formel:<br />
+                <code>Verbrauch [l/100km] = Benzinmenge [l] / Strecke [km] × 100</code>
+              </blockquote>
+            </li>
+            <li>
+              Erweitern Sie das Programm derart, dass das Programm den Benutzer außerdem nach seiner Tankgröße fragt und
+              ergänzend die maximale Reichweite in Kilometern berechnet.
+              <blockquote>
+                <strong>Hinweis:</strong> Verwenden Sie folgende Formel:<br />
+                <code> Reichweite [km] = Tankgröße [l] × Strecke [km] / Benzinmenge [l] </code>
+              </blockquote>
+            </li>
+          </ol>
+        </div>
+        <div class="output-a alert alert-secondary my-3"></div>
+        <div class="output-b alert alert-secondary my-3"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputAEl = document.querySelector('.output-a');
+      const outputBEl = document.querySelector('.output-b');
+
+      const totalGasConsumed = Number(prompt('Wie viel Kraftstoff haben Sie verbraucht? (in Litern)'));
+      const distance = Number(prompt('Wie viele Kilometer sind Sie gefahren?'));
+      const tankSize = Number(prompt('Wie viele Liter passen in Ihren Tank?'));
+
+      // Verbrauch [l/100km] = Benzinmenge [l] / Strecke [km] × 100
+      const consumption = (totalGasConsumed / distance) * 100;
+
+      // Reichweite [km] = Tankgröße [l] × Strecke [km] / Benzinmenge [l]
+      const maxDistance = (tankSize * distance) / totalGasConsumed;
+
+      outputAEl.textContent = `Ihr Auto hat einen Verbrauch von ${consumption.toFixed(2)} Litern pro 100 Kilometer.`;
+
+      outputBEl.textContent = `Ihr Auto hat einen Verbrauch von ${consumption.toFixed(
+        2
+      )} Litern pro 100 Kilometer.\nSie können mit einem vollen Tank ${maxDistance.toFixed(2)} km fahren.`;
+    </script>
+  </body>
+</html>

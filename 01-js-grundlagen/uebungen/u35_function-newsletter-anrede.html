@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 35: Hello Mr. ${recipient}… oder doch Ms.?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      .output {
+        line-height: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 35: Hello Mr. ${recipient}… oder doch Ms.?</h1>
+
+          <h2>PART 1</h2>
+          <p>
+            Stellen Sie sich vor, Sie arbeiten für einen nicht ganz so seriösen Auftraggeber. Auch für diesen
+            Auftraggeber sollen Sie eine Serien-Mail versenden:
+          </p>
+          <pre>
+            <code>
+  Hello, Mr. Heribert,
+  
+  We're happy to inform you that you've just won $100,000! Congratulations! Please write us an email with your banking information and we will transfer the money.
+  
+  Sincerely, the Win Team
+            </code>
+          </pre>
+          <p>
+            Programmieren Sie eine Funktion, die den Versand (hier wieder simuliert durch Konsolenausgabe) des
+            Newsletters übernimmt. Dabei soll statt Heribert ein beliebiger Name verwendbar sein.
+          </p>
+          <p>Folgende Aufrufe erfolgen später aus der Datenbank:</p>
+          <pre>
+            <code>
+  showNewsletterFor('Heribert')
+  showNewsletterFor('Goldy')
+  showNewsletterFor('Ladislaus')
+  
+            </code>
+          </pre>
+          <hr />
+          <h2>Part II</h2>
+          <p>
+            Studien haben ergeben, dass die Öffnungsrate höher ist, wenn der Newsletter die richtige Anrede (d.h. Ms.
+            oder Mr.) verwendet. Übergeben Sie der Funktion einen zweiten Parameter mit korrekter Anrede, die Sie dann
+            in der ersten Zeile des Newsletters verwenden.
+          </p>
+          <p>
+            Einen zweiten Parameter können Sie bei der Funktionsdefinition innerhalb der Klammern durch Komma getrennt
+            angeben.
+          </p>
+          <pre>
+            <code>
+  let showNewsletterFor = (recipient, salutation) => {
+    // ...
+  }
+            </code>
+          </pre>
+          <p>
+            Es sind auch weitere Parameter möglich, aber hier benötigen Sie nur zwei. Innerhalb des Rumpfes können Sie
+            den neuen Parameter wie gewohnt wie ein Variable verwenden.
+          </p>
+          <p>Folgende Aufrufe erfolgen später aus der Datenbank:</p>
+          <hr />
+          <h2>PART III</h2>
+          <p>
+            Locken Sie mit individuelleren Gewinnen, die Sie nach Geschlecht unterscheiden. Dafür entwickeln Sie einen
+            Newsletter, der die folgenden Texte enthält:
+          </p>
+          <h3>Männliche Version</h3>
+          <p>
+            <code>We are glad to inform you that you won an incredible Ferrari and 20.000$!</code>
+          </p>
+          <img
+            src="https://de.webmasters-europe.org/system/course_management/file/images/files/000/020/550/320-214/ecd39122886eab0561c70050064d5200.jpg?1644493797"
+            alt=""
+            width="300"
+            class="img-thumbnail" />
+          <h3>Weibliche Version</h3>
+          <p>
+            <code>
+              We are glad to inform you that you have won a voucher from Tiffany &amp; Co. (50.000$), a luxury trip to
+              New York and additionally 50.000$ for shopping and more!
+            </code>
+          </p>
+          <img
+            src="https://de.webmasters-europe.org/system/course_management/file/images/files/000/020/551/240-360/9b0edc71dd44d50418e3e50c016f11a0.jpg?1644493798"
+            alt=""
+            class="img-thumbnail"
+            width="300" />
+        </div>
+
+        <div class="output alert alert-secondary my-5"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const MESSAGE_MR = 'we are happy to inform you that you won an incredible Ferrari and 20.000$!';
+      const MESSAGE_MS =
+        'we are happy to inform you that you won a voucher from Tiffany & Co. (50.000$), a luxury trip to New York and additionally 50.000$ for shopping and more!';
+
+      const showNewsletterFor = (recipient, salutation) => {
+        if (salutation === 'Mr.') {
+          outputEl.innerHTML = `Hello ${salutation} ${recipient},\n${MESSAGE_MR}\nSincerely, the Win Team`.replaceAll(
+            '\n',
+            '<br />'
+          );
+        } else {
+          outputEl.innerHTML = `Hello ${salutation} ${recipient},\n${MESSAGE_MS}\nSincerely, the Win Team`.replaceAll(
+            '\n',
+            '<br />'
+          );
+        }
+      };
+
+      const showNewsletterFor2 = (recipient, salutation) => {
+        // let html = '';
+        // if (salutation === 'Mr.') {
+        //   html = `Hello ${salutation} ${recipient},\n${MESSAGE_MR}\nSincerely, the Win Team`.replaceAll('\n', '<br />');
+        // } else {
+        //   html = `Hello ${salutation} ${recipient},\n${MESSAGE_MS}\nSincerely, the Win Team`.replaceAll('\n', '<br />');
+        // }
+
+        const text =
+          salutation === 'Mr.'
+            ? `Hello ${salutation} ${recipient},\n${MESSAGE_MR}\nSincerely, the Win Team`
+            : `Hello ${salutation} ${recipient},\n${MESSAGE_MS}\nSincerely, the Win Team`;
+
+        return text;
+      };
+
+      outputEl.innerHTML = showNewsletterFor2('Heribert', 'Mr.').replaceAll('\n', '<br />');
+
+      outputEl.innerHTML += '<hr>';
+
+      outputEl.innerHTML += showNewsletterFor2('Goldy', 'Ms.').replaceAll('\n', '<br />');
+
+      outputEl.innerHTML += '<hr>';
+
+      outputEl.innerHTML += showNewsletterFor2('Ladislaus', 'Mr.').replaceAll('\n', '<br />');
+
+      console.log(showNewsletterFor2('Goldy', 'Ms.'));
+
+      // outputEl.textContent = showNewsletterFor('Goldy', 'Ms.');
+
+      // Beispielaufrufe der Funktion
+      // showNewsletterFor('Heribert', 'Mr.');
+      // showNewsletterFor('Goldy', 'Ms.');
+      // showNewsletterFor('Ladislaus', 'Mr.');
+    </script>
+  </body>
+</html>

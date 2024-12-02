@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 34: In die Konsole geloggt, Teil 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 34: In die Konsole geloggt, Teil 2</h1>
+        <p>Schreiben Sie eine Funktion, die Ihren Namen in der Konsole ausgibt.</p>
+        <div class="output alert alert-secondary my-3"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const logName = () => {
+        // const name = prompt('Bitte gib deinen Namen ein:');
+        // console.log(name);
+
+        console.log('Philippe', 'Botzek');
+      };
+
+      logName();
+
+      const getName = () => {
+        const outputEl = document.querySelector('.output');
+        name = prompt('Wie ist dein Name?');
+        outputEl.textContent = name;
+      };
+
+      getName();
+    </script>
+  </body>
+</html>

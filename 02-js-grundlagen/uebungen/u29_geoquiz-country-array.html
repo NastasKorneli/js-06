@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 29: Geoquiz — Teil 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 29: Geoquiz — Teil 2</h1>
+          <p>
+            In der erweiterten Ausbaustufe sollen die Schüler den Staat zu einer Hauptstadt nennen. Ihre Aufgabe ist es
+            erneut, eine Lösungsfunktion zu programmieren. Dieses Mal nimmt <code>getCountryForCapital</code> eine
+            Hauptstadt (capital) entgegen und liefert den zugehörigen Staat zurück.
+          </p>
+          <p>
+            Die Funktion soll auf die bestehende Konstante <code>getcountriesWithCapital</code> zugreifen. Es ist nicht
+            erlaubt, die Struktur der Daten in der Konstante zu ändern.
+          </p>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const countriesWithCapital = [
+        ['UK', 'London'],
+        ['France', 'Paris'],
+        ['Germany', 'Berlin'],
+        ['Switzerland', 'Bern'],
+        ['Austria', 'Vienna'],
+        ['Russia', 'Moscow'],
+      ];
+
+      // Deklarativer Stil: Verwendung von .find()
+      const getCountryOf = (capital) => {
+        const foundAr = countriesWithCapital.find((ar) => ar[1] === capital);
+        return foundAr ? foundAr[0] : null; // Gibt den Staat oder null zurück, wenn nicht gefunden
+
+        // return countriesWithCapital.find((ar) => ar[1] === capital)[0]
+      };
+
+      // Imperativer Stil: Verwendung von for-Schleife
+      const getCountryOfWithFor = (capital) => {
+        for (let i = 0; i < countriesWithCapital.length; i++) {
+          if (countriesWithCapital[i][1] === capital) {
+            return countriesWithCapital[i][0]; // Gibt den Staat zurück
+          }
+        }
+        return null; // Gibt null zurück, wenn nicht gefunden
+      };
+
+      console.log('country of: ', getCountryOf('London')); // => 'UK'
+      console.log('country of: ', getCountryOfWithFor('Berlin')); // => 'Germany'
+    </script>
+  </body>
+</html>

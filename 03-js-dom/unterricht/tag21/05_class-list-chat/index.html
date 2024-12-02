@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Chat</title>
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css" media="screen" />
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <header></header>
+
+    <main>
+      <h1>Chat</h1>
+
+      <div id="chat">
+        <div id="chat_window">
+          <div id="chat_history">
+            <p>
+              <span class="chat_member chat_member1">Ladislaus:</span>
+              Anybody there?
+            </p>
+            <p>
+              <span class="chat_member chat_member2">Friedlinde</span>
+              Yes, me!
+            </p>
+          </div>
+
+          <div id="chat_text">
+            <input type="text" placeholder="...new message..." />
+          </div>
+        </div>
+
+        <ul id="chat_members">
+          <li class="admin">Heribert</li>
+          <li>Friedlinde</li>
+          <li>Tusnelda</li>
+          <li>Berthold</li>
+          <li>Oswine</li>
+          <li>Ladislaus</li>
+        </ul>
+
+        <div id="member_search">
+          <input type="text" placeholder="...Find a member..." />
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const $ = (qs) => document.querySelector(qs);
+      const $$ = (qs) => Array.from(document.querySelectorAll(qs));
+
+      const chatListItemEls = $$('#chat_members li');
+      console.log(chatListItemEls); // => [li.admin, li, li, li, li, li]
+
+      console.log(chatListItemEls[0]); // => <li class="admin">Heribert</li>
+
+      console.log($('#member_search input')); // => <input type="text" placeholder="...Find a member..." />
+
+      // Die meisten Attribute in HTML können als Eigenschaft in JS direkt angesprochen werden:
+      console.log($('#member_search input').type); //=> 'text'
+      console.log($('#member_search input').placeholder); //=> '...Find a member...'
+      console.log($('#member_search').id); //=> 'member_search'
+
+      // Das Attribut "class" kann nicht direkt als Eigenschaft ausgelesen werden
+      console.log($('#chat_members li').class); // => undefined
+
+      // DOMTokenList - Node.classList
+      console.log($('#chat_members li').classList); //=> DOMTokenList ['admin', value: "admin"]
+
+      // DOMTokenList - Node.classList - Eigenschaft length
+      console.log($('#chat_members li').classList.length); //=> 1
+      // DOMTokenList - Node.classList - Eigenschaft value
+      console.log($('#chat_members li').classList.value); //=> 'admin'
+
+      // DOMTokenList - Methode .add()
+      $('#chat_members li').classList.add('highlighted');
+
+      // DOMTokenList - Methode .remove()
+      $('#chat_members li').classList.remove('highlighted');
+
+      // DOMTokenList - Methode .toggle()
+      $('#chat_members li').classList.toggle('highlighted'); // klasse nicht vorhanden, wird hinzugefügt
+      $('#chat_members li').classList.toggle('highlighted'); // klasse vorhanden, wird entfernt
+
+      // DOMTokenList - Methode .contains()
+      $('#chat_members li').classList.contains('admin'); // => true
+      $('#chat_members li').classList.contains('client'); // => false
+
+      // DOMTokenList - Methode .replace() - kein IE11 support
+      $('#chat_members li').classList.replace('admin', 'client');
+      $('#chat_members li').classList.replace('client', 'admin');
+
+      // DOMTokenList - Methode .item()
+      console.log($('#chat_members li').classList.item(0)); //=> 'admin'
+      console.log($('#chat_members li').classList[0]); //=> 'admin'
+    </script>
+  </body>
+</html>

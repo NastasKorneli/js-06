@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 19 und 20: Die dunkle Seite von JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 19: Die dunkle Seite von JavaScript</h1>
+        <p>
+          Programmieren Sie nun Stück für Stück ein kleines Quiz, in dem ein Spieler Fragen zu JS beantworten muss und
+          damit gegen Fehler und schlechten Code — also die dunkle Seite von JS — antritt. Möge der Source mit Ihnen
+          sein.
+        </p>
+        <ol class="list">
+          <li>
+            <p>
+              Als ersten Schritt fragen Sie den Spieler nach seinem Namen, speichern diesen in eine Variable und
+              begrüßen ihn mittels einer Alert-Box. Ergänzen Sie den folgenden Code:
+            </p>
+            <pre>
+<code> 'use strict'; let username = … alert(…); </code></pre>
+          </li>
+          <li>
+            <p>
+              Stellen Sie dem Spieler die Frage, ob er sich fit genug fühlt, um gegen das dunkle JavaScript anzutreten.
+              Es ist sinnvoll, bei der Frage die Antwortmöglichkeiten anzugeben. Die Antwort speichern Sie in einer
+              neuen Variable und erstellen als Nächstes eine
+              <code>if</code>-Verzweigung. Der Rumpf des <code>if</code> soll nur ausgewertet werden, wenn der Spieler
+              bestätigt, dass er sich stark genug fühlt, das Spiel zu beginnen. In den Rumpf schreiben wir ein
+              <code>alert</code>, das den Spielstart bestätigt und den Spieler anfeuert.
+            </p>
+            <p>
+              Für den Fall, dass der Spieler zu feige ist und einen mangelnden Fitness-Grad angegeben hat, schreiben Sie
+              eine weitere
+              <code>if</code>-Verzweigung, die den Fall abfängt und den Spieler mit Schimpf und Schande verabschiedet.
+              Natürlich dürfen Sie auch freundlich bleiben — ganz wie Sie mögen.
+            </p>
+            <blockquote>
+              <strong>Tipp:</strong> Schon während Sie das Programm entwickeln, sollten Sie es immer wieder testen.
+              Führen Sie nach jeder Änderung das Programm erneut aus!
+            </blockquote>
+          </li>
+          <li>
+            <p>
+              Nun kann es losgehen. Stellen Sie den Spieler vor seine erste Aufgabe. Deklarieren Sie nach dem alert eine
+              neue Variable, in der Sie die Antwort des Spielers zu folgender Frage speichern:<br />
+              <code>»Which Operator has the higher priority: * or + ?«</code>
+            </p>
+            <p>
+              Um auf die Antwort reagieren zu können, schreiben Sie eine weitere
+              <code>if</code>-Verzweigung, deren Rumpf nur ausgewertet wird, wenn die Antwort stimmt.
+            </p>
+            <p>
+              <code>alert</code> gratuliert hier zur korrekten Antwort. Wenn Sie mögen, können Sie noch weitere
+              Verzweigungen mit Fragen einbauen.
+            </p>
+          </li>
+          <li>
+            <p>
+              Fügen Sie ein weiteres <code>if</code> für die Variante ein, in der der Spieler eine falsche Antwort gibt.
+            </p>
+          </li>
+        </ol>
+
+        <h1>Übung 20: Die dunkle Seite von JavaScript</h1>
+        <p>
+          Für Ihr Spiel ist else ebenfalls hilfreich. Zum Beispiel bei der Frage, ob der Spieler bereit zum Spielen ist.
+          Statt hier ein zweites
+          <code>if</code> einzubauen, können Sie <code>else</code> verwenden.
+        </p>
+        <p>Ersetzen Sie die <code>if</code>-Anweisungen an den richtigen Stellen durch ein <code>else</code>:</p>
+        <h1>Übung 23: Die dunkle Seite schlägt zurück…</h1>
+        <p>
+          Endlich setzen Sie Ihren Kampf gegen die dunkle Seite von JS fort (siehe Übung 20) und erstellen zwei neue
+          »Kampf-Sequenzen«:
+        </p>
+        <ul class="list">
+          <li>»What's the German word for if« (Mehrere Lösungsmöglichkeiten: wenn, falls).</li>
+          <li>»Now, please enter a string with a length between 8 and 15 characters…«</li>
+        </ul>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const QUESTION_1 = 'Welcher Operator hat die höhere Priorität: * oder + ?';
+      const SOLUTION_1 = '*';
+
+      const username = prompt('Wie ist dein Name!');
+      alert(`Hallo ${username}!`);
+
+      const playerfitness = prompt('Wie fit fühlst du dich von einer Skala von 1 bis 10?');
+
+      if (playerfitness > 5) {
+        alert('Du fühlst dich also fit!');
+      } else {
+        alert('Du fühlst dich also nicht fit. Dann mach mehr Sport du fauler Sack');
+      }
+
+      const playergame = prompt(`Wollen wir ein Spiel spielen (J/N)`);
+      if (playergame.toUpperCase() === 'J') {
+        alert('Los geht es');
+
+        const fightOne = prompt(QUESTION_1);
+        if (fightOne === SOLUTION_1) {
+          alert('Das ist richtig !!');
+        } else {
+          alert('Das ist falsch !!');
+        }
+        const fighttwo = prompt('Welcher Operator hat die höhere Priorität: () oder - ?');
+        if (fighttwo === '()') {
+          alert('Das ist richtig !!');
+        } else {
+          alert('Das ist falsch !!');
+        }
+
+        const fightthree = prompt('Was ist das englische Wort für Wenn ?');
+
+        if (fightthree.toLowerCase() === 'if' || fightthree.toLowerCase() === 'when') {
+          alert('Das ist richtig !!');
+        } else {
+          alert('Das ist falsch !!');
+        }
+
+        const fightfour = prompt('Gebe bitte eine Zeichenkette mit 8 bis 15 Buchstaben ein?');
+        if (fightfour.length >= 8 && fightfour.length <= 15) {
+          alert('Die Anzahl der Buchstaben passt !!');
+        } else {
+          alert('Die Anzahl der Buchstaben passt nicht !!');
+        }
+      } else {
+        alert('Dann eben nicht !!');
+      }
+    </script>
+  </body>
+</html>

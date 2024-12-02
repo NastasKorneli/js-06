@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events - MouseEvent | PointerEvent</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      .box {
+        border: 5px solid orange;
+        background-color: #333;
+        padding: 1rem;
+        width: 100px;
+        height: 100px;
+      }
+      .box span {
+        color: white;
+      }
+
+      .mouse-follower {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: tomato;
+        margin: -30px 0 0 -30px;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Events - MouseEvent | PointerEvent</h1>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/Events">Standard Events</a></p>
+        <p><a href="https://www.w3schools.com/jsref/dom_obj_event.asp">JS Events in W3Schools</a></p>
+
+        <div class="mb-3">
+          <img src="https://dummyimage.com/600x300/f90/fff.jpg" class="img-thumbnail" alt="" />
+        </div>
+
+        <button class="btn btn-dark button-click mb-3"><span>Klick mich</span></button>
+        <!-- Emmet: .box>span.inner{Inner} -->
+        <div class="box"><span class="inner">Inner</span></div>
+
+        <div class="mouse-follower"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const $ = (qs) => document.querySelector(qs);
+      const $$ = (qs) => Array.from(document.querySelectorAll(qs));
+
+      // console.log(this); // => windows
+
+      const onClick = (e) => {
+        console.log(e); // Event-Objekt - PointerEvent
+
+        const btnEl = e.currentTarget;
+        console.log('e.target:', e.target); // verschachteltes angeklickte Element wird zurückgegeben
+        console.log('e.currentTarget:', e.currentTarget); // gibt das Element zurück, wodrauf der Ereignis-Lauscher angelegt wurde.
+
+        console.log('this:', this); // "this" Referenz wird in arrow Funktionsausdrücken nicht neu gesetzt und bleibt bei "window"
+
+        console.log('Screen X:', e.screenX, 'Screen Y:', e.screenY);
+        console.log('CTRL Key wird gedrückt:', e.ctrlKey); // => true | false
+      };
+
+      // PointerEvent - click - Ereignis wird ausgelöst, wenn der Anwender auf das Element klickt
+      $('.button-click').addEventListener('click', onClick);
+
+      // MouseEvent - dblclick - Ereignis wird ausgelöst, wenn der Anwender doppelt auf das Element klickt
+      $('.button-click').addEventListener('dblclick', (e) => {
+        console.log('MouseEvent:', e); // Event-Objekt - MouseEvent
+
+        console.log('dblclick: ', e.type);
+      });
+
+      // MouseEvent - mouseenter - Ergeinis wird ausgeführt, wenn der Benutzer mit dem Pointer über ein Element fährt (einmalig)
+      $('img').addEventListener('mouseenter', (e) => {
+        console.log('MouseEvent:', e); // Event-Objekt - MouseEvent
+        console.log('mouseenter: ', e.type);
+      });
+
+      // MouseEvent - mouseleave - Ergeinis wird ausgeführt, wenn der Benutzer mit dem Pointer  das Element verlässt (einmalig)
+      $('img').addEventListener('mouseleave', (e) => {
+        console.log('MouseEvent:', e); // Event-Objekt - MouseEvent
+        console.log('mouseleave: ', e.type);
+      });
+
+      // MouseEvent - mouseover - Ergeinis wird ausgeführt, wenn der Benutzer mit dem Pointer über ein Element oder über ein verschachteltes Element fährt (mehrfach)
+      $('.box').addEventListener('mouseover', (e) => {
+        console.log('MouseEvent:', e); // Event-Objekt - MouseEvent
+        console.log('mouseover: ', e.type);
+      });
+
+      // MouseEvent - mouseout - Ergeinis wird ausgeführt, wenn der Benutzer mit dem Pointer  das Element oder ein verschachteltes Element  verlässt (mehrfach)
+      $('.box').addEventListener('mouseout', (e) => {
+        console.log('MouseEvent:', e); // Event-Objekt - MouseEvent
+        console.log('mouseout: ', e.type);
+      });
+
+      // MouseEvent - mousemove - Ergeinis wird ausgeführt, wenn der Benutzer den Pointer auf dem Element bewegt
+      window.addEventListener('mousemove', (e) => {
+        // console.log('MouseEvent:', e); // Event-Objekt - MouseEvent
+        // console.log('mouvemove: ', e.type);
+        // console.log('e.clientX:', e.clientX);
+        // console.log('e.clientY:', e.clientY);
+        $('.mouse-follower').style.top = e.clientY + 'px';
+        $('.mouse-follower').style.left = e.clientX + 'px';
+      });
+    </script>
+  </body>
+</html>

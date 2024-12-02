@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 15: Alles an seinem Platz? [»Kopfnuss«]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-5">
+          <h1>Übung 59: Alles an seinem Platz? [»Kopfnuss«]</h1>
+          <p>
+            Die Anzeige der Chat-Teilnehmer, die gerade im NerdWorld-Chat online sind, soll Performance-optimiert
+            werden. Die Liste soll nur noch neu sortiert werden, wenn sie noch nicht sortiert wurde.
+          </p>
+          <p>
+            Schreiben Sie dafür eine Funktion isSorted, die prüft, ob ein Array von Teilnehmernamen bereits alphabetisch
+            sortiert ist und in diesem Fall <code>true</code>, sonst <code>false</code> zurückgibt. Sie können dafür
+            nicht auf die Funktion <code>sort</code>
+            zurückgreifen, sonst würden Sie den Performancevorteil gleich wieder verlieren.
+          </p>
+          <blockquote>
+            <strong>Tipp:</strong> Ein Array ist genau dann sortiert, wenn die ersten beiden Elemente der Liste in der
+            richtigen Reihenfolge sind und die Liste ab dem zweiten Element sortiert ist. Ein Array mit nur einem
+            Element ist immer sortiert.
+          </blockquote>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const customersOnline = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus', 'Goldy'];
+
+      const arr1 = ['a', 'b', 'c', 'd', 'x', 'f'];
+      const arr2 = ['a', 'b', 'c', 'd', 'e', 'f'];
+      const arr3 = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus', 'Goldy'];
+      const arr4 = ['h'];
+
+      const checkIfSorted = (arr) => {};
+
+      const test = checkIfSorted(arr1);
+      const test2 = checkIfSorted(arr2);
+      const test3 = checkIfSorted(arr3);
+      const test4 = checkIfSorted(arr4);
+
+      console.log(test);
+      console.log(test2);
+      console.log(test3);
+
+      console.log(test4);
+    </script>
+  </body>
+</html>

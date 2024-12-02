@@ -1,0 +1,35 @@
+GET http://127.0.0.1:8081/api/products/
+
+###
+
+POST http://127.0.0.1:8081/api/products/
+Content-Type: application/json
+
+{
+    "id": "g4345b2cd3c2cb00f4b2d1931c1ff80c",
+    "code": "B123",
+    "tagline": "The best T-Shirt for nerds",
+    "price": 19.99,
+    "shortDescription": "A T-Shirt for nerds",
+    "quantity": 100
+}
+
+###
+
+PUT http://127.0.0.1:8081/api/products/
+Content-Type: application/json
+
+{
+    "id": "g4345b2cd3c2cb00f4b2d1931c1ff80c",
+    "code": "B123",
+    "tagline": "The best T-Shirt for nerds now even cheaper",
+    "price": 9.99,
+    "shortDescription": "A T-Shirt for nerds now even cheaper",
+    "quantity": 50
+}
+
+###
+
+DELETE http://127.0.0.1:8081/api/products/g4345b2cd3c2cb00f4b2d1931c1ff80c
+Content-Type: application/json
+

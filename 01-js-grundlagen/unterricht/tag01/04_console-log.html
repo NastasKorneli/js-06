@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>console.log()</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>console.log()</h1>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      console.log('Hello World');
+      console.log("...log message"); // prettier-ignore
+
+      console.log('Philippe', 'Botzek', 40);
+
+      console.warn('Hinweis im Konsolenfenster');
+      console.info('Information im Konsolenfenster');
+
+      console.error('Fehler in der Konsole');
+
+      console.table(['Max', 'John', 'Jane']);
+      console.table({ firsName: 'Max', lastName: 'Mustermann' });
+    </script>
+  </body>
+</html>

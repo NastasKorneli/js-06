@@ -1,0 +1,58 @@
+[
+  {
+    "Code": "MUG0007",
+    "Short Description": "coffee mug with LCD level indicator",
+    "Tagline": "never again reach for the empty mug",
+    "Quantity": 20,
+    "Price": 49.9
+  },
+  {
+    "Code": "MUG0013",
+    "Short Description": "coffee mug with bluetooth-connected coffee grounds scanner for automatized fortune telling",
+    "Tagline": "put the smart into coffee reading",
+    "Quantity": 20,
+    "Price": 99.9
+  },
+  {
+    "Code": "OFF3145",
+    "Short Description": "pen with pre-warmed ink (tested on the South Pole)",
+    "Tagline": "the pen is mightier than the cold",
+    "Quantity": 50,
+    "Price": 29.9
+  },
+  {
+    "Code": "COM1001",
+    "Short Description": "ambidextrous computer mouse",
+    "Tagline": "end the dictate of left and right",
+    "Quantity": 10,
+    "Price": 19.9
+  },
+  {
+    "Code": "COM0404",
+    "Short Description": "Easter egg themed webcam for your monitor",
+    "Tagline": "put an Easter egg on hardware too",
+    "Quantity": 20,
+    "Price": 149.9
+  },
+  {
+    "Code": "COM0001",
+    "Short Description": "Vulcan language vi cheatsheet",
+    "Tagline": "learn vi and Vulcan at the same time",
+    "Quantity": 3,
+    "Price": 9.9
+  },
+  {
+    "Code": "COM1536",
+    "Short Description": "Klingon language emacs cheatsheet",
+    "Tagline": "learn emacs and Klingon at the same time",
+    "Quantity": 50,
+    "Price": 9.9
+  },
+  {
+    "Code": "MOB0555",
+    "Short Description": "smartphone case with built-in screen",
+    "Tagline": "never miss a message",
+    "Quantity": 20,
+    "Price": 39.9
+  }
+]

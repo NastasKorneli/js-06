@@ -1,0 +1,103 @@
+// sass assets/scss/main.scss:assets/css/main.css --style=expanded --watch
+
+/* Color Theme Swatches in Hex */
+$color-theme1: #f7eedf;
+$color-theme2: #b7cfb7;
+$color-theme3: #ffcdb6;
+$color-theme4: #feaea5;
+$color-theme5: #ffc7a2;
+
+$primary-color: #efefef;
+
+// Allgemeine Formatierung =================================
+
+*,
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: $color-theme1;
+}
+
+// Module cutey cat ======================
+
+.m-cutey-cat {
+  h2 {
+    color: darken($color-theme2, 20);
+  }
+
+  .box-cat-selection {
+    position: fixed;
+  }
+
+  ul.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+
+    li {
+      min-width: 400px;
+      background-color: $color-theme4;
+      margin: 0 0 10px;
+      user-select: none;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.52, 0.02, 0.43, 1.39);
+      &:not(.selected):hover {
+        background-color: darken($color-theme4, 10);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+        transform: scale(1.1);
+
+        img {
+          border-width: 0;
+        }
+      }
+
+      img {
+        width: 120px;
+        border: 10px solid rgba(white, 0.6);
+        transition: all 0.4s;
+      }
+
+      span {
+        color: white;
+        padding: 0 1rem;
+        letter-spacing: 2px;
+      }
+    }
+
+    &.list-cat-vote {
+      li {
+        &.selected {
+          background-color: lighten($color-theme4, 10);
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &.list-cat-selection {
+      li {
+        background-color: $color-theme2;
+        &:hover {
+          background-color: darken($color-theme2, 10);
+
+          &::after {
+            position: absolute;
+            top: 30px;
+            right: 1.5rem;
+            content: '\f1f8';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

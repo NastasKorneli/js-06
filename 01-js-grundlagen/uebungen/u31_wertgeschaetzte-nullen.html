@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 31: Wertgeschätzte Nullen, Teil 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-5">
+          <h1>Übung 31: Wertgeschätzte Nullen, Teil 1</h1>
+          <p>
+            NerdWorld hat vor einiger Zeit sein Artikelnummer-Konzept geändert. Die neuen Artikelnummern beginnen stets
+            mit einer 0 — z.B. 0123. Leider gibt es bei den alten Nummern viele, die nicht über eine führenden 0
+            verfügen. Sie können aber auch nicht einfach pauschal eine 0 ergänzen, da manche der alten Nummern bereits
+            mit einer 0 beginnen. In dem Fall soll keine weitere 0 vorangestellt werden. Ergänzen Sie das folgende
+            Programmfragment, so dass es für jede Belegung der Variable itemNumber (Artikelnummer) die richtige Nummer
+            im neuen Konzept ausgibt. Verwenden Sie dazu den ternären Operator!
+          </p>
+          <ul class="list">
+            <li>123 =&gt; 0123</li>
+            <li>7 =&gt; 07</li>
+            <li>07 =&gt; 07</li>
+            <li>007 =&gt; 007</li>
+          </ul>
+          <div class="output alert alert-secondary my-3"></div>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const itemNumber = '123'; // prompt('Bitte die Artikelnummer eingeben.')
+
+      const formattedItemNumber = !itemNumber.startsWith('0') ? '0' + itemNumber : itemNumber;
+
+      console.log(formattedItemNumber);
+
+      // =====
+
+      const newItemNumber = itemNumber[0] === '0' ? itemNumber : `0${itemNumber}`;
+
+      console.log(newItemNumber);
+
+      // ======
+
+      // let modifiedtItemNumber;
+
+      // if (itemNumber.substr(0, 1) === '0') {
+      //   modifiedtItemNumber = itemNumber;
+      //   //
+      // } else {
+      //   modifiedtItemNumber = itemNumber.padStart(itemNumber.length + 1, '0');
+      // }
+
+      const modifiedtItemNumber =
+        itemNumber.substr(0, 1) === '0' ? itemNumber : itemNumber.padStart(itemNumber.length + 1, '0');
+
+      console.log(modifiedtItemNumber);
+      outputEl.textContent = modifiedtItemNumber;
+    </script>
+  </body>
+</html>

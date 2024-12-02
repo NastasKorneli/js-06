@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 07: Fröhliches Mixen mit Arrays & Teil 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 07: Fröhliches Mixen mit Arrays & Teil 1</h1>
+
+        <img
+          src="https://de.webmasters-europe.org/system/course_management/file/images/files/000/020/558/800-533/241aa384e6005cdebbd01c4ba4e4fa69.jpg?1644493807"
+          class="img-thumbnail my-3"
+          width="400"
+          alt="Cocktail Party" />
+
+        <p>
+          Nach so viel trockener Theorie haben Sie Durst. Sie öffnen Ihren Kühlschrank und sehen eine angebrochene
+          Packung Maracujasaft, die dringend verbraucht werden muss. Mit Maracujasaft lassen sich tatsächlich tolle
+          Cocktails zaubern, und gerade letztens hat Ihnen ein Freund den Honolulu Flip empfohlen. Jetzt wäre es
+          perfekt, wenn in dem besagten Cocktail Maracujasaft enthalten wäre…
+        </p>
+
+        <ol>
+          <li>
+            Schreiben Sie eine Funktion, hasIngredient, die true zurückgibt, wenn eine angegebene Zutat in einer
+            Rezeptliste vorhanden ist. Rufen Sie Ihre Funktion mit Maracujsasaft und Honolulu Flip auf.<br />
+            <span><strong>Javascript</strong></span
+            ><br />
+            <code
+              >'use strict'<br />
+              let hasIngredient = (listOfIngredients, searchedIngredient) => /* ??? */ <br />
+              let honoluluFlip = <br />[ 'Maracuja Juice', <br />
+              'Pineapple Juice', <br />
+              'Lemon Juice', <br />'Grapefruit Juice', <br />'Crushed Ice' ]<br />
+              console.log(hasIngredient(honoluluFlip, 'Maracuja Juice')) // => true</code
+            >
+          </li>
+          <li>
+            So richtig sinnvoll ist unsere Funktion noch nicht. Viel hilfreicher wäre es, wenn wir eine Funktion hätten,
+            die anhand unserer vorhandenen Zutaten herausfindet, ob wir den Cocktail auch tatsächlich machen können.
+            Dafür benötigen Sie die komplette Liste Ihrer vorhandenen Zutaten (ingredientsFromMyBar). Sie möchten
+            wissen, ob Sie alle Zutaten vorrätig haben, die Sie zum Mixen des Cocktails benötigen.<br />
+            <span><strong>Javascript</strong></span
+            ><br />
+            <code
+              >'use strict'<br />
+
+              let isMixableWith = (cocktailRecipe, availableIngredients) => /* ??? */<br />
+
+              let hasIngredient = (listOfIngredients, searchedIngredient) =><br />
+              listOfIngredients.includes(searchedIngredient)<br />
+
+              let honoluluFlip = [<br />
+              'Maracuja Juice',<br />
+              'Pineapple Juice',<br />
+              'Lemon Juice',<br />
+              'Grapefruit Juice',<br />
+              'Crushed Ice'<br />
+              ];<br />
+              let ingredientsFromMyBar = [<br />
+              'Pineapple',<br />
+              'Maracuja Juice',<br />
+              'Cream',<br />
+              'Lemon Juice',<br />
+              'Grapefruit Juice',<br />
+              'Crushed Ice',<br />
+              'Milk',<br />
+              'Apple Juice',<br />
+              'Aperol',<br />
+              'Pineapple Juice',<br />
+              'Limes',<br />
+              'Lemons'<br />
+              ]<br />
+
+              //honoluluFlip isMixableWith ingredientsFromMyBar?<br />
+              console.log(isMixableWith(honoluluFlip, ingredientsFromMyBar)) // => true<br />
+            </code>
+          </li>
+        </ol>
+
+        <p>
+          <strong>Hinweis: </strong>Verwenden Sie die Array-Funktion every. Auf hasIngredient aus der letzten Teilübung
+          können Sie zurückgreifen.
+        </p>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const recipeHonoluluFlip = [
+        'Maracuja Juice', //
+        'Pineapple Juice',
+        'Lemon Juice',
+        'Grapefruit Juice',
+        'Crushed Ice',
+      ];
+
+      const ingredientsFromMyBar = [
+        'Pineapple',
+        'Maracuja Juice',
+        'Cream',
+        'Lemon Juice',
+        'Grapefruit Juice',
+        'Crushed Ice',
+        'Milk',
+        'Apple Juice',
+        'Aperol',
+        'Pineapple Juice',
+        'Limes',
+        'Lemons',
+      ];
+
+      // ============================== AUFGABE 1 ==============================
+
+      const hasIngredient = (ar, searchValue) => {
+        // return ar.includes(searchValue);
+        return ar.some((zutat) => zutat.toLowerCase() === searchValue.toLowerCase()); // hierbei wird jedes Element des Arrays mit der gesuchten Zutat durchsucht
+        //-> Warum so umständlich? => some-Methode benötigt eine Callback-Funktion
+      };
+      console.log(hasIngredient(['Maracuja Juice', 'Lemon'], 'Maracuja Juice')); // => true
+
+      // ============================== AUFGABE 2 ==============================
+
+      const isMixableWith = (cocktailAr, allIngredients) => {
+        return cocktailAr.every((ingredient) => allIngredients.includes(ingredient));
+        // mit every wird erstmal geprüft, ob alle elemente des arrays cocktailRecipe(recipeHonoluluFlip) in availableIngredients(ingredientsFromMyBar) verfpgbar sind. Nur wenn alle true sind, wird true ausgegeben.
+        // Problem: Wir wollen den Inhalt des Arrays mit dem Inhalt des anderen Arrays vergleichen und nich die gesamtarrays.
+
+        // Daher benötigen wir eine callback funktion mit .includes(barinhalt):
+      }; // Diese Überprüft, ob jede Zutat des Rezepts in den verfügbaren Zutaten enthalten ist:
+      // Hier geht .includes in den barInhalt(ingredientsFromMyBar), pickt sich das erste element im array raus und sucht danach
+
+      //honoluluFlip isMixableWith ingredientsFromMyBar?
+      console.log(isMixableWith(recipeHonoluluFlip, ingredientsFromMyBar)); // => true
+    </script>
+  </body>
+</html>

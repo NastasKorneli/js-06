@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array - ar.forEach</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Array - ar.forEach()</h1>
+        <p>
+          <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"
+            >ar.forEach()</a
+          >
+          - Die <strong>forEach()</strong> Methode führt eine übergebene Funktion für jedes Element eines Arrays aus.
+        </p>
+
+        <div class="alert alert-warning">Die <code>forEach</code> - Methode hat keinen Rückgabewert</div>
+        <div class="alert alert-secondary output"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const customersOnline = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+
+      const names = [
+        'Christina', //
+        'Tetiana',
+        'Daniel',
+        'Namdar',
+        'Judith',
+        'Julian',
+        'Oana',
+        'Korneli',
+        'Enrico',
+        'Sebastian',
+        'Alexej',
+        'Radostina',
+        'Loriana',
+      ];
+
+      const products = [
+        'Game of Thrones Wax Seal Coasters',
+        'Electronic Butterfly in a Jar',
+        'Aquafarm: Aquaponics Fish Garden',
+        'Cassette Adapter Bluetooth',
+        'Marvel Comics Lightweight Infinity Scarf',
+        'Ollie - The App Controlled Robot',
+        'Sound Splash Bluetooth Waterproof Shower Speaker',
+        'PowerCube',
+        'Backpack of Holding',
+        'Retro Duo Portable NES/SNES Game System',
+        'Universal Gadget Wrist Charger',
+        'USB Squirming Tentacle',
+        'USB Fishquarium',
+        'Space Bar Keyboard Organizer & USB Hub Pop',
+        'USB Pet Rock',
+        'Powerstation 5- E. Maximus Chargus',
+        'Dual Heated Travel Mug',
+        'Crosley Collegiate Portable USB Turntable',
+        'Meh Hoodie',
+        'Magnetic Accelerator Cannon',
+      ];
+
+      // Array - Methode - ar.forEach()
+      // Metode ist "side-effect-free" - angesprochenes Array bleibt unverändert
+
+      names.forEach((name) => {
+        // "mehrere Anweisungen"
+        console.log(`${name.charAt(0)}.`);
+      });
+
+      // ==== BEISPIEL aus der Class ================
+      // Functions =====
+      const getProductsByLetter = (letter) => {
+        return products.filter((str) => str.toUpperCase().startsWith(letter.toUpperCase()));
+      };
+
+      // Array - Methode ar.forEach()
+
+      const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+      letters.forEach((letter, idx) => {
+        // Guard
+        if (getProductsByLetter(letter).length === 0) return;
+
+        console.log(`======== ${letter} ========`);
+        console.log(getProductsByLetter(letter).join(', '));
+
+        outputEl.innerHTML += `<h2 class="text-center">${letter.toUpperCase()}</h2>`;
+        outputEl.innerHTML += `<ul><li>${getProductsByLetter(letter).join('</li><li>')}</li></ul>`;
+      });
+
+      // console.log(getProductsByLetter('a')); // => ['Aquafarm: Aquaponics Fish Garden']
+      // console.log(getProductsByLetter('B')); // => // => ['Backpack of Holding']
+      // console.log(getProductsByLetter('c')); // => ['Cassette Adapter Bluetooth', 'Crosley Collegiate Portable USB Turntable']
+      // console.log(getProductsByLetter('D')); // => ['Dual Heated Travel Mug']
+
+      // ============================
+
+      // Optionale Parameter von forEach
+
+      // ar.forEach((currentValue, index, array) => {})
+
+      names.forEach((name, idx, ar) => {
+        console.log(`CurrentValue: ${name}, Index: ${idx}, Array: ${ar.join(', ')}`);
+      });
+    </script>
+  </body>
+</html>

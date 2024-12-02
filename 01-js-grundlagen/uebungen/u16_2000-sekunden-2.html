@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 16: 2000 Sekunden, Teil 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Übung 16: 2000 Sekunden, Teil 2</h1>
+        <p>
+          Geben Sie die Ergebnisse des Zeitrechners (Übung 3) abgerundet (ohne Nachkommastellen) in folgender Form aus:
+          <code>mm:ss</code>
+        </p>
+        <p>
+          <strong>Hinweise:</strong> Am einfachsten ist die Aufgabe mithilfe des Modulo-Operators zu lösen.
+          Nachkommastellen können Sie im Moment noch nicht entfernen. Darauf kommen wir später zurück.
+        </p>
+        <input
+          type="number"
+          name="seconds"
+          id="input-seconds"
+          class="form-control mb-3"
+          placeholder="Sekunden eingeben..." />
+        <div class="output alert alert-secondary" id="output"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+      const inputSeconds = document.querySelector('input[name="seconds"]'); // '#input-seconds'
+
+      inputSeconds.addEventListener('input', (e) => {
+        console.log(e); // Input-Event
+
+        const seconds = Number(inputSeconds.value); // e.target.value
+
+        const mm = Math.round(seconds / 60); // => XX Minuten
+        const ss = seconds % 60; // => XX Restsekunden
+
+        outputEl.textContent = `Ausgabe in mm:ss - ${mm}:${ss}`;
+      });
+    </script>
+  </body>
+</html>

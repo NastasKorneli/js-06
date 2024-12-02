@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 08: Komm mir doch mal quer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 08: Komm mir doch mal quer</h1>
+          <p>
+            Schreiben Sie eine Funktion digitSum, die die Quersumme einer übergebenen Zahl zurückgibt. Hinweis: Die
+            Quersumme ist die Summe aller Ziffern einer Zahl.
+            <br /><strong>Tipp:</strong> Verwenden Sie split('').
+          </p>
+        </div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const number = 4566;
+
+      const getDigitSum = (n) => {
+        return (
+          String(n) // Konvertiert die Zahl in einen String
+            .split('') // Teilt den String in ein Array von Ziffern
+            // .map(Number) // Wandelt die Ziffern-Strings zurück in Zahlen
+            .reduce((acc, curr) => Number(acc) + Number(curr), 0) // Summiert die Ziffern
+        );
+      };
+
+      console.log(getDigitSum(4242)); //=> 12
+      console.log(getDigitSum('13')); //=> 4
+
+      //========
+    </script>
+  </body>
+</html>

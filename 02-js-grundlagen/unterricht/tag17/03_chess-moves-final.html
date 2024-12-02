@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess - Moves final</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      .chess-row {
+        background-color: #fff;
+      }
+
+      .chess-board .chess-field {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin: 1px;
+        padding: 0.5rem;
+        border: 1px solid #efefef;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <h1>Chess - Moves final</h1>
+        <div class="output alert alert-secondary my-3"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const boardInStartPosition = () => [
+        ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+        ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙'],
+        ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
+      ];
+
+      const emptyBoard = () => [
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+        ['◻', '▦', '◻', '▦', '◻', '▦', '◻', '▦'],
+        ['▦', '◻', '▦', '◻', '▦', '◻', '▦', '◻'],
+      ];
+
+      // Funktionen =============
+      const originField = (move) => move.substring(0, 2); // => 'e2e4' -> 'e2'
+      const targetField = (move) => move.substring(2); // => 'e2e4' -> 'e4'
+
+      // Biespiel => 'e2' -> 'e' -> letterToChessIndex('e') -> 4
+      const fieldToXPosition = (field) => letterToChessIndex(field.charAt(0));
+
+      // Beispiel => 'e2' -> '2' -> numberToChessIndex('2') -> 6
+      const fieldToYPosition = (field) => numberToChessIndex(field.charAt(1));
+
+      // Beispiel => 'e' -> 4  <- Array Spalte (x) - Verschachteltes Array
+      const letterToChessIndex = (letter) => 'abcdefgh'.indexOf(letter); // 'e2' -> 'e' -> 4
+      // Beispiel => '2' -> 6  <- Array Zeile (y) - Hauptarray
+      const numberToChessIndex = (num) => 8 - num; // 'e2' -> '2' -> 8 - '2' -> 6
+
+      console.log(fieldToXPosition('e2')); // => 'e2' -> 'e' -> 4 <- Array Spalte (x)
+      console.log(fieldToYPosition('e2')); // => 'e2' -> '2' -> 6 <- Array Zeile (y)
+
+      const execMove = (board, move) => {
+        // originField('e2e4') -> fieldToXPosition('e2') -> 4 <- Array Spalte (x)
+        const originX = fieldToXPosition(originField(move));
+        // originField('e2e4') -> fieldToYPosition('e2') -> 6 <- Array Zeile (y)
+        const originY = fieldToYPosition(originField(move));
+
+        // targetField('e2e4') -> fieldToXPosition('e4') -> 4 <- Array Spalte (x)
+        const targetX = fieldToXPosition(targetField(move));
+        // targetField('e2e4') -> fieldToYPosition('e4') -> 4 <- Array Zeile (y)
+        const targetY = fieldToYPosition(targetField(move));
+
+        // board[4][4] = board[6][4]
+        board[targetY][targetX] = board[originY][originX];
+
+        // board[6][4] = emptyBoard[6][4]
+        board[originY][originX] = emptyBoard()[originY][originX];
+
+        return board;
+      };
+
+      const execMoves = (moves = []) => {
+        return moves.reduce((board, move) => {
+          const resultAr = execMove(board, move);
+          return resultAr;
+        }, boardInStartPosition());
+      };
+      // console.log(execMoves(['e2e4', 'e7e5', 'f2f4']));
+
+      const getMovesHistoryAr = (moves) => {
+        return moves.map((_, idx, ar) => {
+          return ar.slice(0, idx + 1);
+        });
+      };
+
+      // console.log(getMovesHistoryAr(['e2e4', 'e7e5', 'f2f4']));
+
+      const board2string = (board) => board.map((row) => row.join(' ')).join('\n');
+
+      const board2Html = (board) => {
+        return `<div class="chess-board">
+          ${board
+            .map((row) => {
+              return `<div class="chess-row"><span class="chess-field">${row.join(
+                '</span><span class="chess-field">'
+              )}</span></div>`;
+            })
+            .join('')}  
+          </div>`;
+      };
+
+      const allMoves = getMovesHistoryAr(['e2e4', 'e7e5', 'f2f4']);
+      // => [['e2e4'], ['e2e4', 'e7e5'],['e2e4', 'e7e5', 'f2f4']  ]
+
+      allMoves.forEach((moves) => {
+        const resultBoard = execMoves(moves);
+
+        console.log(board2string(resultBoard));
+        console.log('===============');
+
+        outputEl.innerHTML += `<div class="chess-move my-5">${board2Html(resultBoard)}</div>`;
+      });
+
+      // console.log(board2string(execMoves(['e2e4', 'e7e5', 'f2f4'])));
+
+      // outputEl.innerHTML = board2Html(execMoves(['e2e4', 'e7e5', 'f2f4']));
+    </script>
+  </body>
+</html>

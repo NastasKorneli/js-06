@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nerdshop - Online Catalog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/script.js" type="module"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary menu-main">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Nerdshop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#dropdown-login"
+          aria-controls="dropdown-login"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="dropdown-login">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <button class="button-logout d-none">Logout</button>
+            </li>
+            <li class="nav-item dropdown">
+              <button
+                class="dropdown-toggle button-login"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Login
+              </button>
+              <div class="dropdown-menu dropdown-menu-login">
+                <form class="form-login">
+                  <div class="mb-3">
+                    <label for="input-login-username" class="form-label">
+                      Username
+                    </label>
+                    <input
+                      type="text"
+                      name="username"
+                      class="form-control"
+                      id="input-login-username"
+                      placeholder="your username..." />
+                  </div>
+                  <div class="mb-3">
+                    <label for="input-login-password" class="form-label">
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      id="input-login-password"
+                      placeholder="Password" />
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="input-login-remember-me" />
+                      <label
+                        class="form-check-label"
+                        for="input-login-remember-me">
+                        Remember me
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" class="button-green button-sign-in">
+                    Sign in
+                  </button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <button
+                  class="dropdown-item"
+                  data-bs-target="#modal-sign-up"
+                  data-bs-toggle="modal">
+                  New around here? Sign up
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container py-5">
+        <h1>Nerdshop - Online Catalog</h1>
+      </div>
+      <div class="m-product-manager">
+        <div class="container">
+          <nav class="menu-products">
+            <button
+              class="button-product-add"
+              data-bs-toggle="modal"
+              data-bs-target="#modal-product-add-update">
+              <i class="fas fa-plus"></i>
+              <span>Add Product</span>
+            </button>
+          </nav>
+          <div class="products"></div>
+          <template class="template-product">
+            <div class="product">
+              <div class="product-actions">
+                <button class="button-green button-product-show">
+                  <i class="fas fa-eye"></i>
+                  <span class="sr-only">Show Product</span>
+                </button>
+              </div>
+              <div class="product-code">
+                <strong>Code:</strong> <span class="code">{CODE}</span>
+              </div>
+              <div class="product-tagline">
+                <strong>Tagline:</strong> <span class="tagline">{TAGLINE}</span>
+              </div>
+              <div class="product-description">
+                <strong>Description:</strong>
+                <span class="short-description">{SHORT_DESCRIPTION}</span>
+              </div>
+              <div class="product-admin-actions">
+                <button class="button-green button-product-edit">
+                  <i class="fas fa-edit"></i>
+                  <span class="sr-only">Edit Product</span>
+                </button>
+                <button class="button-red button-product-delete">
+                  <i class="fas fa-trash-alt"></i>
+                  <span class="sr-only">Delete Product</span>
+                </button>
+              </div>
+            </div>
+          </template>
+          <!-- Card for product details-->
+          <template class="template-card-product">
+            <div class="card card-product">
+              <button class="button-card-close">
+                <i class="fas fa-times"></i>
+                <span class="sr-only">Close</span>
+              </button>
+              <h3 class="card-product-code">MUG0007</h3>
+              <div class="card-body">
+                <h5 class="card-title card-product-tagline">Product title</h5>
+                <p class="card-text card-product-short-description">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <div class="alert alert-warning alert-stock-warn d-none">
+                  <i class="fas fa-exclamation-triangle"></i> Last items in
+                  stock!
+                </div>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item list-product-price">
+                  <strong>Price:</strong> $&nbsp;<span
+                    class="card-product-price"
+                    >{price}</span
+                  >
+                </li>
+                <li class="list-group-item list-product-quantity">
+                  <strong>Quantity:</strong>
+                  <span class="card-product-quantity">{quantity}</span>
+                </li>
+              </ul>
+              <div class="card-footer">
+                Id:&nbsp;<small class="text-muted card-product-id">{id}</small>
+              </div>
+            </div>
+          </template>
+        </div>
+        <!-- Modal add and update -->
+        <div
+          class="modal fade"
+          id="modal-product-add-update"
+          tabindex="-1"
+          aria-labelledby="modal-label-product-add-update"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2
+                  class="modal-product-title fs-5"
+                  id="modal-label-product-add-update">
+                  {MODAL_TITLE}
+                </h2>
+                <button
+                  type="button"
+                  class="btn btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <form class="form-product-add-update">
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label class="form-label" for="input-code">Code</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="input-code"
+                          name="code"
+                          required />
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label d-none" for="input-id"
+                          >Id</label
+                        >
+                        <input
+                          type="hidden"
+                          class="form-control"
+                          id="input-id"
+                          name="id" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="input-tagline">
+                          Tagline
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="input-tagline"
+                          name="tagline"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="input-description">
+                          Short Description
+                        </label>
+                        <textarea
+                          class="form-control"
+                          id="textarea-product-short-description"
+                          name="shortDescription"
+                          rows="3"
+                          required></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label class="form-label" for="input-quantity">
+                          Quantity
+                        </label>
+                        <input
+                          type="number"
+                          step="1"
+                          class="form-control"
+                          id="input-quantity"
+                          name="quantity"
+                          required />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="mb-3">
+                        <label class="form-label" for="input-price">
+                          Price
+                        </label>
+                        <div class="input-group">
+                          <span class="input-group-text">€</span>
+                          <input
+                            type="number"
+                            step="0.01"
+                            class="form-control"
+                            id="input-price"
+                            name="price"
+                            required />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="button-red button-close"
+                    data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    class="button-green button-product-confirm-add-update">
+                    <span class="modal-button-label"
+                      >{MODAL_CONFIRM_LABEL}</span
+                    >
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- ▲ /Modal add and update ▲ -->
+
+        <!-- Modal Sign-up -->
+        <div
+          class="modal fade"
+          id="modal-sign-up"
+          tabindex="-1"
+          aria-labelledby="modal-label-sign-up"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title fs-5" id="modal-label-sign-up">
+                  Sign-up
+                </h2>
+                <button
+                  type="button"
+                  class="btn btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <form class="form-sign-up">
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="input-sign-up-username"
+                          >Username</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="input-sign-up-username"
+                          name="username"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="input-sign-up-email">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="input-sign-up-email"
+                          name="email"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="input-sign-up-password">
+                          Password
+                        </label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="input-sign-up-password"
+                          name="password"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label
+                          class="form-label"
+                          for="input-sign-up-confirm-password">
+                          Confirm password
+                        </label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="input-sign-up-confirm-password"
+                          name="confirmPassword"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="button-red button-close"
+                    data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    class="button-green button-confirm-sign-up">
+                    <span class="modal-button-label">Sign-up</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- ▲ /Modal Sign-up ▲ -->
+
+        <!-- Toast from Bootsrap -->
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+          <div
+            id="toast"
+            class="toast justify-content-between align-items-center"
+            data-bs-delay="2000"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="toast-body">
+                <span class="toast-icon"></span>
+                <span class="toast-message">Product added successfully!</span>
+              </div>
+              <button
+                type="button"
+                class="btn btn-sm btn-close mx-3"
+                data-bs-dismiss="toast"
+                aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ▲ /.m-product-manager ▲ -->
+    </main>
+  </body>
+</html>

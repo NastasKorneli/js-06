@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 41: Kekse backen mit Arrays</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary my-3">
+          <h1>Übung 41: Kekse backen mit Arrays</h1>
+          <img
+            src="https://de.webmasters-europe.org/system/course_management/file/images/files/000/014/037/1000-667/53f6cb7feb9e9a7580d88ce5fa5a6d5c.jpg?1617534594"
+            alt=""
+            class="img-thumbnail my-3"
+            width="350" />
+          <p>
+            Sie wollen ein digitales Rezeptbuch schreiben, und die Zutaten für das jeweilige Rezept stellen Sie in einem
+            Array zur Verfügung.
+          </p>
+          <ol class="list">
+            <li>
+              <p>Legen Sie für das erste Rezept — Haferflocken-Kekse — ein Array mit den folgenden Zutaten an:</p>
+              <pre>
+              <code>
+  70 ml Rapsöl
+  1 getrenntes Ei
+  100 g Zucker
+  1 TL Backpulver
+              </code>
+            </pre>
+            </li>
+            <li>
+              <p>Da in der Liste das Mehl fehlt, müssen Sie 1 EL Mehl noch nachträglich ergänzen.</p>
+            </li>
+            <li>
+              <p>
+                Beim Durchlesen der Liste fällt auf, dass die wohl wichtigste Zutat ebenfalls fehlt. Fügen Sie noch 100g
+                Haferflocken an die erste Position in die Zutatenliste ein.
+              </p>
+            </li>
+            <li>
+              <p>
+                Für Kekse ist es eigentlich besser, Butter statt Öl zu verwenden. Tauschen Sie das Öl in der Liste
+                dementsprechend gegen 75 g Butter aus.
+              </p>
+            </li>
+            <li>
+              <p>
+                Wandeln Sie das Array nun in einen String um und speichern Sie diesen in einer Variablen. Dabei sollen
+                die Zutaten als Liste ausgegeben werden.
+              </p>
+            </li>
+            <li>
+              <p>
+                Und damit die Rezeptspielerei nicht total sinnlos war, bekommen Sie natürlich noch die Anleitung von uns
+                dazu. Speichern Sie auch diese in einer Variable und geben Sie das komplette Rezept in der Konsole aus.
+              </p>
+            </li>
+          </ol>
+          <hr />
+          <h3>Anleitung</h3>
+          <blockquote>
+            <p>
+              Schmelzen Sie die Butter in einer Pfanne, geben Sie die Haferflocken dazu und vermischen Sie alles gut
+              miteinander.
+            </p>
+            <p>
+              Nehmen Sie die Masse danach vom Herd und lassen Sie sie etwas auskühlen. Nun schlagen Sie das Eiweiß mit
+              Zucker steif und rühren Eigelb, Backpulver und Mehl unter. Vermengen Sie nun die Masse mit den abgekühlten
+              Haferflocken.
+            </p>
+            <p>
+              Setzen Sie kleine Teighäufchen auf ein Backblech. Die Häufchen sollten nicht zu groß sein, da der Teig
+              beim Backen etwas auseinanderläuft. Im vorgeheizten Backofen bei 170 °C 15 Minuten backen.
+            </p>
+          </blockquote>
+        </div>
+        <div class="output alert alert-secondary"></div>
+        <div class="outputIntro alert alert-secondary"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+      const outputIntroEl = document.querySelector('.outputIntro');
+
+      const introText = `Schmelzen Sie die Butter in einer Pfanne, geben Sie die Haferflocken dazu und vermischen Sie alles gut miteinander. \nNehmen Sie die Masse danach vom Herd und lassen Sie sie etwas auskühlen. Nun schlagen Sie das Eiweiß mit Zucker steif und rühren Eigelb, Backpulver und Mehl unter. Vermengen Sie nun die Masse mit den abgekühlten Haferflocken. \nSetzen Sie kleine Teighäufchen auf ein Backblech. Die Häufchen sollten nicht zu groß sein, da der Teig beim Backen etwas auseinanderläuft. Im vorgeheizten Backofen bei 170 °C 15 Minuten backen.`;
+
+      const recipeAr = [
+        '70 ml Rapsöl', //
+        '1 getrenntes Ei',
+        '100 g Zucker',
+        '1 TL Backpulver',
+      ];
+
+      // 2
+      recipeAr.push('1 EL Mehl');
+      // recipeAr.splice(recipeAr.length, 0, '1 El Mehl')
+
+      // 3
+      recipeAr.unshift('100g Haferflocken');
+      // recipeAr.splice(0, 0, '100g Haferflocken')
+
+      // 4
+      recipeAr[1] = '75 g Butter';
+      recipeAr.splice(1, 1, '75 g Butter');
+
+      // 5
+
+      outputIntroEl.textContent = introText;
+
+      outputEl.innerHTML = `<ul> <li>${recipeAr.join('</li><li>')}</li></ul>`;
+    </script>
+  </body>
+</html>

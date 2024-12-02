@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Übung 24: Richtige Gewinner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="alert alert-primary">
+          <h1>Übung 24: Richtige Gewinner</h1>
+          <p>
+            Die Ausgabe der Gewinner aus dem letzten Beispiel (Codebeispiel 334) ist immer noch nicht ideal. Am Besten
+            wäre das folgende Ergebnis-Array:
+          </p>
+          <pre>
+            <code>
+  [
+    '1st place: Heribert',
+    '2nd place: Friedlinde',
+    '3rd place: Tusnelda',
+    'Oswine',
+    'Ladislaus',
+  ]
+            </code>
+          </pre>
+        </div>
+        <div class="output alert alert-secondary"></div>
+      </div>
+    </main>
+    <script>
+      'use strict';
+
+      const outputEl = document.querySelector('.output');
+
+      const winners = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
+
+      const getWinners = (winners /*, ...labels*/) => {
+        // labels = labels.length === 0 ? ['1st', '2nd', '3rd'] : labels;
+        const labels = ['1st', '2nd', '3rd'];
+        return winners.map((name, idx) => {
+          if (idx < labels.length) {
+            return `${labels[idx]}: ${name}`;
+          } else {
+            return name;
+          }
+        });
+      };
+
+      const getWinners2 = (winners) => {
+        return winners.map((winner, index) => {
+          if (index < 3) {
+            let place = '';
+
+            // if (index === 0) {
+            //   place = 'st';
+            // } else if (index === 1) {
+            //   place = 'nd';
+            // } else if (index === 2) {
+            //   place = 'rd';
+            // }
+
+            switch (index) {
+              case 0:
+                place = 'st';
+                break;
+              case 1:
+                place = 'nd';
+                break;
+              case 2:
+                place = 'rd';
+                break;
+              default:
+                place = '';
+              // console.log('kein passender Index vorhanden');
+            }
+
+            return `${index + 1}${place} place: ${winner}`;
+          } else {
+            return winner;
+          }
+        });
+      };
+
+      console.log(getWinners(winners));
+      outputEl.innerHTML = `<ul><li>${getWinners(winners).join('</li><li>')}</li></ul>`;
+    </script>
+  </body>
+</html>
